@@ -1,0 +1,22 @@
+<section class="work-experiences row">
+	<app-section-title
+		class="p-0"
+		[sectionName] = "'Experiencias Laborales'"
+		(addRecordEmitter) = "showAddWorkDialog()"
+	>
+	</app-section-title>
+	<app-add-work
+		[id] = "addWorkDialogId"
+	></app-add-work>
+	<app-edit-work 
+		[id] = "editWorkDialogId"
+		[work]="currentWork"
+	></app-edit-work>
+	<app-work-experience
+		*ngFor="let work of workExperiences"
+		[work] = "work"
+		class="work-experience col-sm-12 col-md-6 col-lg-4"
+		(openEditDialogEmitter) = "showEditDialog($event)"
+	>
+	</app-work-experience>
+</section>

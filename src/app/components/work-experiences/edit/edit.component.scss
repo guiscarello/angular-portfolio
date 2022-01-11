@@ -1,0 +1,23 @@
+$button-color : white;
+
+.edit-component{
+	top: 0;
+	right: 0;
+
+	.delete-container{
+		margin: 5px;
+		.delete{
+			color: $button-color;
+			background-color: rgb(151, 0, 0);
+		}
+	}
+	.edit-container{
+		margin: 5px;
+		.edit{
+			color: $button-color;
+			background-color: rgb(112, 112, 112);
+		}
+	}
+
+	
+}

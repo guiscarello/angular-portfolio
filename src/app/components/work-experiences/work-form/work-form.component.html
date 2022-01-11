@@ -1,0 +1,39 @@
+<form [formGroup]="workForm" (ngSubmit)="onSubmit()">
+	<div class="row">
+		<div class="col mb-3">
+			<label for="companyName" class="form-label">Nombre Compania: </label>
+			<input class="form-control form-control-sm" type="text" name="companyName" id="companyName" formControlName = "companyName">
+		</div>
+		<div class="col mb-3">
+			<label for="companyLogo" class="form-label">Logo Compania: </label>
+			<input class="form-control form-control-sm" type="file" name="companyLogo" id="companyLogo" formControlName = "companyLogo">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mb-3">
+			<label for="startDate" class="form-label">Fecha de entrada: </label>
+			<input class="form-control form-control-sm" type="date" name="startDate" id="startDate" formControlName = "startDate" >
+		</div>
+		<div class="col mb-3">
+			<label for="endDate" class="form-label">Fecha de salida: </label>
+			<input class="form-control form-control-sm" type="date" name="endDate" id="endDate" formControlName = "endDate">
+		</div>
+	</div>
+	<div class="row">
+		<div class="mb-3">
+			<label for="position" class="form-label">Posición: </label>
+			<input class="form-control form-control-sm" type="text" name="position" id="position" formControlName = "position">
+		</div>
+		<div class="mb-3">
+			<label for="description" class="form-label">Descripción tareas: </label>
+			<textarea class="form-control" rows="4" name="description" id="description" formControlName = "description"></textarea>
+		</div>
+	</div>
+	<div class="mb-3">
+		<label for="tel" class="form-label">Telefono: </label>
+		<input class="form-control form-control-sm" type="text" name="tel" id="tel" formControlName = "tel">
+	</div>
+
+	<button type="submit" [disabled]="!workForm.valid" class="btn btn-primary w-100 p-3">Guardar</button>
+	
+</form>

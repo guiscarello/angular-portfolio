@@ -1,0 +1,11 @@
+<section id="education" class="d-flex flex-column">
+	<app-section-title
+		class="p-0"
+		[sectionName] = "'Educación'"
+	></app-section-title>
+	
+	<app-education-item
+		*ngFor="let e of education"
+		[education] = "e"
+	></app-education-item>
+</section>

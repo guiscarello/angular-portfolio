@@ -1,0 +1,12 @@
+<div class="d-flex flex-sm-row flex-column align-items-center p-2 education-item">
+	<div class="p-1 d-flex education-logo">
+		<img class="logo" [attr.src]="education.logo">
+	</div>
+	<div class=" d-flex flex-column education-content">
+		<h3>{{education.name}}</h3>
+		<p><b>Institución: </b> {{education.institutionName}}</p>
+		<p><b>Tipo: </b> {{education.type}}</p>
+		<p><b>Realizado: </b> {{education.year}}.<b> Duración: </b> {{education.duration}}</p>
+		<p><b>Descripción: </b> {{education.description}}</p>
+	</div>
+</div>

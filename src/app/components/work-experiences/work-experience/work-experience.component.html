@@ -1,0 +1,20 @@
+	<div id="" class="we d-flex position-relative flex-column justify-content-center align-items-center">
+		<app-edit
+			(editWorkCbEmitter) = "editWork()"
+			(deleteWorkCbEmitter) = "deleteWork()"
+		></app-edit>
+		
+		<div class="d-flex justify-content-center p-2">
+			<img id="work-experience-logo" [attr.src]="work.companyLogo">
+		</div>
+		<div class="info d-flex flex-column justify-content-center p-0">
+			<p class="d-flex justify-content-center work-experience-title">{{work.companyName}}</p>
+			<div class="d-flex flex-column p-2">
+				<p class="mt-3"><b>Fecha inicio: </b>{{work.startDate}}</p>
+				<p><b>Fecha fin: </b>{{work.endDate}}</p>
+				<p><b>Posición: </b>{{work.position}}</p>
+				<p><b>Descripción: </b>{{work.description}}</p>
+				<p><b>Tel.: </b>{{work.tel}}</p>
+			</div>
+		</div>
+	</div>

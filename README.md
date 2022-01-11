@@ -1,3 +1,9 @@
+# Project Description	
+
+Project created for the argentinian program named "Argentina Programa: Yo programo", an initiative of the government to aid in the formation of new profesionals for the ICT sector.
+
+The rest of the document correspond to the standar readme file generated with the CLI of the Angular framework.
+
 # AngularPortfolio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.

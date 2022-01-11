@@ -1,0 +1,40 @@
+.banner{
+	/*background-image: url('../../../assets/img/background-md.png');
+	background-size: cover;*/
+	height: 100vh;
+	
+	.banner-content{
+		height: 100%;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.banner-photo{
+		height: 100%;
+		background-color: chartreuse;
+		img{
+			width: 250px;
+			padding: 10px;
+			transform: translateX(50%);
+			background-color: white;
+			border-radius: 125px;
+		}	
+	}
+	.info-container {
+		height: 70%;
+		background-color: chartreuse;
+		border-radius: 15px 0px 0px 15px;
+		right: 0;
+		margin-left: 10px;
+		.info-content{
+			height: 100%;
+			padding: 10px;
+			margin-left: 150px;
+			height: 70%;
+			p{
+				margin: 0;
+			}
+		}
+	}
+	
+}

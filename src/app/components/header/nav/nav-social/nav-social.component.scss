@@ -1,0 +1,9 @@
+li {
+	a .bi {
+		padding: 0 0.5em;
+		font-size: 1em;	
+		&:hover{
+			color: rgb(0, 132, 172)  !important;
+		}
+	}
+}

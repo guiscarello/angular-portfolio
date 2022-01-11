@@ -1,0 +1,43 @@
+$primaryColor : #c4c4c4;
+$font-family: "helvetica";
+.we{
+    margin: 25px 12.5px;
+    border: 1px solid $primaryColor;
+	border-radius: 15px;
+	box-shadow: 0px 0px 2px 2px $primaryColor;
+	opacity: 1;
+	min-height: 300px;
+	/*transform: translateY(100px);
+	
+	transition: 1s all linear;
+	.active{
+		transform: translateY(0);
+		opacity: 1;
+	}*/
+}
+#work-experience-logo{
+	width: 150px;
+	margin: 20px;
+	border-radius: 100px;
+}
+
+.work-experience-title{
+	 background-color: $primaryColor;
+	 margin: 0;
+	 padding: 15px;
+	 color: white;
+	 font-size: 22px;
+	 font-weight: bold;
+	 font-family: $font-family;
+}
+
+.info{
+	padding: 20px;
+	height: 100%;
+	background: #f4f4f4;
+	border-radius: 0px 0px 15px 15px;
+}
+.info:hover{
+	transform: rotateY(0deg);
+	animation: animate 1s linear 1;
+}

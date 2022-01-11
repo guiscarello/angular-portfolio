@@ -1,0 +1,139 @@
+{
+  "users": [],
+  "social": [
+    {
+      "name": "Twitter",
+      "class": "bi bi-twitter",
+      "href": ""
+    },
+    {
+      "name": "Facebook",
+      "class": "bi bi-facebook",
+      "href": "http://facebook.com/guillermo.scarello"
+    },
+    {
+      "name": "Linkedin",
+      "class": "bi bi-linkedin",
+      "href": "http://linkedin.com/in/guillermo-scarello-830176104"
+    }
+  ],
+  "banner": {
+    "name": "Guillermo Scarello",
+    "photo-url": "../../../assets/img/photo.png",
+    "articles": [
+      {
+        "title": "Quien soy?",
+        "content": "Bienvenidos, soy Desarrollador Web Jr e /nIngeniero Electromecanico"
+      },
+      {
+        "title": "Que hago?",
+        "content": "Me gustan las tecnologias que tengan que ver con la industria 4.0."
+      },
+      {
+        "title": "Interesado?",
+        "content": "Si quieres saber algo mas de mi te invito a que recorras el sitio!"
+      }
+    ]
+  },
+  "education": [
+    {
+      "logo": "http://localhost:4200/assets/img/ap.png",
+      "institutionName": "Argentina Programa - Plataforma: Inti",
+      "type": "Curso Online",
+      "year": "2021-2022",
+      "duration": "6 meses",
+      "hasTitle": false,
+      "title": "Desarrollador Full Stack Jr.",
+      "name": "Yo programo",
+      "description": "Segundo curso del programa 'Argentina Programa', brinda conocimientos y practica sobre desarrollo full stack, utilizando tecnologias actuales de desarrollo: Angular como frontend y Java Spring Boot como backend."
+    },
+    {
+      "logo": "http://localhost:4200/assets/img/mumuki.png",
+      "institutionName": "Argentina Programa - Plataforma: Mumuki",
+      "type": "Curso Online",
+      "year": "2021",
+      "duration": "1 mes",
+      "hasTitle": false,
+      "title": "",
+      "name": "Se programar",
+      "description": "Primer curso del programa 'Argentina Programa', aborda conceptos basicos de programación funcional y orientada a objetos."
+    },
+    {
+      "logo": "http://localhost:4200/assets/img/coursera.png",
+      "institutionName": "University of Michigan - Plataforma: Coursera",
+      "type": "Curso Online",
+      "year": "2016",
+      "duration": "1 mes",
+      "hasTitle": false,
+      "title": "",
+      "name": "Introduction to HTML5",
+      "description": "Primer curso de la especialización 'Diseño web para todo', aborda conceptos basicos de HTML5."
+    },
+    {
+      "logo": "http://localhost:4200/assets/img/coursera.png",
+      "institutionName": "University of Michigan - Plataforma: Coursera",
+      "type": "Curso Online",
+      "year": "2016",
+      "duration": "1 mes",
+      "hasTitle": false,
+      "title": "",
+      "name": "Introduction to CSS3",
+      "description": "Segundo curso de la especialización 'Diseño web para todos', aborda conceptos basicos de CSS3."
+    },
+    {
+      "logo": "http://localhost:4200/assets/img/coursera.png",
+      "institutionName": "University of Michigan - Plataforma: Coursera",
+      "type": "Curso Online",
+      "year": "2016",
+      "duration": "1 mes",
+      "hasTitle": false,
+      "title": "",
+      "name": "Interactivity with Javascript",
+      "description": "Tercer curso de la especialización 'Diseño web para todos', aborda conceptos basicos de CSS3."
+    }
+  ],
+  "work": [
+    {
+      "companyName": "GooBlea",
+      "companyLogo": "http://localhost:4200/assets/img/gooble.png",
+      "startDate": "2023-01-06",
+      "endDate": "2022-01-06",
+      "position": "CEO",
+      "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "tel": "0800-BOOGLEadsadasda",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "companyLogo": "http://localhost:4200/assets/img/facecook.svg",
+      "companyName": "Facecook",
+      "startDate": "2023-02-06T18:16:34+0000",
+      "endDate": "2023-01-06T18:16:34+0000",
+      "position": "Operations Manager",
+      "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "tel": "0800-Facecook"
+    },
+    {
+      "id": 3,
+      "companyLogo": "http://localhost:4200/assets/img/spacey.png",
+      "companyName": "SpaceY",
+      "startDate": "2023-01-06T18:16:34+0000",
+      "endDate": "2022-01-06T18:16:34+0000",
+      "position": "CEO",
+      "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "tel": "0800-SpaceY"
+    },
+    {
+      "companyName": "SpaceYadada",
+      "companyLogo": "http://localhost:4200/assets/img/spacey.png",
+      "startDate": "2023-01-06",
+      "endDate": "2022-01-06",
+      "position": "CEO",
+      "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "tel": "0800-SpaceY",
+      "id": 4
+    }
+  ],
+  "lenguages": [],
+  "projects": []
+}

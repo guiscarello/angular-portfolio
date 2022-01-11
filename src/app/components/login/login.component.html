@@ -1,0 +1,22 @@
+<div class="d-flex form-container">
+	<form class="login-form" action="post">
+		<div class="d-flex flex-column form-group-container">
+			<div class="form-group m-1 d-flex flex-column">
+				<label for="username" >Usuario</label>
+				<input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario">
+			</div>
+			<div class="form-group m-1 d-flex flex-column">
+				<label for="password" >Contraseña</label>
+				<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+			</div>
+			<div class="d-flex flex-column justify-content-center">
+				<input type="submit" class="btn btn-primary p-2 save-btn" value="Iniciar sesión">
+				<input type="button" 
+					class="btn btn-danger p-2 save-btn" 
+					value="Cancelar"
+					(click) = "cancelLogin()"	
+				>
+			</div>
+		</div>
+	</form>
+</div>
