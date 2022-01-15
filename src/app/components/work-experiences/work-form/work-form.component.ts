@@ -49,15 +49,17 @@ export class WorkFormComponent implements OnInit {
 	}
 	//On click submit button from edit work form (app-edit-work > app-work-form > button)
 	onSubmit(){
+		//Create new work from work form values and previous work id (only field not available for editing)
+		let work: WorkExperience = <WorkExperience>this.workForm.value;
 		//If form purpose is for edit the record, then...
 		if(this.purpose === "Edit"){
-			//Create new work from work form values and previous work id (only field not available for editing)
-			let work: WorkExperience = <WorkExperience>this.workForm.value;
+			//add id to work
 			work.id = this.work!.id;
 			//Pass the updated work to the work experiences service...
-			this.workExperiencesService.emitUpdatedWork(work);
+			this.workExperiencesService.sendUpdatedWork(work);
 		} else if(this.purpose === "New"){
-			console.log(`We have to create new work with ${this.workForm.value}`)
+			//Pass new work to the work experiences service...
+			this.workExperiencesService.sendNewWork(work);
 		}
 	}
 

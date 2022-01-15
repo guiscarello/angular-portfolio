@@ -4,6 +4,8 @@ import { Modal } from 'bootstrap';
 import { DialogService } from '../../services/shared/dialog.service';
 import { WorkExperience } from '../../interfaces/WorkExperience';
 import { WorkExperiencesService } from '../../services/work-experiences.service';
+import { Subscription } from 'rxjs';
+import { MessagesService } from 'src/app/services/shared/messages.service';
 
 
 @Component({
@@ -19,6 +21,11 @@ export class WorkExperiencesComponent implements OnInit {
 	@Output() addWorkDialogId: string = "addWorkDialog";
 	@Output() editWorkDialogId: string = "editWorkDialog";
 
+	getWorksSubscription!: Subscription;
+	deleteWorkSubsciption!: Subscription;
+	addNewWorkSubscription!: Subscription;
+	updateWorkSubsciption!: Subscription;
+
 	addWorkDialog: Modal | undefined;
 	editWorkDialog: Modal | undefined;
 
@@ -26,41 +33,85 @@ export class WorkExperiencesComponent implements OnInit {
 
 	constructor(
 		private workExperiencesService: WorkExperiencesService,
-		private dialogService: DialogService
+		private dialogService: DialogService,
+		private messageService: MessagesService
 	) {}
 
 	ngOnInit(): void {
-		this.workExperiencesService.getWorkExperiences().subscribe(
-			works => {
-			this.workExperiences = works; 
+		
+		this.getWorksSubscription = this.workExperiencesService.getWorkExperiences().subscribe({	
+			next: works => this.workExperiences = works,
+			complete: () => this.messageService.sendAlertMessage({
+				message: "Nueva experienca de trabajo añadida!",
+				type: "alert-success"
+			})
+		});
+	
+		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({
+			next: newWork => this.addWork(newWork)
+		});
+
+		this.workExperiencesService.getUpdatedWork().subscribe({
+			next: udaptedWork => this.updateWork(udaptedWork),
+			complete: () => console.log("work updated")
+		});
+
+		this.deleteWorkSubsciption = this.workExperiencesService.getWorkToDelete().subscribe({
+			next: workToDelete => this.deleteWork(workToDelete),
+			complete: () => {
+				console.log("Experiencia de trabajo eliminada con exito");
 			}
-		);
-		this.dialogService.closeDialog.subscribe(() => {
+		});
+		
+		this.updateWorkSubsciption = this.dialogService.closeDialog.subscribe(() => {
 			this.addWorkDialog?.hide();
 			this.editWorkDialog?.hide();
 		});
-		this.workExperiencesService.getUpdatedWork().subscribe(
-			work => {
-				this.updateWork(work);
-			}
-		);
 	}
 
-	updateWork(work: WorkExperience) {
-		this.workExperiencesService.updateWorkExperience(work).subscribe({
+	ngOnDestroy(){
+		this.deleteWorkSubsciption.unsubscribe();
+		this.addNewWorkSubscription.unsubscribe();
+		this.updateWorkSubsciption.unsubscribe();
+	}
+
+	addWork(newWork: WorkExperience){
+		this.workExperiencesService.addNewWorkExperience(newWork).subscribe({
+			next: (newWork) => {
+				this.workExperiences.push(newWork);	
+			},
+			error: err => console.log(err)
+		})
+	}
+
+	updateWork(updatedWork: WorkExperience) {
+		this.workExperiencesService.updateWorkExperience(updatedWork).subscribe({
 			next: (updatedWork) => {
-				let updatedWorkIndex = this.workExperiences.findIndex(work => work.id == updatedWork.id);
+				let updatedWorkIndex: number = this.workExperiences.findIndex(work => work.id == updatedWork.id);
 				this.workExperiences[updatedWorkIndex] = updatedWork;
 				this.editWorkDialog?.hide();
-				
 			},
 			error: err => console.log(err),
 			complete: () => {
-				alert(`Registro con id: "${work.id}" editado con exito.`);
+				alert(`Registro con id: "${updatedWork.id}" editado con exito.`);
 			}
 		})
 	}
 
+	deleteWork(workToDelete: WorkExperience){
+		this.workExperiencesService.deleteWorkExperience(workToDelete).subscribe({
+			next: (deletedWork) => {
+				let deletedWorkId = this.workExperiences.findIndex(work => work.id === deletedWork.id);
+				this.workExperiences.splice(deletedWorkId, 1)	
+			},
+			error: err => console.log(err),
+			complete: () => {
+				alert("Experiencia de trabajo eliminada con exito");
+			}
+		})
+		
+	}
+	
 	showAddWorkDialog(): void{
 		this.addWorkDialogVisible = !this.addWorkDialogVisible;
 		if(this.addWorkDialogVisible){

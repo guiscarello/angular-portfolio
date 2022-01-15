@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { WorkExperience } from '../../../interfaces/WorkExperience';
 import * as bootstrap from 'bootstrap';
 import { Modal } from 'bootstrap';
+import { WorkExperiencesService } from 'src/app/services/work-experiences.service';
 
 @Component({
   selector: 'app-work-experience',
@@ -13,16 +14,22 @@ export class WorkExperienceComponent implements OnInit {
   @Input() work!: WorkExperience;
   @Output() openEditDialogEmitter = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private workExperiencesService: WorkExperiencesService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  deleteWork(){
-    console.log("Work deleted")
+  //Comunication using services with observables
+  onDeleteWork(){
+    //On delete event (delete button pressed) send id of work selected to delete.
+    this.workExperiencesService.sendWorkToDelete(this.work);
   }
 
-  editWork(){
+  //Comunication using child and parent method
+  onEditWork(){
+      //Send work to update to parent (work experiences component)
       this.openEditDialogEmitter.emit({work: this.work});
   }
 

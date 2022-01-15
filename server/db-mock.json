@@ -104,16 +104,6 @@
       "id": 1
     },
     {
-      "id": 2,
-      "companyLogo": "http://localhost:4200/assets/img/facecook.svg",
-      "companyName": "Facecook",
-      "startDate": "2023-02-06T18:16:34+0000",
-      "endDate": "2023-01-06T18:16:34+0000",
-      "position": "Operations Manager",
-      "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "tel": "0800-Facecook"
-    },
-    {
       "id": 3,
       "companyLogo": "http://localhost:4200/assets/img/spacey.png",
       "companyName": "SpaceY",
@@ -124,14 +114,23 @@
       "tel": "0800-SpaceY"
     },
     {
-      "companyName": "SpaceYadada",
-      "companyLogo": "http://localhost:4200/assets/img/spacey.png",
+      "companyName": "SpaceY2",
+      "companyLogo": null,
       "startDate": "2023-01-06",
       "endDate": "2022-01-06",
       "position": "CEO",
       "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "tel": "0800-SpaceY",
       "id": 4
+    },
+    {
+      "companyName": "MicroHard3",
+      "companyLogo": null,
+      "startDate": "2022-01-11",
+      "endDate": "2022-01-09",
+      "position": "CEO",
+      "description": "  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd ",
+      "id": 7
     }
   ],
   "lenguages": [],

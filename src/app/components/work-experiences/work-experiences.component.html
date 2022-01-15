@@ -5,13 +5,24 @@
 		(addRecordEmitter) = "showAddWorkDialog()"
 	>
 	</app-section-title>
-	<app-add-work
-		[id] = "addWorkDialogId"
-	></app-add-work>
-	<app-edit-work 
-		[id] = "editWorkDialogId"
-		[work]="currentWork"
-	></app-edit-work>
+	<app-dialog [id] = "addWorkDialogId">
+		<div title>Añadir nueva experiencia laboral</div>
+		<div body>
+			<app-work-form
+				[work]= "null"
+				[purpose] = "'New'"
+			></app-work-form>
+		</div>
+	</app-dialog>
+	<app-dialog [id]="editWorkDialogId">
+		<div title>Editar Experiencia de trabajo</div>
+		<div body>
+			<app-work-form 
+				[work]="currentWork"
+				[purpose] = "'Edit'"
+			></app-work-form>
+		</div>
+	</app-dialog>
 	<app-work-experience
 		*ngFor="let work of workExperiences"
 		[work] = "work"

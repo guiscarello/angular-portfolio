@@ -1,0 +1,7 @@
+<div *ngIf="showAlert"
+	[ngClass] = "showAlert ? type + ' visible-alert' : 'hidden-alert'" class="alert" role="alert">
+	{{message}}
+	<div class="alert-close">
+		<button type="button" class="btn-close" aria-label="Close"></button>
+	</div>
+</div>

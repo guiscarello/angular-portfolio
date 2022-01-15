@@ -8,7 +8,7 @@ import { DialogService } from '../../services/shared/dialog.service';
 })
 export class DialogComponent implements OnInit {
   
-	@Input() dialogId!:string;
+	@Input() id!:string;
 
 	constructor(
 		private dialogService: DialogService

@@ -5,7 +5,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 })
 export class DialogService {
 
-  @Output() closeDialog: EventEmitter<Event> = new EventEmitter();
+  closeDialog: EventEmitter<Event> = new EventEmitter();
 
   constructor() { }
 

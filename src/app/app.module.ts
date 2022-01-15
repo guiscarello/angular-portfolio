@@ -18,11 +18,9 @@ import { SectionTitleComponent } from './components/section-title/section-title.
 import { EducationItemComponent } from './components/education/education-item/education-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/pages/main/main.component';
-import { AddWorkComponent } from './components/work-experiences/add-work/add-work.component';
-import { EditComponent } from './components/work-experiences/edit/edit.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { WorkFormComponent } from './components/work-experiences/work-form/work-form.component';
-import { EditWorkComponent } from './components/work-experiences/edit-work/edit-work.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +38,9 @@ import { EditWorkComponent } from './components/work-experiences/edit-work/edit-
     EducationItemComponent,
     LoginComponent,
     MainComponent,
-    AddWorkComponent,
-    EditComponent,
     DialogComponent,
     WorkFormComponent,
-    EditWorkComponent
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
