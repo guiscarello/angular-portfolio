@@ -1,0 +1,16 @@
+<section class="">
+	<app-section-title
+		class="p-0"
+		[sectionName] = "'Habilidades y Proyectos'"
+	>
+	</app-section-title>
+	<div class="skills-container d-flex flex-column">
+		<div class="skills d-flex">
+			<app-skill-item
+				*ngFor = "let skill of skills"
+				[skill] = "skill"
+			>
+			</app-skill-item>
+		</div>
+	</div>
+</section>

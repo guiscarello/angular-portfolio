@@ -41,10 +41,10 @@ export class WorkExperiencesComponent implements OnInit {
 		
 		this.getWorksSubscription = this.workExperiencesService.getWorkExperiences().subscribe({	
 			next: works => this.workExperiences = works,
-			complete: () => this.messageService.sendAlertMessage({
+			/*complete: () => this.messageService.sendAlertMessage({
 				message: "Nueva experienca de trabajo añadida!",
 				type: "alert-success"
-			})
+			})*/
 		});
 	
 		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({

@@ -94,8 +94,8 @@
   ],
   "work": [
     {
-      "companyName": "GooBlea",
-      "companyLogo": "http://localhost:4200/assets/img/gooble.png",
+      "companyName": "Gooble",
+      "companyLogo": null,
       "startDate": "2023-01-06",
       "endDate": "2022-01-06",
       "position": "CEO",
@@ -124,15 +124,66 @@
       "id": 4
     },
     {
-      "companyName": "MicroHard3",
+      "companyName": "MicroHard",
       "companyLogo": null,
-      "startDate": "2022-01-11",
-      "endDate": "2022-01-09",
+      "startDate": "2021-12-29",
+      "endDate": "2022-01-19",
       "position": "CEO",
-      "description": "  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd ",
-      "id": 7
+      "description": "ada",
+      "id": 5
     }
   ],
-  "lenguages": [],
+  "skills": [
+    {
+      "id": 1,
+      "name": "Angular",
+      "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
+    },
+    {
+      "id": 2,
+      "name": "Javascript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
+      },
+      {
+      "id": 3,
+      "name": "Java",
+      "skillLogo": "http://localhost:4200/assets/img/skills/java.png"
+      },
+      {
+        "id": 4,
+        "name": "TypeScript",
+        "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+        },
+        {
+        "id": 5,
+        "name": "TypeScript",
+        "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+        },
+        {
+        "id": 6,
+        "name": "TypeScript",
+        "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+        },
+        {
+        "id": 7,
+        "name": "TypeScript",
+        "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
+        },
+        {
+        "id": 8,
+        "name": "TypeScript",
+        "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
+        },
+        {
+        "id": 9,
+        "name": "CSS3",
+        "skillLogo": "http://localhost:4200/assets/img/skills/css3.png"
+        },
+        {
+        "id": 10,
+        "name": "html5",
+        "skillLogo": "http://localhost:4200/assets/img/skills/html5.png"
+        }
+  ],
   "projects": []
 }
