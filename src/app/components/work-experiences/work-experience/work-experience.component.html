@@ -1,21 +1,9 @@
 	<div id="" class="we d-flex position-relative flex-column justify-content-center align-items-center">
-		<!-- Edit buttons-->
-		<div class="edit-buttons-container d-flex position-absolute">
-			<div class="edit-container">
-				<button class="btn rounded-circle edit"
-					(click) = "onEditWork()"
-				>
-					<i class="bi bi-pen-fill"></i>
-				</button>
-			</div>
-			<div class="delete-container">
-				<button class="btn rounded-circle delete"
-					(click) = "onDeleteWork()"
-				>
-					<i class="bi bi-trash-fill"></i>
-				</button>
-			</div>
-		</div>
+		<app-edit
+			(editEventEmitter) = "editWork()"
+			(deleteEventEmitter) = "deleteWork()"
+		>
+		</app-edit>
 		<div class="d-flex justify-content-center p-2">
 			<img id="work-experience-logo" [attr.src]="work.companyLogo">
 		</div>

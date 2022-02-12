@@ -16,11 +16,16 @@ import { WorkExperienceComponent } from './components/work-experiences/work-expe
 import { EducationComponent } from './components/education/education.component';
 import { SectionTitleComponent } from './components/section-title/section-title.component';
 import { EducationItemComponent } from './components/education/education-item/education-item.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/pages/login/login.component';
 import { MainComponent } from './components/pages/main/main.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { WorkFormComponent } from './components/work-experiences/work-form/work-form.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { EditComponent } from './components/edit/edit.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { SkillItemComponent } from './components/skills/skill-item/skill-item.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +46,11 @@ import { AlertComponent } from './components/alert/alert.component';
     DialogComponent,
     WorkFormComponent,
     AlertComponent,
+    EditComponent,
+    SkillsComponent,
+    SkillItemComponent,
+    ProjectsComponent,
+    TimelineComponent,
   ],
   imports: [
     BrowserModule,

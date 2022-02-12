@@ -1,0 +1,13 @@
+<div class="timeline">
+	<div [ngClass]="side ? 'position-container left' : 'position-container right'" >
+		<div [ngClass]="side ? 'content-container left' : 'content-container right'">
+				<div class="info">
+					<ng-content select="[first]"></ng-content>
+				</div>
+				<div class="description">
+					<ng-content select="[second]"></ng-content>
+				</div>
+		</div>
+	</div>
+</div>
+

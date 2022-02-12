@@ -1,14 +1,6 @@
-.education-item{
-	border: 1px solid lightgray;
-	box-shadow: 1px 1px 2px 2px lightgray;
-	border-radius: 10px;
-	margin: 10px;
-}
-
 .education-logo{
-	width: 200px !important;
+	max-width: 150px !important;
 	aspect-ratio: 1 / 1;
-	margin: 20px;
 	.logo{
 		max-width: 100%;
 		max-height: 100%;
@@ -17,11 +9,29 @@
 }
 
 .education-content{
-	font-size: 14px;
-	border-left: 1px solid lightgray;
-	padding: 25px;
+	padding: 5px 15px;
 	width: 100%;
 	p{
-		margin: 5px;		
+		font-size: 15px;
+		font-family: var(--font-family-primary);	
+		margin: 0;
+	}
+	.title{
+		white-space: pre-line;
+	}
+	.time{
+		display: flex;
+		flex-direction: column;
+		flex-basis: content;
+		align-items: center;
+		padding: 0 15px;
+	}
+	h3{
+		//border-bottom: 0.25px solid rgb(236, 236, 236);
+		width: 100%;
+		padding-bottom: 5px;
+		text-align: center;
+		font-style: italic;
+		color: rgb(105, 105, 105);
 	}
 }

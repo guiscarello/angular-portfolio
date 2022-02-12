@@ -1,0 +1,14 @@
+.skill-item{
+	display: flex;
+	text-align: center;
+	width: 150px;
+	margin: 5px;
+	border-radius: 5px;
+	&:hover{
+		background-color: white;
+	}
+	img{
+		padding: 10px;
+		width: inherit;
+	}
+}

@@ -22,13 +22,13 @@ export class WorkExperienceComponent implements OnInit {
   }
 
   //Comunication using services with observables
-  onDeleteWork(){
+  deleteWork(){
     //On delete event (delete button pressed) send id of work selected to delete.
     this.workExperiencesService.sendWorkToDelete(this.work);
   }
 
   //Comunication using child and parent method
-  onEditWork(){
+  editWork(){
       //Send work to update to parent (work experiences component)
       this.openEditDialogEmitter.emit({work: this.work});
   }

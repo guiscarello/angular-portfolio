@@ -1,4 +1,5 @@
 export interface Education{
+	id:number;
 	logo: string;
 	institutionName: string;
 	type: string;

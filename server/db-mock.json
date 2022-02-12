@@ -37,6 +37,7 @@
   },
   "education": [
     {
+      "id": 1,
       "logo": "http://localhost:4200/assets/img/ap.png",
       "institutionName": "Argentina Programa - Plataforma: Inti",
       "type": "Curso Online",
@@ -48,6 +49,7 @@
       "description": "Segundo curso del programa 'Argentina Programa', brinda conocimientos y practica sobre desarrollo full stack, utilizando tecnologias actuales de desarrollo: Angular como frontend y Java Spring Boot como backend."
     },
     {
+      "id": 2,
       "logo": "http://localhost:4200/assets/img/mumuki.png",
       "institutionName": "Argentina Programa - Plataforma: Mumuki",
       "type": "Curso Online",
@@ -59,6 +61,7 @@
       "description": "Primer curso del programa 'Argentina Programa', aborda conceptos basicos de programación funcional y orientada a objetos."
     },
     {
+      "id": 3,
       "logo": "http://localhost:4200/assets/img/coursera.png",
       "institutionName": "University of Michigan - Plataforma: Coursera",
       "type": "Curso Online",
@@ -70,6 +73,7 @@
       "description": "Primer curso de la especialización 'Diseño web para todo', aborda conceptos basicos de HTML5."
     },
     {
+      "id": 4,
       "logo": "http://localhost:4200/assets/img/coursera.png",
       "institutionName": "University of Michigan - Plataforma: Coursera",
       "type": "Curso Online",
@@ -81,6 +85,7 @@
       "description": "Segundo curso de la especialización 'Diseño web para todos', aborda conceptos basicos de CSS3."
     },
     {
+      "id": 5,
       "logo": "http://localhost:4200/assets/img/coursera.png",
       "institutionName": "University of Michigan - Plataforma: Coursera",
       "type": "Curso Online",
@@ -94,8 +99,8 @@
   ],
   "work": [
     {
-      "companyName": "GooBlea",
-      "companyLogo": "http://localhost:4200/assets/img/gooble.png",
+      "companyName": "Gooble",
+      "companyLogo": null,
       "startDate": "2023-01-06",
       "endDate": "2022-01-06",
       "position": "CEO",
@@ -122,17 +127,59 @@
       "description": "The standard Lorem Ipsum passage, used since the 1500s. Sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "tel": "0800-SpaceY",
       "id": 4
-    },
-    {
-      "companyName": "MicroHard3",
-      "companyLogo": null,
-      "startDate": "2022-01-11",
-      "endDate": "2022-01-09",
-      "position": "CEO",
-      "description": "  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd  adasd ",
-      "id": 7
     }
   ],
-  "lenguages": [],
+  "skills": [
+    {
+      "id": 1,
+      "name": "Angular",
+      "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
+    },
+    {
+      "id": 2,
+      "name": "Javascript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
+    },
+    {
+      "id": 3,
+      "name": "Java",
+      "skillLogo": "http://localhost:4200/assets/img/skills/java.png"
+    },
+    {
+      "id": 4,
+      "name": "TypeScript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+    },
+    {
+      "id": 5,
+      "name": "TypeScript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+    },
+    {
+      "id": 6,
+      "name": "TypeScript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
+    },
+    {
+      "id": 7,
+      "name": "TypeScript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
+    },
+    {
+      "id": 8,
+      "name": "TypeScript",
+      "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
+    },
+    {
+      "id": 9,
+      "name": "CSS3",
+      "skillLogo": "http://localhost:4200/assets/img/skills/css3.png"
+    },
+    {
+      "id": 10,
+      "name": "html5",
+      "skillLogo": "http://localhost:4200/assets/img/skills/html5.png"
+    }
+  ],
   "projects": []
 }
