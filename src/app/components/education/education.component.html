@@ -3,9 +3,13 @@
 		class="p-0"
 		[sectionName] = "'Educación'"
 	></app-section-title>
-	
+	<div class="d-flex align-items-center justify-content-center ">
+		<div class="separator">
+			Actualidad
+		</div>
+	</div>
 	<app-education-item
-		*ngFor="let e of education"
-		[education] = "e"
+	*ngFor="let e of education"
+	[education] = "e"
 	></app-education-item>
 </section>

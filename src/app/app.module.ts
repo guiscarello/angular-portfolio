@@ -25,6 +25,7 @@ import { EditComponent } from './components/edit/edit.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { SkillItemComponent } from './components/skills/skill-item/skill-item.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
     SkillsComponent,
     SkillItemComponent,
     ProjectsComponent,
+    TimelineComponent,
   ],
   imports: [
     BrowserModule,
