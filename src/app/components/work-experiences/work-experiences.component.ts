@@ -34,17 +34,12 @@ export class WorkExperiencesComponent implements OnInit {
 	constructor(
 		private workExperiencesService: WorkExperiencesService,
 		private dialogService: DialogService,
-		private messageService: MessagesService
 	) {}
 
 	ngOnInit(): void {
 		
 		this.getWorksSubscription = this.workExperiencesService.getWorkExperiences().subscribe({	
-			next: works => this.workExperiences = works,
-			/*complete: () => this.messageService.sendAlertMessage({
-				message: "Nueva experienca de trabajo añadida!",
-				type: "alert-success"
-			})*/
+			next: works => this.workExperiences = works
 		});
 	
 		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({
@@ -70,6 +65,7 @@ export class WorkExperiencesComponent implements OnInit {
 	}
 
 	ngOnDestroy(){
+		this.getWorksSubscription.unsubscribe();
 		this.deleteWorkSubsciption.unsubscribe();
 		this.addNewWorkSubscription.unsubscribe();
 		this.updateWorkSubsciption.unsubscribe();
@@ -100,8 +96,8 @@ export class WorkExperiencesComponent implements OnInit {
 
 	deleteWork(workToDelete: WorkExperience){
 		this.workExperiencesService.deleteWorkExperience(workToDelete).subscribe({
-			next: (deletedWork) => {
-				let deletedWorkId = this.workExperiences.findIndex(work => work.id === deletedWork.id);
+			next: (id) => {
+				let deletedWorkId = this.workExperiences.findIndex(work => work.id === id);
 				this.workExperiences.splice(deletedWorkId, 1)	
 			},
 			error: err => console.log(err),

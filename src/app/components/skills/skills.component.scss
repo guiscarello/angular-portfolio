@@ -1,16 +1,3 @@
-.skills-container{
-	overflow-x: scroll;
-	overflow-y: hidden;
-	margin-top: 10px;
-	background: var(--background-color-two);
-	&::-webkit-scrollbar{
-		display: none;
-	}
-	.skills{
-		
-		img{
-			width: auto;
-			width: 150px;
-		}
-	}
+.skill-item{
+	width: 150px;
 }

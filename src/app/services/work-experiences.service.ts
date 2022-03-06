@@ -1,8 +1,12 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { WorkExperience } from '../interfaces/WorkExperience';
-import { Observable, Subject, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, of, Subject, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { MessagesService } from './shared/messages.service';
+import { messageType } from '../enums/messageType';
+import { ErrorHandlerService } from './shared/error/error-handler.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +15,19 @@ export class WorkExperiencesService {
 
 	httpOptions = {
 		headers: new HttpHeaders({
-		'Content-type':'application/json'
-		})
+			'Content-type':'application/json'
+		}),
+		
 	}
-	private apiUrl = "http://localhost:5000/work";
+	private apiUrl = "http://localhost:8080/api/work-experience";
 
 	private updateWorkSubject = new Subject<WorkExperience>();
-	private addWorkSubject = new Subject<WorkExperience>();
+	private addWorkSubject = new Subject<any>();
 	private deleteWorkSubject = new Subject<WorkExperience>();
 
 	constructor(
-		private http: HttpClient
+		private http: HttpClient,
+		private errorHandler: ErrorHandlerService
 	) { }
 
 	sendUpdatedWork(work: WorkExperience){
@@ -32,8 +38,8 @@ export class WorkExperiencesService {
 		return this.updateWorkSubject.asObservable();
 	}
 
-	sendNewWork(work: WorkExperience){
-		this.addWorkSubject.next(work);
+	sendNewWork(formData: FormData){
+		this.addWorkSubject.next(formData);
 	}
 	getNewWork(): Observable<WorkExperience>{
 		return this.addWorkSubject.asObservable();
@@ -53,16 +59,16 @@ export class WorkExperiencesService {
 	}
 	
 	addNewWorkExperience(work: WorkExperience): Observable<WorkExperience>{
-		return this.http.post<WorkExperience>(this.apiUrl, work, this.httpOptions);
+		return this.http.post<WorkExperience>(this.apiUrl, work);
 	}	
 
 	updateWorkExperience(work: WorkExperience): Observable<WorkExperience>{
 		return this.http
-		.put<WorkExperience>(`${this.apiUrl}/${work.id}`, work, this.httpOptions);
+		.put<WorkExperience>(`${this.apiUrl}/edit/${work.id}`, work, this.httpOptions);
 	}
-	deleteWorkExperience(work: WorkExperience): Observable<WorkExperience>{
+	deleteWorkExperience(workToDelete: WorkExperience): Observable<number>{
 		return this.http
-			.delete<WorkExperience>(`${this.apiUrl}/${work.id}`, this.httpOptions);
+			.delete<number>(`${this.apiUrl}/delete/${workToDelete.id}`, this.httpOptions);
 	}
 
 }

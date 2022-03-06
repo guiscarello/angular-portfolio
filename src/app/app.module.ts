@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,6 +26,8 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { SkillItemComponent } from './components/skills/skill-item/skill-item.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { InterceptorService } from './services/interceptor/interceptor.service';
+import { EducationFormComponent } from './components/education/education-form/education-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     SkillItemComponent,
     ProjectsComponent,
     TimelineComponent,
+    EducationFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

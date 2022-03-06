@@ -1,16 +1,13 @@
-<section class="">
+<section class="row">
 	<app-section-title
 		class="p-0"
 		[sectionName] = "'Habilidades y Proyectos'"
 	>
 	</app-section-title>
-	<div class="skills-container d-flex flex-column">
-		<div class="skills d-flex">
-			<app-skill-item
-				*ngFor = "let skill of skills"
-				[skill] = "skill"
-			>
-			</app-skill-item>
-		</div>
-	</div>
+	<app-skill-item
+		*ngFor = "let skill of skills"
+		[skill] = "skill"
+		class="d-flex align-items-center justify-content-center col-12 col-sm-6 col-md-4 col-lg-3"
+	>
+	</app-skill-item>
 </section>

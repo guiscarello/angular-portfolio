@@ -1,40 +1,101 @@
 .banner{
-	/*background-image: url('../../../assets/img/background-md.png');
-	background-size: cover;*/
+	background-image: url('../../../assets/img/background.jpeg');
+	background-size: cover;/**/
 	height: 100vh;
-	
+	padding-top: var(--nav-height);
 	.banner-content{
+		flex-direction: row;
 		height: 100%;
 		padding: 0;
 		margin: 0;
-	}
-	
-	.banner-photo{
-		height: 100%;
-		background-color: chartreuse;
-		img{
-			width: 250px;
-			padding: 10px;
-			transform: translateX(50%);
-			background-color: white;
-			border-radius: 125px;
-		}	
-	}
-	.info-container {
-		height: 70%;
-		background-color: chartreuse;
-		border-radius: 15px 0px 0px 15px;
-		right: 0;
-		margin-left: 10px;
-		.info-content{
+		.banner-photo{
 			height: 100%;
-			padding: 10px;
-			margin-left: 150px;
-			height: 70%;
-			p{
-				margin: 0;
+			background-color: var(--color-primary-75);
+			.img-container{
+				align-items:center;
+				justify-content:end;
+				img{
+					width: 250px;
+					padding: 10px;
+					transform: translateX(50%);
+					background-color: var(--color-secondary);
+					border-radius: 125px;
+					border: 5px solid var(--color-primary-75);
+				}
+			}	
+		}
+
+		.banner-info{
+			background-color: var(--color-secondary-75);
+			display: flex;
+			align-items: center;
+			padding: 25px !important;	
+			.info-container {
+				height: 70%;
+				background-color: var(--color-primary-75);
+				border-radius: 15px 0px 0px 15px;
+				right: 0;
+				color: white;
+				.info-content{
+					padding: 10px;
+					margin-left: 150px;
+					p{
+						margin: 0;
+						font-size: clamp(1.25vw, 1.5vw , 1.75vw);
+					}
+				}
+			}
+
+		}
+	}
+
+}
+
+@media (max-width: 768px) {
+	.banner{
+		.banner-content{
+			flex-direction: column;
+			.banner-photo{
+				height: 250px;
+				background-color: var(--color-primary-75);
+				justify-content: center;
+				.img-container{
+					img{
+						height: 250px;
+						padding: 10px;
+						transform: translateY(50%);
+						background-color: var(--color-secondary);
+						border-radius: 125px;
+						border: 5px solid var(--color-primary-75);
+					}	
+				}
+			}
+			.banner-info{
+				background-color: var(--color-secondary-75);
+				display: flex;
+				align-items: center;
+				padding: 25px !important;	
+				height: 100%;
+				.info-container {
+					height: auto;
+					background-color: var(--color-primary-75);
+					border-radius: 15px 15px 0px 0px;
+					color: var(--color-secondary-40);
+					height: 100% !important;
+					
+					.info-content{
+						margin: 0;
+						p{
+							padding: 90px 10px 10px 10px;
+							margin: 10px 20px 40px 20px;
+							font-size: clamp(1.5vw, 1.75vw , 2vw);
+						}
+					}
+				}
+		
 			}
 		}
 	}
-	
 }
+
+

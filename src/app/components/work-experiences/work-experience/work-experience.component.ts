@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { WorkExperience } from '../../../interfaces/WorkExperience';
-import * as bootstrap from 'bootstrap';
-import { Modal } from 'bootstrap';
 import { WorkExperiencesService } from 'src/app/services/work-experiences.service';
 
 @Component({

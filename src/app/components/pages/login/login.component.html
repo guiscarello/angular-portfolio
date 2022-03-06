@@ -1,16 +1,34 @@
 <div class="d-flex form-container">
-	<form class="login-form" action="post">
+	<form [formGroup]="loginForm" class="login-form" action="post">
 		<div class="d-flex flex-column form-group-container">
 			<div class="form-group m-1 d-flex flex-column">
 				<label for="username" >Usuario</label>
-				<input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario">
+				<input type="text" class="form-control" name="username" id="username" placeholder="Ingrese username" formControlName="username">
+			</div>
+			<div *ngIf="Controls['username'].invalid && Controls['username'].touched" class="m-2 text-danger">
+				<div *ngIf="Controls['username'].hasError('username')" class="text-danger">
+					Formato username incorrecto
+				</div>
+				<div *ngIf="Controls['username'].hasError('required')" class="text-danger">
+					El username es requerido
+				</div>
 			</div>
 			<div class="form-group m-1 d-flex flex-column">
 				<label for="password" >Contraseña</label>
-				<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+				<input type="password" formControlName="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+			</div>
+			<div *ngIf="Controls['password'].invalid && (Controls['password'].dirty || Controls['password'].touched)" class="m-2">
+				<div *ngIf="Controls['password'].errors?.['required']" class="text-danger">
+					La contraseña es requerida
+				</div>
 			</div>
 			<div class="d-flex flex-column justify-content-center">
-				<input type="submit" class="btn btn-primary p-2 save-btn" value="Iniciar sesión">
+				<input type="submit" 
+					[disabled]="!loginForm.valid" 
+					class="btn btn-primary p-2 save-btn" 
+					(click) = "onSubmit()"
+					value="Iniciar sesión"
+				>
 				<input type="button" 
 					class="btn btn-danger p-2 save-btn" 
 					value="Cancelar"

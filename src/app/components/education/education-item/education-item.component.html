@@ -1,4 +1,9 @@
 <app-timeline [id] = "education.id">
+	<app-edit
+		(editEventEmitter) = "editEducation()"
+		(deleteEventEmitter) = "deleteEducation()"
+	>
+	</app-edit>
 	<div first class="d-flex flex-lg-row flex-column align-items-center p-2">
 		<div class="p-1 d-flex education-logo">
 			<img class="logo" [attr.src]="education.logo">

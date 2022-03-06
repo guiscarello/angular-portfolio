@@ -1,10 +1,10 @@
 $primaryColor : #c4c4c4;
-$font-family: "helvetica";
+
 .we{
     margin: 25px 12.5px;
     border: 1px solid $primaryColor;
 	border-radius: 15px;
-	box-shadow: 0px 0px 2px 2px $primaryColor;
+	box-shadow: 0px 0px 0.5px 0.5px $primaryColor;
 	opacity: 1;
 	min-height: 300px;
 	/*transform: translateY(100px);
@@ -28,7 +28,7 @@ $font-family: "helvetica";
 	 color: white;
 	 font-size: 22px;
 	 font-weight: bold;
-	 font-family: $font-family;
+	 font-family: var(--font-family-primary);
 }
 
 .info{
@@ -37,6 +37,7 @@ $font-family: "helvetica";
 	height: 100%;
 	background: #f4f4f4;
 	border-radius: 0px 0px 15px 15px;
+	font-family: var(--font-family-primary)
 }
 .info:hover{
 	transform: rotateY(0deg);

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EducationService } from 'src/app/services/education.service';
 import { Education } from '../../../interfaces/Education';
 
 @Component({
@@ -9,9 +10,25 @@ import { Education } from '../../../interfaces/Education';
 export class EducationItemComponent implements OnInit {
 
   @Input() education!: Education;
-  constructor() { }
+  @Output() openEditDialogEmitter = new EventEmitter();
+
+  constructor(
+    private educationService: EducationService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  //Comunication using services with observables
+  deleteEducation(){
+    //On delete event (delete button pressed) send id of work selected to delete.
+    this.educationService.sendEducationToDelete(this.education);
+  }
+
+  //Comunication using child and parent method
+  editEducation(){
+      //Send work to update to parent (work experiences component)
+      this.openEditDialogEmitter.emit({work: this.education});
   }
 
 }

@@ -1,3 +1,23 @@
+.alert-message{
+	position: fixed;
+    display: flex;
+    z-index: 2;
+    padding: 10px;
+	margin-top: 90px;
+	width: 100%;
+	white-space: pre-wrap;
+}
+
+.visible-alert{
+	display: flex;
+    min-width: 400px;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0px;
+    width: 100%;
+	border-radius: 10px;
+}
+
 .hidden-alert{
 	position: absolute;
 }
@@ -12,18 +32,6 @@
 	100% {
 		opacity: 0.5;
 	}
-}
-
-.visible-alert{
-	display: flex;
-    z-index: 1;
-    padding: 30px 50px;
-    min-width: 400px;
-    justify-content: center;
-    margin: 0;
-    border-radius: 0px;
-    position: fixed;
-    width: 100%;
 }
 
 .alert-close{

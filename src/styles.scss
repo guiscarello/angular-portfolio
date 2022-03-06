@@ -4,7 +4,15 @@ app-banner p{
 	margin-top: 100px;
 }
 :root{
-	--background-color-one: chartreuse;
-	--background-color-two: rgb(61, 61, 61);
 	--font-family-primary: Optima;
+	/**/
+	--color-primary: #2a4d69;
+	--color-primary-75: #2a4d69bf;
+	--color-secondary: #abc4d9;
+	--color-secondary-75: #abc4d9bf;
+	--color-tertiary: #003f52;
+	--color-hoover-primary: #08746e;
+
+	--nav-height: 70px;
+
 }

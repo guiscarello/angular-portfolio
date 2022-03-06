@@ -6,7 +6,7 @@
 		</div>
 		<div class="col mb-3">
 			<label for="companyLogo" class="form-label">Logo Compania: </label>
-			<input class="form-control form-control-sm" type="file" name="companyLogo" id="companyLogo" formControlName = "companyLogo">
+			<input (change) ="onFileSelect($event)" class="form-control form-control-sm" type="file" name="companyLogo" id="companyLogo">
 		</div>
 	</div>
 	<div class="row">
@@ -29,9 +29,21 @@
 			<textarea class="form-control" rows="4" name="description" id="description" formControlName = "description"></textarea>
 		</div>
 	</div>
-	<div class="mb-3">
-		<label for="tel" class="form-label">Telefono: </label>
-		<input class="form-control form-control-sm" type="text" name="tel" id="tel" formControlName = "tel">
+	<div class="row">
+		<div class="col mb-3">
+			<label for="tel" class="form-label">Telefono: </label>
+			<input class="form-control form-control-sm" type="text" name="tel" id="tel" formControlName = "tel">
+		</div>
+		<div class="d-flex col mb-3 align-items-center justify-content-evenly">
+			<label class="form-check-label" for="isCurrentWork">
+				Trabajo actual
+			  </label>
+			<input class="form-check-input" type="checkbox" 
+				name="isCurrentWork" 
+				id="isCurrentWork" 
+				formControlName = "isCurrentWork"
+			>
+		</div>
 	</div>
 
 	<button type="submit" [disabled]="!workForm.valid" class="btn btn-primary w-100 p-3">Guardar</button>

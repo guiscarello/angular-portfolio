@@ -1,21 +1,29 @@
-$button-color : white;
-
 .edit-buttons-container{
 	top: 0;
 	right: 0;
-
+	margin: 10px;
 	.delete-container{
-		margin: 5px;
+		&:hover{
+			background-color: var(--color-hoover-primary);
+			border-radius: 50%;
+			i{
+				color: white;
+			}
+		}
 		.delete{
-			color: $button-color;
-			background-color: rgb(151, 0, 0);
+			color: var(--color-tertiary);
 		}
 	}
 	.edit-container{
-		margin: 5px;
+		&:hover{
+			background-color: var(--color-hoover-primary);
+			border-radius: 50%;
+			i{
+				color: white;
+			}
+		}
 		.edit{
-			color: $button-color;
-			background-color: rgb(112, 112, 112);
+			color: var(--color-tertiary);
 		}
 	}
 

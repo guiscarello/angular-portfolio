@@ -4,24 +4,31 @@
 			<div class="col-sm-3 p-2">
 				<app-nav-brand></app-nav-brand>
 			</div>
-			<div class="d-flex col-sm-9 justify-content-end bg-secondary p-2">
-				<div class="d-flex flex-row align-items-center ">
-					<ul class="navbar-nav d-flex flex-row ">
-						<app-nav-social
-							*ngFor="let social of socialData"
-							[social] = "social"
-							
-						></app-nav-social>
-					</ul>
+			<div class="d-flex col-sm-9 justify-content-end p-2">
+				<div class="nav-link d-flex align-items-center text-light configuration">
+					<a routerLink="/">
+						<span><i class="bi bi-gear-fill fs-5"></i> Configuración</span>
+					</a>
 				</div>
 				<div id="login-btn" 
 					class="nav-link text-light"	
 				>
-					<a routerLink="/login">Editar</a>
+					<a routerLink="/login">
+						<span><i class="bi bi-door-closed-fill fs-5"></i> Entrar</span>
+					</a>
 				</div>
 			</div>
 		</div>
 	</nav>
+	<div class="d-flex social-links">
+		<ul class="navbar-nav d-flex">
+			<app-nav-social
+				*ngFor="let social of socialData"
+				[social] = "social"
+				
+			></app-nav-social>
+		</ul>
+	</div>
 </header>
 
 

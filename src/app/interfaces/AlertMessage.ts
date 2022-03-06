@@ -1,4 +1,4 @@
 export interface AlertMessage {
 	message: string;
-	type: string;//boostrap class
+	type: any;//boostrap class
 }

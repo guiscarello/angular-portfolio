@@ -2,14 +2,28 @@
 	<app-section-title
 		class="p-0"
 		[sectionName] = "'Educación'"
+		(addRecordEmitter) = "showAddEducationDialog()"
 	></app-section-title>
-	<div class="d-flex align-items-center justify-content-center ">
-		<div class="separator">
-			Actualidad
+	<app-dialog [id] = "addEducationDialogId">
+		<div title>Añadir nueva educacion</div>
+		<div body>
+			<app-education-form
+				[education]= "null"
+				[purpose] = "'New'"
+			></app-education-form>
 		</div>
-	</div>
+	</app-dialog>
+	<app-dialog [id]="editEducationDialogId">
+		<div title>Editar educacion</div>
+		<div body>
+			<app-education-form 
+				[education]="currentEducation"
+				[purpose] = "'Edit'"
+			></app-education-form>
+		</div>
+	</app-dialog>
 	<app-education-item
-	*ngFor="let e of education"
+	*ngFor="let e of educations"
 	[education] = "e"
 	></app-education-item>
 </section>
