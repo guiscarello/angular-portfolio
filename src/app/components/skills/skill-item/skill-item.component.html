@@ -1,3 +1,16 @@
 <div class="skill-item d-flex position-relative flex-column align-items-center justify-content-center" role="button">
+	<app-edit
+		(editEventEmitter) = "editWork()"
+		(deleteEventEmitter) = "deleteWork()"
+	>
+	</app-edit>
+
+	<div class="skill-item-content-container position-relative d-flex">
+		<div class="skill-name">{{skill.name}}</div>
+		<div class="skill-level">{{skill.level}}</div>
+		<div echarts [options]="chartOptions" class="graph"></div>
 		<img class="logo" [attr.src]="skill.skillLogo">
+	</div>
+	
+
 </div>

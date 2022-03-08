@@ -133,52 +133,34 @@
     {
       "id": 1,
       "name": "Angular",
+      "levelPercentage": 50,
+      "level": "Beginner",
+      "color": "red",
       "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
     },
     {
       "id": 2,
       "name": "Javascript",
+      "levelPercentage": 50,
+      "level": "Beginner/Intermediate",
+      "color": "blue",
       "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
     },
     {
       "id": 3,
       "name": "Java",
+      "levelPercentage": 50,
+      "level": "Beginner",
+      "color": "red",
       "skillLogo": "http://localhost:4200/assets/img/skills/java.png"
     },
     {
       "id": 4,
       "name": "TypeScript",
+      "levelPercentage": 35,
+      "level": "Beginner",
+      "color": "blue",
       "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
-    },
-    {
-      "id": 5,
-      "name": "TypeScript",
-      "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
-    },
-    {
-      "id": 6,
-      "name": "TypeScript",
-      "skillLogo": "http://localhost:4200/assets/img/skills/ts.png"
-    },
-    {
-      "id": 7,
-      "name": "TypeScript",
-      "skillLogo": "http://localhost:4200/assets/img/skills/angular.png"
-    },
-    {
-      "id": 8,
-      "name": "TypeScript",
-      "skillLogo": "http://localhost:4200/assets/img/skills/js.png"
-    },
-    {
-      "id": 9,
-      "name": "CSS3",
-      "skillLogo": "http://localhost:4200/assets/img/skills/css3.png"
-    },
-    {
-      "id": 10,
-      "name": "html5",
-      "skillLogo": "http://localhost:4200/assets/img/skills/html5.png"
     }
   ],
   "projects": []

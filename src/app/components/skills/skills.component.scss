@@ -1,3 +1,10 @@
-.skill-item{
-	width: 150px;
+.skills{
+	margin-bottom: 20px;
+	.skills-items{
+		padding: 0 10px !important;
+		margin: 0 !important;
+		.skill{
+			padding: 10px !important;
+		}
+	}
 }

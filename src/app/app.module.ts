@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -26,8 +27,11 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { SkillItemComponent } from './components/skills/skill-item/skill-item.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
-import { InterceptorService } from './services/interceptor/interceptor.service';
 import { EducationFormComponent } from './components/education/education-form/education-form.component';
+
+import * as echarts from 'echarts';
+
+import { InterceptorService } from './services/interceptor/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,10 @@ import { EducationFormComponent } from './components/education/education-form/ed
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    }),
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi: true}],
   bootstrap: [AppComponent]
