@@ -32,6 +32,8 @@ import { EducationFormComponent } from './components/education/education-form/ed
 import * as echarts from 'echarts';
 
 import { InterceptorService } from './services/interceptor/interceptor.service';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     ProjectsComponent,
     TimelineComponent,
     EducationFormComponent,
+    FooterComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

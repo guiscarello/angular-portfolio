@@ -1,4 +1,4 @@
-<section id="education" class="d-flex flex-column">
+<section class="education d-flex flex-column">
 	<app-section-title
 		class="p-0"
 		[sectionName] = "'Educación'"
@@ -22,8 +22,10 @@
 			></app-education-form>
 		</div>
 	</app-dialog>
-	<app-education-item
-	*ngFor="let e of educations"
-	[education] = "e"
-	></app-education-item>
+	<div class="education-items-container">
+		<app-education-item
+		*ngFor="let e of educations"
+		[education] = "e"
+		></app-education-item>
+	</div>
 </section>

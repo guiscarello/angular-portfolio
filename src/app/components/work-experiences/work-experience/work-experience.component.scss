@@ -1,19 +1,11 @@
-$primaryColor : #c4c4c4;
-
 .we{
-    margin: 25px 12.5px;
-    border: 1px solid $primaryColor;
+    border: 1px solid var(--shadow-color);
 	border-radius: 15px;
-	box-shadow: 0px 0px 0.5px 0.5px $primaryColor;
+	box-shadow: 2px 2px 10px 2px var(--shadow-color);
+    -webkit-box-shadow: 2px 2px 10px 2px var(--shadow-color);
+    -moz-box-shadow: 2px 2px 10px 2px var(--shadow-color);
 	opacity: 1;
 	min-height: 300px;
-	/*transform: translateY(100px);
-	
-	transition: 1s all linear;
-	.active{
-		transform: translateY(0);
-		opacity: 1;
-	}*/
 }
 #work-experience-logo{
 	width: 150px;
@@ -22,7 +14,7 @@ $primaryColor : #c4c4c4;
 }
 
 .work-experience-title{
-	 background-color: $primaryColor;
+	 background-color: var(--color-primary);
 	 margin: 0;
 	 padding: 15px;
 	 color: white;
@@ -37,9 +29,11 @@ $primaryColor : #c4c4c4;
 	height: 100%;
 	background: #f4f4f4;
 	border-radius: 0px 0px 15px 15px;
-	font-family: var(--font-family-primary)
+	font-family: var(--font-family-primary);
+	font-size: 15px;
 }
 .info:hover{
 	transform: rotateY(0deg);
 	animation: animate 1s linear 1;
 }
+

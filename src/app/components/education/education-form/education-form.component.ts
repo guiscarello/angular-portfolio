@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Education } from 'src/app/interfaces/Education';
 import { EducationService } from 'src/app/services/education.service';
 
@@ -16,31 +16,50 @@ export class EducationFormComponent implements OnInit {
 	
 	//Define the structure of the edit form
 	educationForm: FormGroup = new FormGroup({
-		institutionName: new FormControl('',),
+		institutionName: new FormControl('', ),
 		logo: new FormControl(''),
-		name: new FormControl('',  ),
-		type: new FormControl('',  ),
-		hasTitle: new FormControl('',  ),
-		titleName: new FormControl(''),
-		year: new FormControl('',  ),
-		duration: new FormControl('',  ),
-		description: new FormControl(false)
+		name: new FormControl('', ),
+		type: new FormControl('', ),
+		hasTitle: new FormControl(false, ),
+		titleName: new FormControl('', ),
+		year: new FormControl('', ),
+		duration: new FormControl('', ),
+		description: new FormControl('', )
 	})
+
+	//Add types of educations, could be replaced for a table in db
+	selectOptions: string[] = [
+		"Curso online",
+		"Curso presencial",
+		"Carrera online",
+		"Carrera presencial"
+	];
 
 	constructor(
 		//inject the educaiton service to gain access to methods
-		private educatioService: EducationService,
+		private educationService: EducationService,
 	) {
+		this.educationForm.get('titleName')?.disable();
 	}
 
 	ngOnInit(): void {
+		//Set title name disabled as default and habilitate it based on checkbox hasTitle
+		this.educationForm.get('hasTitle')?.valueChanges.subscribe(
+			value => {
+				if(value){
+					this.educationForm.get('titleName')?.enable()
+				}else{
+					this.educationForm.get('titleName')?.disable()
+				}
+			}
+		);
 	}
 
 	ngOnChanges(changes: SimpleChanges){
 		//Update the form values fields with the current work selected, it happen when some of the properties passed to this components change (e.g. when openinf the edit work dialog)
 		this.educationForm.patchValue({
 			institutionName: this.education?.institutionName,
-			logo: null,
+			institutionLogoPath: null,
 			name: this.education?.name,
 			type: this.education?.type,
 			hasTitle: this.education?.hasTitle,
@@ -66,12 +85,15 @@ export class EducationFormComponent implements OnInit {
 	onSubmit(){
 		//Create new work from work form values and previous work id (only field not available for editing)
 		const formData = new FormData();
+		let checkboxValue = this.educationForm.get("hasTitle")?.value;
+		
+		console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
 
 		formData.append("institutionName", this.educationForm.get("institutionName")?.value);
-		formData.append("logo", this.educationForm.get("logo")?.value);
+		formData.append("institutionLogoPath", this.educationForm.get("institutionLogoPath")?.value);
 		formData.append("name", this.educationForm.get("name")?.value);
 		formData.append("type", this.educationForm.get("type")?.value);
-		formData.append("hasTitle", this.educationForm.get("hasTitle")?.value);
+		formData.append("hasTitle", checkboxValue);
 		formData.append("titleName", this.educationForm.get("titleName")?.value);
 		formData.append("year", this.educationForm.get("year")?.value);
 		formData.append("duration", this.educationForm.get("duration")?.value);
@@ -85,7 +107,7 @@ export class EducationFormComponent implements OnInit {
 			//this.workExperiencesService.sendUpdatedWork(formData);
 		} else if(this.purpose === "New"){
 			//Pass new work to the work experiences service...
-			this.educatioService.sendNewEducation(formData);
+			this.educationService.sendNewEducation(formData);
 		}
 	}
 

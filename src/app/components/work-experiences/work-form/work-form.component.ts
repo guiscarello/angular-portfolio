@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { WorkExperience } from 'src/app/interfaces/WorkExperience';
-import { formatDate } from '@angular/common';
 import { WorkExperiencesService } from 'src/app/services/work-experiences.service';
 
 @Component({
@@ -30,7 +29,6 @@ export class WorkFormComponent implements OnInit {
 	constructor(
 		//inject the work experince service to gain access to methods
 		private workExperiencesService: WorkExperiencesService,
-		private fb: FormBuilder
 	) {
 	}
 

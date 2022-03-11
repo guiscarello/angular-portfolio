@@ -1,15 +1,17 @@
+$skill-name: #b8b8b8;
+
 .skill-item{
 	display: flex;
 	text-align: center;
 	width: 100%;
 	padding: 15px;
 	border-radius: 5px;
-	box-shadow: 2px 2px 10px 2px lightgray;
-	-webkit-box-shadow: 2px 2px 10px 2px  lightgray;
-	-moz-box-shadow: 2px 2px 10px 2px  lightgray;
+	box-shadow: 2px 2px 10px 2px var(--shadow-color);
+	-webkit-box-shadow: 2px 2px 10px 2px   var(--shadow-color);
+	-moz-box-shadow: 2px 2px 10px 2px   var(--shadow-color);
 	.skill-item-content-container{
 		width: 100%;
-		z-index: 0;
+		z-index: -1;
 		.skill-name{
 			font-size: 0.75em;
 			color: #b8b8b8;
@@ -19,7 +21,7 @@
 			right: 0;
 			bottom: 0;
 			font-size: 0.75em;
-			color: #b8b8b8;
+			color: $skill-name;
 			position: absolute;
 		}
 		.graph{

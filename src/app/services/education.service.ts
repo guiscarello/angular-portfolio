@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Education } from '../interfaces/Education';
 import { ErrorHandlerService } from './shared/error/error-handler.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class EducationService {
 		}),
 		
 	}
-	private apiUrl = "http://localhost:8080/api/education";
+	private apiUrl = environment.apiUrl + "education";
 
 	private updateEducationSubject = new Subject<Education>();
 	private addEducationSubject = new Subject<any>();
@@ -54,8 +55,8 @@ export class EducationService {
 		return this.http.get<Education[]>(this.apiUrl);
 	}
 	
-	addNewEducation(e: Education): Observable<Education>{
-		return this.http.post<Education>(this.apiUrl, e);
+	addNewEducation(education: Education): Observable<Education>{
+		return this.http.post<Education>(this.apiUrl, education);
 	}	
 
 	updateEducation(e: Education): Observable<Education>{

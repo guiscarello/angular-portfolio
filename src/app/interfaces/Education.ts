@@ -1,11 +1,11 @@
 export interface Education{
 	id:number;
-	logo: File;
+	institutionLogoPath: string;
 	institutionName: string;
 	name: string;
 	type: string;
 	year: number;
-	duration: number;
+	duration: string;
 	hasTitle: boolean;
 	titleName: string;
 	description: string;

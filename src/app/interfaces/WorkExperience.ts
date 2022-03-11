@@ -1,7 +1,7 @@
 export interface WorkExperience{
 	id: number;
 	companyLogo: string;
-	companyName: File;
+	companyName: string;
 	startDate: string;
 	endDate: string;
 	durationYears: number;

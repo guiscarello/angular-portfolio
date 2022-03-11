@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { MessagesService } from './shared/messages.service';
 import { messageType } from '../enums/messageType';
 import { ErrorHandlerService } from './shared/error/error-handler.service';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class WorkExperiencesService {
 		}),
 		
 	}
-	private apiUrl = "http://localhost:8080/api/work-experience";
+	private apiUrl = environment.apiUrl + "work-experience";
 
 	private updateWorkSubject = new Subject<WorkExperience>();
 	private addWorkSubject = new Subject<any>();
