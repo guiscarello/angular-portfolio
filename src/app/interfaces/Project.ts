@@ -1,6 +1,12 @@
-export interface Projects{
+import { Skill } from "./Skill";
+
+export interface Project{
+	id: number;
 	title: string;
-	date: string;
+	startDate: string;
+	endDate: string;
 	description: string;
-	photo: string[];
+	mainImage: string;
+	additionalImages:string[];
+	skills: Skill[];
 }

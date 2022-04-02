@@ -33,7 +33,7 @@ export class AlertComponent implements OnInit {
 	}
 
 	ngOnDestroy(){
-		this.alertMessageSubscription.unsubscribe();
+		//this.alertMessageSubscription.unsubscribe();
 	}
 
 }	

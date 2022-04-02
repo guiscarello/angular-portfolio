@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { NgxEchartsModule } from 'ngx-echarts';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,12 +30,15 @@ import { SkillItemComponent } from './components/skills/skill-item/skill-item.co
 import { ProjectsComponent } from './components/projects/projects.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { EducationFormComponent } from './components/education/education-form/education-form.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 import * as echarts from 'echarts';
 
 import { InterceptorService } from './services/interceptor/interceptor.service';
-import { FooterComponent } from './components/footer/footer.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { SkillFormComponent } from './components/skills/skill-form/skill-form.component';
+import { ProjectFormComponent } from './components/projects/project-form/project-form.component';
+import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,9 @@ import { ContactComponent } from './components/contact/contact.component';
     EducationFormComponent,
     FooterComponent,
     ContactComponent,
+    SkillFormComponent,
+    ProjectFormComponent,
+    ProjectItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +77,7 @@ import { ContactComponent } from './components/contact/contact.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxCaptchaModule,
     NgxEchartsModule.forRoot({
       echarts
     }),

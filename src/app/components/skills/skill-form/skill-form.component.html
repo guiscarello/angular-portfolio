@@ -1,0 +1,71 @@
+<form [formGroup]="skillForm" (ngSubmit)="onSubmit($event)">
+	<div>
+		<div class="row">
+			<div class="col-12 mb-3">
+				<label for="name" class="form-label">Nombre: </label>
+				<input 
+					[ngClass] = "displayFieldClass('name')"
+					class="form-control form-control-sm" 
+					type="text" 
+					name="name" 
+					id="name" 
+					formControlName = "name"
+				>
+				<div class="invalid-feedback">
+					Insertar nombre de la habilidad
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 mb-3">
+				<label for="logo" class="form-label">Logo: </label>
+				<input 
+					(change) ="onFileSelect($event)" 
+					[ngClass] = "displayFieldClass('logo')"
+					class="form-control form-control-sm" 
+					type="file" 
+					name="logo" 
+					id="logo"
+					formControlName = "logo"
+				>
+				<div class="invalid-feedback">
+					Seleccionar logo de la habilidad
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 mb-3">
+				<label for="color" class="form-label">Color: </label>
+				<input 
+					[ngClass] = "displayFieldClass('color')"
+					class="form-control form-control-sm" 
+					type="color" 
+					name="color" 
+					id="color"
+					formControlName="color"
+				>
+				<div class="invalid-feedback">
+					Seleccionar un color que represente la habilidad
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12 mb-3">
+				<label for="level" class="form-label">Nivel: </label>
+				<select 
+					[ngClass] = "displayFieldClass('level')"
+					class="form-select" name="level" aria-label="" formControlName="level">
+					<option value="" selected hidden>Seleccionar nivel</option>
+					<option *ngFor="let option of selectOptions" [attr.value]="option">
+						{{option}}
+					</option>	
+				</select>
+				<div class="invalid-feedback">
+					Seleccionar el nivel de la habilidad
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary w-100 p-3">Guardar</button>
+	</div>
+</form>

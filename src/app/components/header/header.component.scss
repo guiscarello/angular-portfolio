@@ -14,6 +14,24 @@
 	}
 }
 
+/*
+.menu-content{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-primary);
+	z-index: 1;
+
+	.configuration a{
+		width: 100%;
+		align-items: center;
+		text-decoration: none !important;
+		color: inherit;
+	}
+}
+*/
 .social-links{
 	position: fixed;
 	flex-direction: column;
@@ -21,7 +39,7 @@
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
-	background-color: var(--color-tertiary);
+	background-color: var(--color-primary);
 	border-radius: 10px 0 0 10px;
 	z-index: 1;
     opacity: 0.9;
@@ -50,15 +68,11 @@
 		}
 	}
 }
+
+
 span{
-	font-size: 0.9rem;
+	font-size: 1rem;
 }
-
-.configuration a{
-	text-decoration: none !important;
-	color: inherit;
-}
-
 
 #login-btn{
 	cursor: pointer;
@@ -66,4 +80,5 @@ span{
 		text-decoration: none;
 		color: inherit;
 	}
+
 }

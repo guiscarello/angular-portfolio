@@ -4,5 +4,5 @@ export interface Skill {
 	levelPercentage:number;
 	level: string;
 	color: string;
-	skillLogo: string;
+	skillLogoPath: string;
 }

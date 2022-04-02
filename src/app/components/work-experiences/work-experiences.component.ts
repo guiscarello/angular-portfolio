@@ -6,6 +6,9 @@ import { WorkExperience } from '../../interfaces/WorkExperience';
 import { WorkExperiencesService } from '../../services/work-experiences.service';
 import { Subscription } from 'rxjs';
 import { MessagesService } from 'src/app/services/shared/messages.service';
+import { UpdateWorkExperienceDTO } from 'src/app/interfaces/dto/UpdateWorkExperienceDTO';
+import { messageType } from 'src/app/enums/messageType';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
 
 
 @Component({
@@ -34,6 +37,8 @@ export class WorkExperiencesComponent implements OnInit {
 	constructor(
 		private workExperiencesService: WorkExperiencesService,
 		private dialogService: DialogService,
+		private messageService: MessagesService,
+		private errorHandlerService: ErrorHandlerService
 	) {}
 
 	ngOnInit(): void {
@@ -48,14 +53,10 @@ export class WorkExperiencesComponent implements OnInit {
 
 		this.workExperiencesService.getUpdatedWork().subscribe({
 			next: udaptedWork => this.updateWork(udaptedWork),
-			complete: () => console.log("work updated")
 		});
 
 		this.deleteWorkSubsciption = this.workExperiencesService.getWorkToDelete().subscribe({
-			next: workToDelete => this.deleteWork(workToDelete),
-			complete: () => {
-				console.log("Experiencia de trabajo eliminada con exito");
-			}
+			next: workToDelete => this.deleteWork(workToDelete)
 		});
 		
 		this.updateWorkSubsciption = this.dialogService.closeDialog.subscribe(() => {
@@ -75,34 +76,72 @@ export class WorkExperiencesComponent implements OnInit {
 		this.workExperiencesService.addNewWorkExperience(newWork).subscribe({
 			next: (newWork) => {
 				this.workExperiences.push(newWork);	
+				this.addWorkDialog?.hide();
+				this.dialogService.emitEvent();
 			},
-			error: err => console.log(err)
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addWorkDialog?.hide();
+				this.dialogService.emitEvent();
+			},
+			complete: () => {
+				console.log("Experiencia de trabajo agregada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "La experiencia de trabajo fue agregada con exito",
+						type: messageType.success
+					}
+				)
+			}
 		})
 	}
 
-	updateWork(updatedWork: WorkExperience) {
-		this.workExperiencesService.updateWorkExperience(updatedWork).subscribe({
+	updateWork(updateWorkExperienceDTO: UpdateWorkExperienceDTO) {
+		this.workExperiencesService.updateWorkExperience(updateWorkExperienceDTO).subscribe({
 			next: (updatedWork) => {
 				let updatedWorkIndex: number = this.workExperiences.findIndex(work => work.id == updatedWork.id);
 				this.workExperiences[updatedWorkIndex] = updatedWork;
 				this.editWorkDialog?.hide();
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addWorkDialog?.hide();
+				this.dialogService.emitEvent();
+			},
 			complete: () => {
-				alert(`Registro con id: "${updatedWork.id}" editado con exito.`);
+				console.log("Experiencia de trabajo editada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "La experiencia de trabajo fue editada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 	}
 
 	deleteWork(workToDelete: WorkExperience){
 		this.workExperiencesService.deleteWorkExperience(workToDelete).subscribe({
-			next: (id) => {
-				let deletedWorkId = this.workExperiences.findIndex(work => work.id === id);
+			next: () => {
+				let deletedWorkId = this.workExperiences.findIndex(work => work.id === workToDelete.id);
 				this.workExperiences.splice(deletedWorkId, 1)	
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addWorkDialog?.hide();
+				this.dialogService.emitEvent();
+			},
 			complete: () => {
-				alert("Experiencia de trabajo eliminada con exito");
+				console.log("Experiencia de trabajo eliminada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "La experiencia de trabajo con id " + workToDelete.id + " fue eliminada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 		

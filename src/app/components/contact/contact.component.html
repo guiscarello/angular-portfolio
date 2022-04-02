@@ -1,15 +1,31 @@
 <div class="contact-form-container">
-	<form>
+	<div class="title d-flex align-items-center justify-content-center">
+		<h3>CONTACTO</h3>
+	</div>
+	<form [formGroup] = "contactForm" (ngSubmit)="onSubmit()"> 
 		<div class="mb-3">
-			<label for="exampleInputEmail1" class="form-label">Email address</label>
-			<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-			<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+			<label for="exampleInputEmail1" class="form-label">Nombre y apellido</label>
+			<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="name">
 		</div>
 		<div class="mb-3">
-			<label for="exampleInputPassword1" class="form-label">Password</label>
-			<input type="password" class="form-control" id="exampleInputPassword1">
+			<label for="exampleInputEmail1" class="form-label">Email</label>
+			<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
 		</div>
-
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<div class="mb-3">
+			<label for="exampleInputEmail1" class="form-label">Asunto</label>
+			<input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="subject">
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+			<textarea class="form-control form-control-sm" id="exampleFormControlTextarea1" rows="3"></textarea>
+		  </div>
+		<div class="mb-3">
+			<ngx-recaptcha2 #captchaElem
+				[siteKey]="siteKey"
+				(success)="handleSuccess($event)"
+				formControlName="recaptcha">
+			</ngx-recaptcha2>
+		</div>
+		<button type="submit" [disabled]="submitDisabled()" class="btn btn-primary">Submit</button>
 	</form>
 </div>

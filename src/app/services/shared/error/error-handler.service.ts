@@ -14,20 +14,20 @@ export class ErrorHandlerService {
 	httpErrorHandler(err:HttpErrorResponse){
 		if (err.status === 0) {
 			//Client side error
-			
-			console.log("An error has ocurred on client side: " + err.error);
+			console.log(err.error);
+			console.log("An error has ocurred on client side");
 			this.msgService.sendAlertMessage({
 				message: 'Ha ocurrido un error con el cliente.\n' +
-				"Codigo: " + err.status + ".\n" + 
-				"Mensage: " + err.message + ".", 
+				"Status: " + err.status + ".\n" + 
+				"Mensaje: " + err.message + ".", 
 				type: messageType.danger
 			});
 		} else {
 			console.log("An error has ocurred on server side: " + err.error);
 			this.msgService.sendAlertMessage({
 				message: "Ha ocurrido un error en el servidor.\n" +
-				"Codigo: " + err.status + ".\n" + 
-				"Mensage: " + err.message + ".", 
+				"Status: " + err.status + ".\n" + 
+				"Mensaje: " + err.message + ".", 
 				type: messageType.danger
 			});
 		}

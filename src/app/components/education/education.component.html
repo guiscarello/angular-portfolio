@@ -26,6 +26,7 @@
 		<app-education-item
 		*ngFor="let e of educations"
 		[education] = "e"
+		(openEditDialogEmitter) = "showEditDialog($event)"
 		></app-education-item>
 	</div>
 </section>

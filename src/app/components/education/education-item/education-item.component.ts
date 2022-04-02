@@ -27,8 +27,8 @@ export class EducationItemComponent implements OnInit {
 
   //Comunication using child and parent method
   editEducation(){
-      //Send work to update to parent (work experiences component)
-      this.openEditDialogEmitter.emit({work: this.education});
+      //Send education to update to parent (education component)
+      this.openEditDialogEmitter.emit({education: this.education});
   }
 
 }

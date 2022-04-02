@@ -1,38 +1,38 @@
 <app-timeline [id] = "education.id">
-	<app-edit
-		(editEventEmitter) = "editEducation()"
-		(deleteEventEmitter) = "deleteEducation()"
-	>
-	</app-edit>
-	<div first class="d-flex flex-lg-row flex-column align-items-center p-2">
-		<div class="p-1 d-flex education-logo">
-			<img class="logo" [attr.src]="education.institutionLogoPath">
-		</div>
-		<div class=" d-flex flex-column align-items-center education-content">
-
-			<h3 class="">{{education.name}}</h3>
-			
-			<p class=""><b>Institución</b></p>
-			<p>{{education.institutionName}}</p>
-
-			<p class=""><b>Tipo</b></p>
-			<p >{{education.type}}</p>
-
-			<div class="d-flex">
-				<div class="col-6 time">
-					<p class=""><b>Realizado</b> </p>
-						<p>{{education.year}}</p>
-				</div>
-				<div class="col-6 time">
-					<p class=""><b>Duración</b> </p>
-						<p>{{education.duration}}</p>
-				</div>
+		<div first class="d-flex flex-lg-row flex-column align-items-center">
+			<app-edit
+				(editEventEmitter) = "editEducation()"
+				(deleteEventEmitter) = "deleteEducation()"
+				class="edit-education"
+			>
+			</app-edit>
+			<div class="p-1 d-flex education-logo">
+				<img class="logo" [attr.src]="education.institutionLogoPath">
 			</div>
+			<div class=" d-flex flex-column align-items-center education-content">
+				<h3 class="">{{education.name}}</h3>
+				
+				<p class=""><b>Institución</b></p>
+				<p>{{education.institutionName}}</p>
 
+				<p class=""><b>Tipo</b></p>
+				<p >{{education.type}}</p>
+
+				<div class="d-flex">
+					<div class="col-6 time">
+						<p class=""><b>Realizado</b> </p>
+							<p>{{education.year}}</p>
+					</div>
+					<div class="col-6 time">
+						<p class=""><b>Duración</b> </p>
+							<p>{{education.duration}}</p>
+					</div>
+				</div>
+
+			</div>
 		</div>
-	</div>
-	<div second class="d-flex flex-lg-row flex-column align-items-center p-2 education-content">
-		<p><i>{{education.description}}</i></p>
-	</div>
+		<div second class="d-flex flex-lg-row flex-column align-items-center p-2 education-content">
+			<p><i>{{education.description}}</i></p>
+		</div>
 
 </app-timeline>

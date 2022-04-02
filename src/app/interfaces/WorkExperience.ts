@@ -1,6 +1,6 @@
 export interface WorkExperience{
 	id: number;
-	companyLogo: string;
+	companyLogoPath: string;
 	companyName: string;
 	startDate: string;
 	endDate: string;
@@ -9,5 +9,5 @@ export interface WorkExperience{
 	position: string;
 	description: string;
 	tel: string;
-	isCurrentWork: boolean;
+	currentWork: boolean;
 }

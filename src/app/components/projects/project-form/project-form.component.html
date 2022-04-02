@@ -1,0 +1,199 @@
+<form [formGroup] = "projectForm" (ngSubmit) = "onSubmit()">
+
+	<div class="row justify-content-center">
+		<div class="row">
+			<div class="col mb-3">
+				<small>
+					<label for="title" class="form-label">
+						Nombre del proyecto <span class="field-required">*</span>
+					</label>
+				</small>
+				<input
+					[ngClass] = "displayFieldClass('title')"
+					class="form-control form-control-sm" 
+					type="text" 
+					name="title" 
+					id="title" 
+					formControlName = "title"
+				>
+				<div class="invalid-feedback">
+					<small> Ingresar un nombre para el proyecto</small>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 mb-3">
+				<small>
+					<label for="startDate" class="form-label">
+						Fecha de inicio <span class="field-required">*</span>
+					</label>
+				</small>
+				<input
+					[ngClass] = "displayFieldClass('startDate')"
+					class="form-control form-control-sm" 
+					type="date" 
+					name="startDate" 
+					id="startDate" 
+					formControlName = "startDate"
+				>
+				<div class="invalid-feedback">
+					<small>Ingresar fecha de inicio del proyecto</small>
+				</div>
+			</div>
+
+			<div class="col-6 mb-3">
+				<small>
+					<label for="endDate" class="form-label">
+						Fecha de finalización <span class="field-required">*</span>
+					</label>
+				</small>
+				<input
+					[ngClass] = "displayFieldClass('endDate')"
+					class="form-control form-control-sm" 
+					type="date" 
+					name="endDate" 
+					id="endDate" 
+					formControlName = "endDate"
+				>
+				<div class="invalid-feedback">
+					<small>Ingresar fecha de finalización del proyecto</small>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="purpose != 'Edit'" class="row">
+			<div class="col-12">
+				<div class="col mb-3">
+					<small>
+						<label for="mainPhoto" class="form-label">
+							Imagen principal <span *ngIf="purpose == 'New'" class="field-required">*</span>
+						</label>
+					</small>
+					<input 
+						[ngClass] = "displayFieldClass('mainImage')"
+						(change) ="onFileSelect($event)"
+						type="file" 
+						class="form-control form-control-sm" 
+						name="mainImage" 
+						id="mainImage" 
+						formControlName = "mainImage"
+						multiple
+					>
+					<div class="invalid-feedback">
+						<small>Insertar imagen principal (Se mostrara en el card item)</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="col mb-3">
+					<small>
+						<label for="additionalImages" class="form-label">
+							Imagenes adicionales <span *ngIf="purpose == 'New'" class="field-required">*</span>
+						</label>
+					</small>
+					<input 
+						[ngClass] = "displayFieldClass('additionalImages')"
+						(change) ="onFilesSelect($event)"
+						type="file" 
+						class="form-control form-control-sm" 
+						name="additionalImages" 
+						id="additionalImages" 
+						formControlName = "additionalImages"
+						multiple
+					>
+					<div class="invalid-feedback">
+						<small>Insertar imagenes adicionales (Se mostrara en ventana aparte)</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3 justify-content-center">
+			<small>
+				<label class="form-label">
+					Seleccionar habilidades del proyecto <span class="field-required">*</span>
+				</label>
+			</small>
+			<div class="all-skills">
+				<select 
+					class="custom-select"
+					name="allSkills" 
+					id="allSkills" 
+					formControlName="allSkills"
+					style="overflow: hidden; outline: none;"
+					multiple
+				>
+					<option
+						*ngFor="let skill of skills"
+						value="{{skill.id}}"
+						style="font-size: small; padding: 5px;"
+					>{{skill.name}}</option>
+				</select>
+			</div>
+			<div class="skills-buttons btn-group-vertical">
+				<button type="button" class="btn btn-outline-secondary" (click)="addAllSkills()">
+					<i class="bi bi-chevron-double-right"></i>
+				</button>
+				<button type="button" class="btn btn-outline-secondary"  (click)="addSelectedSkills()">
+					<i class="bi bi-chevron-right"></i>
+				</button>
+				<button type="button" class="btn btn-outline-secondary"  (click)="removeSelectedSkills()">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+				<button type="button" class="btn btn-outline-secondary"  (click)="removeAllSkills()">
+					<i class="bi bi-chevron-double-left"></i>
+				</button>
+			</div>
+			<div class="project-skills">
+				<select 
+					class="custom-select"	
+					name="skillsToSave" 
+					id="skillsToSave" 
+					formControlName="skillsToSave"
+					style="overflow: hidden; outline: none;"
+					multiple
+				>
+					<option
+						*ngFor="let skill of skillsToSave"
+						value="{{skill.id}}"
+						style="font-size: small; padding: 5px;"
+				>
+					{{skill.name}}
+				</option>
+				</select>
+			</div>
+			<div *ngIf = "(!hasSkillsToSave && Controls['skillsToSave'].touched)">
+				<div class="text-danger skills-to-save">
+					<small>Debe seleccionar al menos una habilidad </small>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col mb-3">
+				<small>
+					<label for="description" class="form-label">
+						Descripcion <span class="field-required">*</span>
+					</label>
+				</small>
+				<textarea 
+					[ngClass] = "displayFieldClass('description')"
+					class="form-control form-control-sm"
+					name="description" 
+					id="description" 
+					cols="1" 
+					rows="4"
+					formControlName = "description">
+				</textarea>
+				<div class="invalid-feedback">
+					<small>
+						Insertar una descripcion del proyecto y su fin.
+						Minimo num de characterers = {{descriptionMinLength}}
+					</small>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col mb-3">
+				<button type="submit" class="btn btn-primary w-100 p-3">Guardar</button>
+			</div>
+		</div>
+	</div>
+</form>

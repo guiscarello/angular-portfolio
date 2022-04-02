@@ -1,16 +1,37 @@
-<section class="skills">
+<section class="skills ">
 	<app-section-title
 		class="p-0"
 		[sectionName] = "'Habilidades'"
+		(addRecordEmitter) = "showAddSkillDialog()"
 	>
 	</app-section-title>
-	
+
+	<app-dialog [id] = "addSkillDialogId">
+		<div title>Añadir nueva habilidad</div>
+		<div body class="w-100">
+			<app-skill-form
+				[skill]= "null"
+				[purpose] = "'New'"
+			></app-skill-form>
+		</div>
+	</app-dialog>
+	<app-dialog [id]="editSkillDialogId">
+		<div title>Editar Habilidad</div>
+		<div body class="w-100">
+			<app-skill-form 
+				[skill]="currentSkill"
+				[purpose] = "'Edit'"
+			></app-skill-form>
+		</div>
+	</app-dialog>
+
 	<div class="skills-items row">
 		<app-skill-item
 			*ngFor = "let skill of skills"
 			[skill] = "skill"
 			class="d-flex skill align-items-center justify-content-center col-12 col-sm-6 col-md-4 col-lg-3"
-		>
+			(openEditDialogEmitter) = "showEditDialog($event)"
+			>
 		</app-skill-item>
 	</div>
 </section>

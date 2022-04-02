@@ -7,6 +7,7 @@ import { MessagesService } from './shared/messages.service';
 import { messageType } from '../enums/messageType';
 import { ErrorHandlerService } from './shared/error/error-handler.service';
 import { environment } from 'src/environments/environment';
+import { UpdateWorkExperienceDTO } from '../interfaces/dto/UpdateWorkExperienceDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,9 @@ export class WorkExperiencesService {
 		}),
 		
 	}
-	private apiUrl = environment.apiUrl + "work-experience";
+	private apiUrl = environment.apiUrl + "work-experiences";
 
-	private updateWorkSubject = new Subject<WorkExperience>();
+	private updateWorkSubject = new Subject<UpdateWorkExperienceDTO>();
 	private addWorkSubject = new Subject<any>();
 	private deleteWorkSubject = new Subject<WorkExperience>();
 
@@ -30,11 +31,11 @@ export class WorkExperiencesService {
 		private errorHandler: ErrorHandlerService
 	) { }
 
-	sendUpdatedWork(work: WorkExperience){
-		this.updateWorkSubject.next(work);
+	sendUpdatedWork(updateWorkExperienceDTO: UpdateWorkExperienceDTO){
+		this.updateWorkSubject.next(updateWorkExperienceDTO);
 	}
 
-	getUpdatedWork(): Observable<WorkExperience>{
+	getUpdatedWork(): Observable<UpdateWorkExperienceDTO>{
 		return this.updateWorkSubject.asObservable();
 	}
 
@@ -62,13 +63,13 @@ export class WorkExperiencesService {
 		return this.http.post<WorkExperience>(this.apiUrl, work);
 	}	
 
-	updateWorkExperience(work: WorkExperience): Observable<WorkExperience>{
+	updateWorkExperience(updateWorkExperienceDTO: UpdateWorkExperienceDTO): Observable<any>{
 		return this.http
-		.put<WorkExperience>(`${this.apiUrl}/edit/${work.id}`, work, this.httpOptions);
+		.put<WorkExperience>(`${this.apiUrl}/${updateWorkExperienceDTO.work?.id}`, updateWorkExperienceDTO.formData);
 	}
-	deleteWorkExperience(workToDelete: WorkExperience): Observable<number>{
+	deleteWorkExperience(workToDelete: WorkExperience): Observable<any>{
 		return this.http
-			.delete<number>(`${this.apiUrl}/delete/${workToDelete.id}`, this.httpOptions);
+			.delete<any>(`${this.apiUrl}/${workToDelete.id}`, this.httpOptions);
 	}
 
 }

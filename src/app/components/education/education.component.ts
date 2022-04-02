@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { Modal } from 'bootstrap';
 import { DialogService } from 'src/app/services/shared/dialog.service';
 import * as bootstrap from 'bootstrap';
+import { UpdateWorkExperienceDTO } from 'src/app/interfaces/dto/UpdateWorkExperienceDTO';
+import { UpdatedEducationDTO } from 'src/app/interfaces/dto/UpdateEducationDTO';
 
 @Component({
   selector: 'app-education',
@@ -13,7 +15,7 @@ import * as bootstrap from 'bootstrap';
 })
 export class EducationComponent implements OnInit {
 
-  private addEducationDialogVisible: boolean = false;
+  	private addEducationDialogVisible: boolean = false;
 	private editEducationDialogVisible: boolean = false;
 	educations: Education[] = [];
 	@Output() addEducationDialogId: string = "addEducaitonDialog";
@@ -45,7 +47,7 @@ export class EducationComponent implements OnInit {
 		});
 
 		this.educationService.getUpdatedEducation().subscribe({
-			next: udaptedEducation => this.updateEducation(udaptedEducation),
+			next: updatedEducationDTO => this.updateEducation(updatedEducationDTO),
 			complete: () => console.log("Education updated")
 		});
 
@@ -73,13 +75,15 @@ export class EducationComponent implements OnInit {
 		this.educationService.addNewEducation(newEducation).subscribe({
 			next: (newEducation) => {
 				this.educations.push(newEducation);	
+				this.addEducationDialog?.hide();
+				this.dialogService.emitEvent();
 			},
 			error: err => console.log(err)
 		})
 	}
 
-	updateEducation(updatedEducation: Education) {
-		this.educationService.updateEducation(updatedEducation).subscribe({
+	updateEducation(updatedEducationDTO: UpdatedEducationDTO) {
+		this.educationService.updateEducation(updatedEducationDTO).subscribe({
 			next: (updatedEducation) => {
 				let updatedEducationIndex: number = this.educations.findIndex(e => e.id == updatedEducation.id);
 				this.educations[updatedEducationIndex] = updatedEducation;
@@ -87,7 +91,7 @@ export class EducationComponent implements OnInit {
 			},
 			error: err => console.log(err),
 			complete: () => {
-				alert(`Registro con id: "${updatedEducation.id}" editado con exito.`);
+				
 			}
 		})
 	}
@@ -120,7 +124,7 @@ export class EducationComponent implements OnInit {
 
 	showEditDialog($event: any){
 		this.editEducationDialogVisible = !this.editEducationDialogVisible;
-		this.currentEducation = $event.work;
+		this.currentEducation = $event.education;
 		if(this.editEducationDialogVisible){
 			this.editEducationDialog = new bootstrap.Modal(document.getElementById(this.editEducationDialogId)!, {
 				backdrop: 'static',

@@ -4,7 +4,7 @@ export interface Education{
 	institutionName: string;
 	name: string;
 	type: string;
-	year: number;
+	year: string;
 	duration: string;
 	hasTitle: boolean;
 	titleName: string;

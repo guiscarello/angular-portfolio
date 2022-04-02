@@ -2,32 +2,69 @@
 	<div class="row">
 		<div class="col mb-3">
 			<label for="institutionName" class="form-label">Nombre Institución: </label>
-			<input class="form-control form-control-sm" type="text" name="institutionName" id="institutionName" formControlName = "institutionName">
+			<input 
+				[ngClass] = "displayFieldClass('institutionName')"
+				class="form-control form-control-sm" 
+				type="text" 
+				name="institutionName" 
+				id="institutionName" 
+				formControlName = "institutionName"
+			>
+			<div class="invalid-feedback">
+				Insertar nombre de la institucion donde curso
+			</div>
 		</div>
 		<div class="col mb-3">
-			<label for="institutionLogoPath" class="form-label">Logo Institución: </label>
-			<input (change) ="onFileSelect($event)" class="form-control form-control-sm" type="file" name="institutionLogoPath" id="institutionLogoPath">
+			<label for="logo" class="form-label">Logo Institución: </label>
+			<input 
+				(change) ="onFileSelect($event)" 
+				[ngClass] = "displayFieldClass('logo')"
+				class="form-control form-control-sm" 
+				type="file" 
+				name="logo" 
+				id="logo"
+				formControlName = "logo"
+			>
+			<div class="invalid-feedback">
+				Insertar logo de la institucion
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col mb-3">
 			<label for="name" class="form-label">Nombre de la carrera o curso: </label>
-			<input class="form-control form-control-sm" type="text" name="name" id="name" formControlName = "name">
+			<input 
+				[ngClass] = "displayFieldClass('name')"
+				class="form-control form-control-sm" 
+				type="text" 
+				name="name" 
+				id="name" 
+				formControlName = "name"
+			>
+			<div class="invalid-feedback">
+				Insertar nombre del cruso/carrera
+			</div>
 		</div>
 	</div>
 	<div class="col">
 		<label for="type" class="form-label">Tipo: </label>
-		<select class="form-select mb-3" name="type" aria-label="" formControlName="type">
-			<option value="" selected class="hidden">Seleccione el tipo de educacion</option>
-			<option *ngFor="let option of selectOptions" value="{{option}}">
+		<select 
+			[ngClass] = "displayFieldClass('type')"
+			class="form-select mb-3" name="type" aria-label="" formControlName="type">
+			<option value="" selected hidden>Seleccionar tipo de curso</option>
+			<option *ngFor="let option of selectOptions" [attr.value]="option">
 				{{option}}
 			</option>	
 		</select>
+		<div class="invalid-feedback">
+			Seleccionar el tipo de curso realizado
+		</div>
+
 	</div>
 	<div class="row">
 		<div class="col-4 d-flex mb-3 justify-content-evenly align-items-center">
 			<label class="form-check-label" for="hasTitle">
-				Trabajo actual
+				Tiene titulo?
 			  </label>
 			<input class="form-check-input" type="checkbox" 
 				name="hasTitle"
@@ -37,27 +74,65 @@
 		</div>
 		<div class="col-8 mb-3">
 			<label for="titleName" class="form-label">Titulo: </label>
-			<input class="form-control form-control-sm" type="text" name="titleName" id="titleName" formControlName = "titleName" />
+			<input 
+				[ngClass] = "displayFieldClass('titleName')"
+				class="form-control form-control-sm" 
+				type="text" 
+				name="titleName" 
+				id="titleName" 
+				formControlName = "titleName" 
+			>
+			<div class="invalid-feedback">
+				Insertar titulo obtenido
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col mb-3">
 			<label for="year" class="form-label">Año: </label>
-			<input class="form-control form-control-sm" type="text" name="year" id="year" formControlName = "year" />
+			<input 
+				[ngClass] = "displayFieldClass('year')"
+				class="form-control form-control-sm" 
+				type="text" 
+				name="year" 
+				id="year" 
+				formControlName = "year" 
+				placeholder="2015, 2015-2016 ...."
+			>
+			<div class="invalid-feedback">
+				Insertar año de cursado. Ej: 2015, 2015-2016...
+			</div>
 		</div>
 		<div class="col mb-3">
 			<label for="duration" class="form-label">Duración: </label>
-			<input class="form-control form-control-sm" type="duration" name="duration" id="duration" formControlName = "duration" />
+			<input 
+				[ngClass] = "displayFieldClass('duration')"
+				class="form-control form-control-sm" 
+				type="duration" 
+				name="duration" 
+				id="duration" 
+				formControlName = "duration" 
+				placeholder="1 mes, 2 años ...."
+			>
+			<div class="invalid-feedback">
+				Duración del cursado. Ej: 1 mes, 2 años...
+			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="d-flex col mb-3 align-items-center justify-content-evenly">
 			<div class="col mb-3">
 				<label for="description" class="form-label">Descripción: </label>
-				<textarea class="form-control" rows="4" name="description" id="description" formControlName = "description"></textarea>
+				<textarea 
+					[ngClass] = "displayFieldClass('description')"
+					class="form-control" rows="4" name="description" id="description" formControlName = "description"></textarea>
+				<div class="invalid-feedback">
+					Insertar una descripcion del curso/carrera y su contenido.
+					Minimo num de characterers = {{descriptionMinLength}}
+				</div>
 			</div>
 		</div>
 	</div>
-	<button type="submit" [disabled]="!educationForm.valid" class="btn btn-primary w-100 p-3">Guardar</button>
+	<button type="submit" class="btn btn-primary w-100 p-3">Guardar</button>
 	
 </form>

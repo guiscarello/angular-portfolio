@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Education } from '../interfaces/Education';
 import { ErrorHandlerService } from './shared/error/error-handler.service';
 import { environment } from 'src/environments/environment';
+import { UpdatedEducationDTO } from '../interfaces/dto/UpdateEducationDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class EducationService {
 		}),
 		
 	}
-	private apiUrl = environment.apiUrl + "education";
+	private apiUrl = environment.apiUrl + "educations";
 
-	private updateEducationSubject = new Subject<Education>();
+	private updateEducationSubject = new Subject<UpdatedEducationDTO>();
 	private addEducationSubject = new Subject<any>();
 	private deleteEducationSubject = new Subject<Education>();
 
@@ -27,11 +28,11 @@ export class EducationService {
 		private errorHandler: ErrorHandlerService
 	) { }
 
-	sendUpdatedEducation(e: Education){
-		this.updateEducationSubject.next(e);
+	sendUpdatedEducation(updatedEducationDTO: UpdatedEducationDTO){
+		this.updateEducationSubject.next(updatedEducationDTO);
 	}
 
-	getUpdatedEducation(): Observable<Education>{
+	getUpdatedEducation(): Observable<UpdatedEducationDTO>{
 		return this.updateEducationSubject.asObservable();
 	}
 
@@ -59,14 +60,14 @@ export class EducationService {
 		return this.http.post<Education>(this.apiUrl, education);
 	}	
 
-	updateEducation(e: Education): Observable<Education>{
+	updateEducation(updatedEducationDTO: UpdatedEducationDTO): Observable<Education>{
 		return this.http
-		.put<Education>(`${this.apiUrl}/edit/${e.id}`, e, this.httpOptions);
+		.put<Education>(`${this.apiUrl}/${updatedEducationDTO.education?.id}`, updatedEducationDTO.formData);
 	}
 
 	deleteEducation(e: Education): Observable<number>{
 		return this.http
-			.delete<number>(`${this.apiUrl}/delete/${e.id}`, this.httpOptions);
+			.delete<number>(`${this.apiUrl}/${e.id}`, this.httpOptions);
 	}
 
 }

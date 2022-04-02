@@ -1,0 +1,21 @@
+.card{
+	margin-bottom: 20px;
+}
+.card-footer{
+	.skills-container{
+		padding: 5px;
+		.skill-name{
+			margin-left: 10px;
+		}
+		.badge:empty{
+			display: inline-block;
+		}
+	}
+}
+
+@media screen and (min-width: 768px){
+	.card{
+		margin-bottom: 1rem;
+		break-inside: avoid;
+	}
+}

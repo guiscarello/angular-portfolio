@@ -1,6 +1,7 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Skill } from '../../../interfaces/Skill';
 import { EChartsOption, graphic } from 'echarts';
+import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
 	selector: 'app-skill-item',
@@ -10,10 +11,13 @@ import { EChartsOption, graphic } from 'echarts';
 export class SkillItemComponent implements OnInit {
 
 	@Input() skill!: Skill;
+	@Output() openEditDialogEmitter = new EventEmitter();
 	gaugeData!: Array<any>;
 	chartOptions!: EChartsOption;
 
-	constructor() { 
+	constructor(
+		private skillsService: SkillsService
+	) { 
 	}
 
 	ngOnInit(): void {
@@ -78,12 +82,16 @@ export class SkillItemComponent implements OnInit {
 		};
 	}
 
-	editWork(){
-
-	}
-
+	//Comunication using services with observables
 	deleteWork(){
-		
+	  //On delete event (delete button pressed) send id of work selected to delete.
+	  this.skillsService.sendSkillToDelete(this.skill);
+	}
+  
+	//Comunication using child and parent method
+	editWork(){
+		//Send work to update to parent (work experiences component)
+		this.openEditDialogEmitter.emit({skill: this.skill});
 	}
 
 }
