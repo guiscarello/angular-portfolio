@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { SocialData } from '../interfaces/HeaderInterfaces';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { SocialData } from '../interfaces/HeaderInterfaces';
 
 export class HeaderService {
 
-  private apiUrl = 'http://localhost:5000/social';
+  private apiUrl = environment.apiUrl + 'social';
 
   constructor(
     private http: HttpClient

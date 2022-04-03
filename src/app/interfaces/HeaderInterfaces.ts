@@ -1,6 +1,7 @@
 export interface SocialData{
+	id:number;
 	name: string;
-	class: string;
-	href: string;
+	bsClassIcon: string;
+	link: string;
 }
 
