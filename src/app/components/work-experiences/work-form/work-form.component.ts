@@ -16,14 +16,15 @@ export class WorkFormComponent implements OnInit {
 	//work has the selected work that will be edited, purpose is used for choosing the type of submission (create new record or update an existing one)
 	@Input() work!: WorkExperience | null;
 	@Input() purpose!: string;
-	descriptionMinLength: number = 20;
+	descriptionMinLength: number =100;
+	isCurrentWork: boolean = true;
 	
 	//Define the structure of the form
 	workForm = this.fb.group({
 		companyName: ['', [Validators.required]],
 		companyLogo: ['', [Validators.required]],
 		startDate: ['', [Validators.required]],
-		endDate: ['', [Validators.required]],
+		endDate: ['', ],
 		position: ['',[Validators.required]],
 		description: ['', [Validators.required, Validators.minLength(this.descriptionMinLength)]],
 		tel: ['',[Validators.required]],
@@ -40,28 +41,54 @@ export class WorkFormComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.workForm.get("currentWork")?.valueChanges.subscribe(
+			(currentWork) => {
+				if(this.purpose === "New"){
+					if(currentWork){
+						this.workForm.get("endDate")?.clearValidators();
+						this.workForm.get("endDate")?.updateValueAndValidity();
+						console.log("enddate", this.workForm.get("endDate")?.value)
+					} else {
+						this.workForm.get("endDate")?.setValidators([Validators.required]);
+						this.workForm.get("endDate")?.updateValueAndValidity();
+					}
+				} else {
+					if(currentWork){
+						this.workForm.get("endDate")?.setValue(null)
+						this.workForm.get("endDate")?.clearValidators();
+						this.workForm.get("endDate")?.updateValueAndValidity();
+						console.log("enddate", this.workForm.get("endDate")?.value)
+					} else {
+						this.workForm.get("endDate")?.setValidators([Validators.required]);
+						this.workForm.get("endDate")?.updateValueAndValidity();
+					}
+				}
+			}
+		)
 
 	}
 
 	ngOnChanges(){
+		
+		console.log("work", this.work)
+		console.log("Purpose", this.purpose)
 		//if work is not null (when passing data for edit) then set form values as work attributes for displaying once the form dialog opened
-		if(this.purpose === 'New'){
+		if(this.purpose === "New"){
 
 			const control = this.workForm.get("companyLogo");
 			control?.setValidators([Validators.required]);
 			control?.updateValueAndValidity();
 
 			this.dialogService.closeDialog.subscribe(() => {
-				this.workForm.reset('');
+				this.workForm.reset("");
 				this.workForm.get("currentWork")?.setValue(true);
 			});
-		} else if(this.purpose === 'Edit'){
-			
-			console.log('Work: ', this.work)
-			
+		} else if(this.purpose === "Edit"){
+					
 			const control = this.workForm.get("companyLogo");
 			control?.clearValidators();
 			control?.updateValueAndValidity();
+			
 
 			this.workForm.patchValue({
 				companyName: this.work?.companyName,
@@ -90,12 +117,19 @@ export class WorkFormComponent implements OnInit {
 
 		if(this.workForm.valid){
 			const formData = new FormData();
-		
+
+			console.log("enddate", this.workForm.get("endDate")?.value)
 			console.log("Is current work?: " , this.workForm.get("currentWork")?.value);
+			
 			formData.append("companyName", this.workForm.get("companyName")?.value);
 			formData.append("companyLogo", this.workForm.get("companyLogo")?.value);
 			formData.append("startDate", this.workForm.get("startDate")?.value);
-			formData.append("endDate", this.workForm.get("endDate")?.value);
+			if(this.workForm.get("endDate")?.value === ""){
+				formData.append("endDate", '');
+			} else {
+				formData.append("endDate", this.workForm.get("endDate")?.value);
+			}
+			
 			formData.append("position", this.workForm.get("position")?.value);
 			formData.append("description", this.workForm.get("description")?.value);
 			formData.append("tel", this.workForm.get("tel")?.value);
@@ -147,27 +181,30 @@ export class WorkFormComponent implements OnInit {
 	}
 
 	get companyName(){
-		return this.workForm.controls['companyName'];
+		return this.workForm.controls["companyName"];
 	}
 
 	get startDate(){
-		return this.workForm.controls['startDate'];
+		return this.workForm.controls["startDate"];
 	}
 
 	get endDate(){
-		return this.workForm.controls['endDate'];
+		return this.workForm.controls["endDate"];
 	}
 
 	get position(){
-		return this.workForm.controls['position'];
+		return this.workForm.controls["position"];
 	}
 
 	get description(){
-		return this.workForm.controls['description'];
+		return this.workForm.controls["description"];
 	}
 
 	get tel(){
-		return this.workForm.controls['tel'];
+		return this.workForm.controls["tel"];
 	}
 
+	get currentWork(){
+		return this.workForm.controls["currentWork"].value;
+	}
 }

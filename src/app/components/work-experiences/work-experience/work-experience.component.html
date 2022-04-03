@@ -11,13 +11,19 @@
 			<p class="d-flex justify-content-center work-experience-title">{{work.companyName}}</p>
 			<div class="d-flex flex-column p-2">
 				<p class="mt-3"><b>Fecha inicio: </b>{{work.startDate}}</p>
-				<p><b>Fecha fin: </b>{{work.endDate}}</p>
-				
-				<p>
+				<p *ngIf="!work.currentWork; else currentWork"><b>Fecha fin: </b>{{work.endDate}}</p>
+				<ng-template #currentWork>
+					<p><b>Fecha fin: </b>Hasta la actualidad</p>
+				</ng-template>
+				<p *ngIf="work.durationYears != 0 || work.durationMonths != 0; else durationlessThanAMonth">
 					<b>Duración: </b>
-					<span *ngIf="work.durationYears != 0">{{work.durationYears}} años</span>  
-					<span *ngIf="work.durationMonths != 0"> {{work.durationMonths}} meses</span>
+					<span *ngIf="work.durationYears != 0">{{work.durationYears}} año<span *ngIf="work.durationYears > 1">s</span></span>  
+					<span *ngIf="work.durationMonths != 0"> {{work.durationMonths}} mes<span *ngIf="work.durationMonths > 1">es</span></span>
 				</p>
+				<ng-template #durationlessThanAMonth>
+					<p><b>Duración: </b><span>Menor a un mes</span></p>
+				</ng-template>
+				
 				<p><b>Posición: </b>{{work.position}}</p>
 				<p><b>Descripción: </b>{{work.description}}</p>
 				<p><b>Tel.: </b>{{work.tel}}</p>

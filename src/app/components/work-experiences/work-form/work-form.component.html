@@ -25,8 +25,34 @@
 				id="companyLogo"
 			>
 			<div class="invalid-feedback">
-				Insertar nombre de compañia
+				Elegir logo de compañia
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mb-3">
+			<label for="tel" class="form-label">Telefono: </label>
+			<input 
+				[ngClass] = "displayFieldClass('tel')"
+				class="form-control form-control-sm" 
+				type="text" 
+				name="tel" 
+				id="tel" 
+				formControlName = "tel"
+			>
+			<div class="invalid-feedback">
+				Insertar algun telefono para comprobar referencias
+			</div>
+		</div>
+		<div class="d-flex col mb-3 align-items-center justify-content-evenly">
+			<label class="form-check-label" for="currentWork">
+				Trabajo actual
+			  </label>
+			<input class="form-check-input" type="checkbox" 
+				name="currentWork" 
+				id="currentWork" 
+				formControlName = "currentWork"
+			>
 		</div>
 	</div>
 	<div class="row">
@@ -44,7 +70,7 @@
 				Insertar dia de inicio de la relacion laboral
 			</div>
 		</div>
-		<div class="col mb-3">
+		<div *ngIf="!currentWork" class="col mb-3">
 			<label for="endDate" class="form-label">Fecha de salida: </label>
 			<input 
 				[ngClass] = "displayFieldClass('endDate')"
@@ -87,32 +113,6 @@
 			<div class="invalid-feedback">
 				Insertar descripcion del puesto y las tareas, min: {{descriptionMinLength}} characteres
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col mb-3">
-			<label for="tel" class="form-label">Telefono: </label>
-			<input 
-				[ngClass] = "displayFieldClass('tel')"
-				class="form-control form-control-sm" 
-				type="text" 
-				name="tel" 
-				id="tel" 
-				formControlName = "tel"
-			>
-			<div class="invalid-feedback">
-				Insertar algun telefono para comprobar referencias
-			</div>
-		</div>
-		<div class="d-flex col mb-3 align-items-center justify-content-evenly">
-			<label class="form-check-label" for="currentWork">
-				Trabajo actual
-			  </label>
-			<input class="form-check-input" type="checkbox" 
-				name="currentWork" 
-				id="currentWork" 
-				formControlName = "currentWork"
-			>
 		</div>
 	</div>
 

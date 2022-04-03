@@ -75,6 +75,7 @@ export class SkillFormComponent implements OnInit {
 
 	ngOnChanges(){
 		console.log("Skill: ", this.skill)
+		console.log("Purpose", this.purpose)
 		if(this.purpose === "New"){
 			const logo = this.skillForm.get('logo');
 			logo?.setValidators([Validators.required]);

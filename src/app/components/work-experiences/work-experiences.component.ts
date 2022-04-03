@@ -44,7 +44,10 @@ export class WorkExperiencesComponent implements OnInit {
 	ngOnInit(): void {
 		
 		this.getWorksSubscription = this.workExperiencesService.getWorkExperiences().subscribe({	
-			next: works => this.workExperiences = works
+			next: works => {
+				console.log(works);
+				this.workExperiences = works;
+			}
 		});
 	
 		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({
@@ -162,6 +165,7 @@ export class WorkExperiencesComponent implements OnInit {
 	showEditDialog($event: any){
 		this.editWorkDialogVisible = !this.editWorkDialogVisible;
 		this.currentWork = $event.work;
+		console.log("currentwork" , this.currentWork)
 		if(this.editWorkDialogVisible){
 			this.editWorkDialog = new bootstrap.Modal(document.getElementById(this.editWorkDialogId)!, {
 				backdrop: 'static',
