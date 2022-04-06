@@ -9,6 +9,7 @@ export class TimelineComponent implements OnInit {
 
   @Input() id!: number;
   side: boolean = false;
+  toogleDescription: boolean = false;
 
   constructor() { }
 
@@ -16,8 +17,16 @@ export class TimelineComponent implements OnInit {
     this.sideOfTimeline();
   }
 
+  toggleShowDescription(){
+    this.toogleDescription = !this.toogleDescription;
+  }
+
   sideOfTimeline(): void{
     (this.id%2 == 0) ? this.side = true : this.side = false
+  }
+
+  get showDescription(){
+    return this.toogleDescription;
   }
 
 }

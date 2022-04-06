@@ -7,6 +7,6 @@ export interface Education{
 	year: string;
 	duration: string;
 	hasTitle: boolean;
-	titleName: string;
+	title: string;
 	description: string;
 }

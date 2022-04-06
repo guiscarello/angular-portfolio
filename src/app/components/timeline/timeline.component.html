@@ -1,15 +1,25 @@
 <div class="timeline">
 	<div [ngClass]="side ? 'position-container left' : 'position-container right'" >
-		<div [ngClass]="side ? 'content-container left' : 'content-container right'">
-				<div class="info">
-					<ng-content select="[first]"></ng-content>
-				</div>
-				<div class="description">
-					<ng-content select="[second]"></ng-content>
-				</div>
-				<div class="button-show-description d-flex align-items-center justify-content-center">
-					<i class="bi bi-arrow-up-circle-fill fs-6"></i>
-				</div>
+		<div 
+			[ngClass]="[side ? 'content-container left' : 'content-container right',
+				showDescription ? 'active' : ''
+			]"
+		>
+			<div class="info">
+				<ng-content select="[first]"></ng-content>
+			</div>
+			<div
+				[ngClass] = "showDescription ? 'show' : 'hide'" 
+				class="description"
+			>
+				<ng-content select="[second]"></ng-content>
+			</div>
+			<div 
+				(click) = "toggleShowDescription()" 
+				[ngClass] = "showDescription ? 'bi bi-x fs-4' : 'bi bi-info-lg fs-4'"
+				class="button-show-description d-flex align-items-center justify-content-center">
+				<i class="fs-4"></i>
+			</div>
 		</div>
 	</div>
 </div>

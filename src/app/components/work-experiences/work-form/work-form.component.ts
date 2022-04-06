@@ -46,22 +46,20 @@ export class WorkFormComponent implements OnInit {
 				if(this.purpose === "New"){
 					if(currentWork){
 						this.workForm.get("endDate")?.clearValidators();
-						this.workForm.get("endDate")?.updateValueAndValidity();
-						console.log("enddate", this.workForm.get("endDate")?.value)
+						//console.log("enddate", this.workForm.get("endDate")?.value)
 					} else {
 						this.workForm.get("endDate")?.setValidators([Validators.required]);
-						this.workForm.get("endDate")?.updateValueAndValidity();
 					}
+					this.workForm.get("endDate")?.updateValueAndValidity();
 				} else {
 					if(currentWork){
 						this.workForm.get("endDate")?.setValue(null)
 						this.workForm.get("endDate")?.clearValidators();
-						this.workForm.get("endDate")?.updateValueAndValidity();
-						console.log("enddate", this.workForm.get("endDate")?.value)
+						//console.log("enddate", this.workForm.get("endDate")?.value)
 					} else {
 						this.workForm.get("endDate")?.setValidators([Validators.required]);
-						this.workForm.get("endDate")?.updateValueAndValidity();
 					}
+					this.workForm.get("endDate")?.updateValueAndValidity();
 				}
 			}
 		)

@@ -38,12 +38,11 @@ export class EducationFormComponent implements OnInit {
 			name: ['', [Validators.required]],
 			type: ['', [Validators.required]],
 			hasTitle: [true, ],
-			titleName: [null, ],
+			titleName: [null, [Validators.required]],
 			year: ['', [Validators.required]],
 			duration: ['', [Validators.required]],
 			description: ['', [Validators.required, Validators.minLength(this.descriptionMinLength)]]
 		});
-		this.educationForm.get('titleName')?.disable();
 	}
 
 	ngOnInit(): void {
@@ -53,15 +52,14 @@ export class EducationFormComponent implements OnInit {
 				console.log("Has title: ", value)
 				const title = this.educationForm.get('titleName');
 				if(value){
-					title?.enable()
+					title?.enable();
 					title?.setValidators([Validators.required]);
-					title?.updateValueAndValidity();;
 				}else{
-					title?.setValue('');
 					title?.disable();
+					title?.setValue('');
 					title?.clearValidators();
-					title?.updateValueAndValidity();
 				}
+				title?.updateValueAndValidity();
 			}
 		);
 	}
@@ -89,7 +87,7 @@ export class EducationFormComponent implements OnInit {
 				name: this.education?.name,
 				type: this.education?.type,
 				hasTitle: this.education?.hasTitle,
-				titleName: this.education?.titleName,
+				titleName: this.education?.title,
 				year: this.education?.year,
 				duration: this.education?.duration,
 				description: this.education?.description,	
@@ -114,16 +112,25 @@ export class EducationFormComponent implements OnInit {
 			const formData = new FormData();
 			
 			console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
+			console.log("title: " + this.educationForm.get("titleName")?.value);
 
 			formData.append("institutionName", this.educationForm.get("institutionName")?.value);
 			formData.append("logo", this.educationForm.get("logo")?.value);
 			formData.append("name", this.educationForm.get("name")?.value);
 			formData.append("type", this.educationForm.get("type")?.value);
 			formData.append("hasTitle", this.educationForm.get("hasTitle")?.value);
-			formData.append("titleName", this.educationForm.get("titleName")?.value);
+
+			if(this.educationForm.get("titleName")?.value === ""){
+				formData.append("titleName", '');
+			} else {
+				formData.append("titleName", this.educationForm.get("titleName")?.value);
+			}
+			
 			formData.append("year", this.educationForm.get("year")?.value);
 			formData.append("duration", this.educationForm.get("duration")?.value);
 			formData.append("description", this.educationForm.get("description")?.value);
+
+			this.educationForm.updateValueAndValidity();
 
 			//If form purpose is for edit the record, then...
 			if(this.purpose === "Edit"){
@@ -138,6 +145,8 @@ export class EducationFormComponent implements OnInit {
 				this.educationService.sendNewEducation(formData);
 			}
 		} else {
+			console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
+			console.log("title: " + this.educationForm.get("titleName")?.value);
 			Object.keys(this.educationForm.controls).forEach(
 				field => {
 					if(field === 'hasTitle' && this.educationForm.get(field)?.value === false){
@@ -155,7 +164,7 @@ export class EducationFormComponent implements OnInit {
 
 
 	isFieldInValid(field: string){
-		if (this.educationForm.get(field)?.untouched){
+		if (this.educationForm.get(field)?.untouched ){
 			return undefined;
 		} else if(!this.educationForm.get(field)?.valid && this.educationForm.get(field)?.touched){
 			return true;
@@ -165,12 +174,12 @@ export class EducationFormComponent implements OnInit {
 	}
 
 	displayFieldClass(field: string){
-		if(this.isFieldInValid(field) == undefined){
+		if(this.isFieldInValid(field) === undefined){
 			return "";
 		} else if(this.isFieldInValid(field)){
 			return "is-invalid";
 		} else {
-			return "is-valid";
+			return "valid";
 		}
 	}
 
@@ -188,6 +197,10 @@ export class EducationFormComponent implements OnInit {
 
 	get type(){
 		return this.educationForm.controls['type'];
+	}
+
+	get hasTitle(){
+		return this.educationForm.controls['hasTitle'].value;
 	}
 
 	get titleName(){
