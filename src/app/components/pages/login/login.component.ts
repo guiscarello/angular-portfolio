@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import * as e from 'express';
 import { data } from 'jquery';
 import { Login } from 'src/app/interfaces/Login';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  badCredentials: boolean = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService,
-    private route: Router
+    private authenticationService: AuthenticationService,
+    private errorHandlerService: ErrorHandlerService
   ) { 
   }
 
@@ -34,13 +36,24 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log("Form values:" + this.loginForm.value)
-    this.authService.login(this.loginForm.value).subscribe(
-      response => {
+    this.badCredentials = false;
+    this.authenticationService.login(this.loginForm.value).subscribe({
+      next: response => {
         //console.log("Response sent from the server: " + response);
-        this.authService.getRolesFromToken();
-        this.route.navigate(["/main"]);
+        //this.authService.getRolesFromToken();
+        this.router.navigate(["/main"]);
 
+      },
+      error: err => {
+        this.errorHandlerService.httpErrorHandler(err);
+        if(err.status === 401){
+          this.badCredentials = true;
+        } else {
+          this.badCredentials = false;
+        }
       }
+    }
+
     );
   }
 

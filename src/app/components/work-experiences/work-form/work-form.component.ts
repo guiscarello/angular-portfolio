@@ -68,8 +68,8 @@ export class WorkFormComponent implements OnInit {
 
 	ngOnChanges(){
 		
-		console.log("work", this.work)
-		console.log("Purpose", this.purpose)
+		//console.log("work", this.work)
+		//console.log("Purpose", this.purpose)
 		//if work is not null (when passing data for edit) then set form values as work attributes for displaying once the form dialog opened
 		if(this.purpose === "New"){
 
@@ -107,7 +107,7 @@ export class WorkFormComponent implements OnInit {
 		if(target?.files?.[0] != null){
 			const file = target.files[0];
 			this.workForm.get("companyLogo")?.setValue(file);
-			console.log("logo: ", this.workForm.get("companyLogo")?.value);
+			//console.log("logo: ", this.workForm.get("companyLogo")?.value);
 		};
 	}
 		
@@ -116,8 +116,8 @@ export class WorkFormComponent implements OnInit {
 		if(this.workForm.valid){
 			const formData = new FormData();
 
-			console.log("enddate", this.workForm.get("endDate")?.value)
-			console.log("Is current work?: " , this.workForm.get("currentWork")?.value);
+			//console.log("enddate", this.workForm.get("endDate")?.value)
+			//console.log("Is current work?: " , this.workForm.get("currentWork")?.value);
 			
 			formData.append("companyName", this.workForm.get("companyName")?.value);
 			formData.append("companyLogo", this.workForm.get("companyLogo")?.value);
@@ -135,8 +135,6 @@ export class WorkFormComponent implements OnInit {
 	
 			//If form purpose is for edit the record, then...
 			if(this.purpose === "Edit"){
-				//add id to work
-				//work.id = this.work!.id;
 				let updateWorkExperienceDTO: UpdateWorkExperienceDTO = {
 					formData,
 					work: this.work ?? undefined

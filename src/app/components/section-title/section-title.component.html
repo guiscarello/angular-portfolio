@@ -1,9 +1,17 @@
-<div class="section-title d-flex flex-row">
+<div
+	[ngClass] = "side === 'left' ? 'left' : 'right'"
+	class="section-title d-flex flex-row">
 	<div class="d-flex col-9 align-items-center justify-content-center w-100">
-		<h2 class="m-0">{{sectionName}}</h2>
+		<h2 class="section-name m-0">{{sectionName}}</h2>
 	</div>
-	<div class="d-flex col-3 align-items-center add-button-container">
-			<h2 role="button"class="add-button m-0" (click)="addRecord()">
+	<div
+		*ngIf ="isAuthenticated()"
+		[ngClass] = "side === 'left' ? 'left' : 'right'" 
+		class="d-flex col-3 align-items-center add-button-container"
+	>
+			<h2 
+				role="button"class="add-button m-0" 
+				(click)="addRecord()">
 				<i class="bi bi-plus-circle-fill"></i>
 			</h2>
 	</div>

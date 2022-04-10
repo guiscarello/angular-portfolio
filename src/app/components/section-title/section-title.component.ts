@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { WorkExperiencesService } from 'src/app/services/work-experiences.service';
+import { TokenService } from 'src/app/services/auth/token.service';
 
 @Component({
   selector: 'app-section-title',
@@ -9,17 +9,23 @@ import { WorkExperiencesService } from 'src/app/services/work-experiences.servic
 export class SectionTitleComponent implements OnInit {
 
   @Output() addRecordEmitter = new EventEmitter<any>();
-  @Input() sectionName: string = "";
+  @Input() sectionName!: string;
+  @Input() side!: string;
   
   constructor(
-    private workService: WorkExperiencesService
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
+    this.isAuthenticated();
   } 
 
   addRecord(): void{
     this.addRecordEmitter.emit();
   }
 
+	isAuthenticated(): boolean{
+		return sessionStorage.getItem("authenticated") === "true";
+	}
+  
 }

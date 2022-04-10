@@ -49,7 +49,7 @@ export class EducationFormComponent implements OnInit {
 		//Set title name disabled as default and habilitate it based on checkbox hasTitle
 		this.educationForm.get('hasTitle')?.valueChanges.subscribe(
 			(value: any) => {
-				console.log("Has title: ", value)
+				//console.log("Has title: ", value)
 				const title = this.educationForm.get('titleName');
 				if(value){
 					title?.enable();
@@ -76,7 +76,7 @@ export class EducationFormComponent implements OnInit {
 				});
 			});
 		}else if(this.purpose === 'Edit'){
-			console.log('Education: ', this.education)
+			//console.log('Education: ', this.education)
 			const control = this.educationForm.get("logo");
 			control?.clearValidators();
 			control?.updateValueAndValidity();
@@ -100,7 +100,7 @@ export class EducationFormComponent implements OnInit {
 		if(target?.files?.[0] != null){
 			const file = target.files[0];
 			this.educationForm.get("logo")?.setValue(file);
-			console.log(this.educationForm.get("logo")?.value);
+			//console.log(this.educationForm.get("logo")?.value);
 		};
 	}
 		
@@ -111,8 +111,8 @@ export class EducationFormComponent implements OnInit {
 			//Create new work from work form values and previous work id (only field not available for editing)
 			const formData = new FormData();
 			
-			console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
-			console.log("title: " + this.educationForm.get("titleName")?.value);
+			//console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
+			//console.log("title: " + this.educationForm.get("titleName")?.value);
 
 			formData.append("institutionName", this.educationForm.get("institutionName")?.value);
 			formData.append("logo", this.educationForm.get("logo")?.value);
@@ -145,15 +145,15 @@ export class EducationFormComponent implements OnInit {
 				this.educationService.sendNewEducation(formData);
 			}
 		} else {
-			console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
-			console.log("title: " + this.educationForm.get("titleName")?.value);
+			//console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);
+			//console.log("title: " + this.educationForm.get("titleName")?.value);
 			Object.keys(this.educationForm.controls).forEach(
 				field => {
 					if(field === 'hasTitle' && this.educationForm.get(field)?.value === false){
 						//do not set as touched the input titleName if the education has no title
 						
 					} else {
-						console.log(field)
+						//console.log(field)
 						const control = this.educationForm.get(field);
 						control?.markAsTouched({onlySelf:true});
 					}

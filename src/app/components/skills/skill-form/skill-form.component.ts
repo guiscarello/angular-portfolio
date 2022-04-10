@@ -44,7 +44,7 @@ export class SkillFormComponent implements OnInit {
 		
 		this.skillForm.get("level")?.valueChanges.subscribe(
 			(level) => {
-				console.log(level);
+				//console.log(level);
 				switch (level) {
 					case "Principiante":
 						this.levelPercentage = 25;
@@ -74,8 +74,8 @@ export class SkillFormComponent implements OnInit {
 	}
 
 	ngOnChanges(){
-		console.log("Skill: ", this.skill)
-		console.log("Purpose", this.purpose)
+		//console.log("Skill: ", this.skill)
+		//console.log("Purpose", this.purpose)
 		if(this.purpose === "New"){
 			const logo = this.skillForm.get('logo');
 			logo?.setValidators([Validators.required]);
@@ -106,7 +106,7 @@ export class SkillFormComponent implements OnInit {
 
 				const file = target.files[0];
 				this.skillForm.get("logo")?.setValue(file);
-				console.log("logo: ", this.skillForm.get("logo")?.value);
+				//console.log("logo: ", this.skillForm.get("logo")?.value);
 		};
 	}
 		

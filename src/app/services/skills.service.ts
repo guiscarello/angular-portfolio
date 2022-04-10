@@ -54,6 +54,7 @@ export class SkillsService {
 	//Methods for comunicating with the server using HTTP Client service from HttpClientModule
 	//Get all skill records from server
 	getSkills(): Observable<Skill[]>{
+		console.log("get skills")
 		return this.http.get<Skill[]>(this.apiUrl);
 	}
 	

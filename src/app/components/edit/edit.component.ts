@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TokenService } from 'src/app/services/auth/token.service';
 
 @Component({
   selector: 'app-edit',
@@ -7,20 +8,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  @Output() editEventEmitter = new EventEmitter<any>();
-  @Output() deleteEventEmitter = new EventEmitter<any>();
+	@Output() editEventEmitter = new EventEmitter<any>();
+	@Output() deleteEventEmitter = new EventEmitter<any>();
 
-  constructor() { }
+	constructor(
+		private tokenService: TokenService
+	) { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+		this.isAuthenticated();
+	}
 
-  onEditWork(){
-    this.editEventEmitter.emit();
-  }
+	onEditWork(){
+		this.editEventEmitter.emit();
+	}
 
-  onDeleteWork(){
-    this.deleteEventEmitter.emit();
-  }
+	onDeleteWork(){
+		this.deleteEventEmitter.emit();
+	}
+
+	isAuthenticated(): boolean{
+		return sessionStorage.getItem("authenticated") === "true";
+	}
 
 }
