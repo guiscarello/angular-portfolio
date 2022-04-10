@@ -22,8 +22,10 @@ export class ErrorHandlerService {
 				"Mensaje: " + err.message + ".", 
 				type: messageType.danger
 			});
+		} else if(err.status === 401){
+			console.log("An error has ocurred on server side: ", err.error);
 		} else {
-			console.log("An error has ocurred on server side: " + err.error);
+			console.log("An error has ocurred on server side: ", err.error);
 			this.msgService.sendAlertMessage({
 				message: "Ha ocurrido un error en el servidor.\n" +
 				"Status: " + err.status + ".\n" + 

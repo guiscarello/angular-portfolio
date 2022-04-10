@@ -13,12 +13,22 @@
 						<span class="fs-1 text-center"><i class="bi bi-gear-fill fs-1"></i> Configuración</span>
 					</a>
 				</div>-->
-				<div id="login-btn" 
+				<div 
+					*ngIf= "!isAuthenticated()"
+					id="login-btn" 
 					class="nav-link text-light"	
 				>
 					<a routerLink="/login">
-						<span class=""><i class="bi bi-door-closed-fill fs-5"></i> Entrar</span>
+						<span class=""><i class="bi bi-box-arrow-right fs-5"></i> Entrar</span>
 					</a>
+				</div>
+				<div
+					*ngIf= "isAuthenticated()"
+					id="login-btn" 
+					class="nav-link text-light"	
+					(click) = "logout()"
+				>	
+					<span class=""><i class="bi bi-box-arrow-left fs-5"></i> Salir</span>
 				</div>
 			</div>
 		</div>

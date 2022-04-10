@@ -1,4 +1,6 @@
-<div class="edit-buttons-container d-flex position-absolute">
+<div 
+	*ngIf ="isAuthenticated()"
+	class="edit-buttons-container d-flex position-absolute">
 	<div class="edit-container">
 		<button class="btn rounded-circle edit"
 			(click) = "onEditWork()"

@@ -1,12 +1,15 @@
 <div class="d-flex form-container">
 	<form [formGroup]="loginForm" class="login-form" action="post">
 		<div class="d-flex flex-column form-group-container">
+			<div *ngIf = "badCredentials" class="m-2 text-danger">
+				Credenciales incorrectas
+			</div>
 			<div class="form-group m-1 d-flex flex-column">
 				<label for="username" >Usuario</label>
 				<input type="text" class="form-control" name="username" id="username" placeholder="Ingrese username" formControlName="username">
 			</div>
 			<div *ngIf="Controls['username'].invalid && Controls['username'].touched" class="m-2 text-danger">
-				<div *ngIf="Controls['username'].hasError('username')" class="text-danger">
+				<div *ngIf="Controls['username'].hasError('email')" class="text-danger">
 					Formato de email incorrecto
 				</div>
 				<div *ngIf="Controls['username'].hasError('required')" class="text-danger">
