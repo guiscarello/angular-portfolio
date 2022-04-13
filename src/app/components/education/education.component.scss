@@ -1,6 +1,8 @@
 .education{
 	position: relative;
-	padding-bottom: 20px;
+	.education-items-container{
+		padding: 30px 0 80px 0 !important;
+	}
 	/*overflow: hidden;
 	&:before{
 		content: '';
