@@ -1,5 +1,5 @@
 footer{
-	height: calc(100vh - var(--nav-height) - 3px);
+	//height: calc(100vh - var(--nav-height) - 3px);
 	padding: 20px;
 	background-color: var(--color-tertiary);
 	color: white;
@@ -42,6 +42,7 @@ footer{
 		flex-direction: column;
 		.map{
 			padding: 0px !important;	
+			height: 300px !important;
 		}
 		.info{
 			margin-bottom: 20px;

@@ -15,7 +15,7 @@ export class ContactService {
 	) { }
 	
 	sendContactData(formData: FormData): Observable<any>{
-		return this.http.post(this.apiUrl, formData);
+		return this.http.post(this.apiUrl, formData, {responseType: 'text'});
 	}
 		
 

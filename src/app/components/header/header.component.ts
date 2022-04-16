@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  HostListener, OnInit, ViewChild } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { SocialData } from 'src/app/interfaces/HeaderInterfaces';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { result } from 'underscore';
@@ -12,6 +13,7 @@ import { HeaderService } from '../../services/header.service';
 export class HeaderComponent implements OnInit {
 
 	socialData?: SocialData[];
+	changeNavbarColor: boolean = false;
 
 	constructor(
 		private headerService: HeaderService,
@@ -23,6 +25,7 @@ export class HeaderComponent implements OnInit {
 			data => this.socialData = data
 		);
 		this.isAuthenticated();
+
 	}	
 
 	isAuthenticated(): boolean {
@@ -32,5 +35,17 @@ export class HeaderComponent implements OnInit {
 	logout(){
 		this.authService.logout().subscribe();
 	}
+
+	@HostListener('window:scroll', ['$event'])
+	onScroll(e: Event){
+		//console.log(window.scrollY)
+		if(window.scrollY >= 70){
+			this.changeNavbarColor = true;
+		} else {
+			this.changeNavbarColor = false;
+		}
+		
+	}
+
 
 }

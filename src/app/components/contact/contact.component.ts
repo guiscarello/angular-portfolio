@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReCaptcha2Component } from 'ngx-captcha';
+import { messageType } from 'src/app/enums/messageType';
 import { ContactService } from 'src/app/services/contact.service';
+import { MessagesService } from 'src/app/services/shared/messages.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -11,27 +15,28 @@ import { ContactService } from 'src/app/services/contact.service';
 export class ContactComponent implements OnInit {
 
 	contactForm!: FormGroup;
-	siteKey: string = "6LeAWxQfAAAAABZiDXnTGbgkpYJ-biaBHIVyLr6s";
+	siteKey: string = environment.reCaptchaSiteKey;
 	token: string | null = null;
-
+	@ViewChild('captchaElem') captchaElem!: ReCaptcha2Component;
+	
 	constructor(
 		private fb: FormBuilder,
-		private contactService: ContactService	
+		private contactService: ContactService,
+		private messageService: MessagesService
 	) { }
 
 	ngOnInit(): void {
 		this.contactForm = this.fb.group({
-			name: [''],
-			email: [''],
-			subject: [''],
+			name: ['', Validators.required],
+			email: ['', Validators.required],
+			subject: ['', Validators.required],
 			recaptcha:[''],
-			message: ['']
+			message: ['', Validators.required]
 		})
 	} 
 
 	handleSuccess(token: string){
 		this.token = token;
-		
 	}
 
 	submitDisabled(): boolean{
@@ -39,18 +44,66 @@ export class ContactComponent implements OnInit {
 	}
 
 	onSubmit(){
-		let formData = new FormData();
+		if(this.contactForm.valid){
+			let formData = new FormData();
+			console.log(this.token)
+			formData.append("name", this.contactForm.get('name')?.value);
+			formData.append("email", this.contactForm.get('email')?.value)
+			formData.append("subject", this.contactForm.get('subject')?.value)
+			formData.append("message", this.contactForm.get('message')?.value)
+			//formData.append("captcha", this.contactForm.get('recaptcha')?.value);
+			formData.append("token", this.token || "");
+			this.contactService.sendContactData(formData).subscribe({
+				next: response => {
+					//console.log(response);
+					this.contactForm.reset('');
+					this.captchaElem.reloadCaptcha();
+					this.messageService.sendAlertMessage(
+						{
+							message: response,
+							type: messageType.success
+						}
+					)
+				},
+				error: err => {
+					console.log(err)
+					this.messageService.sendAlertMessage(
+						{
+							message: err,
+							type: messageType.danger
+						}
+					)
+				}
+			});
+		} else {
+			Object.keys(this.contactForm.controls).forEach(
+				field => {
+					const control = this.contactForm.get(field);
+					control?.markAsTouched({onlySelf:true});
+				}
+			);
+		}
+		
+	}
 
-		/*formData.append("name");
-		formData.append("email")
-		formData.append("subject")
-		formData.append("message")*/
-		formData.append("captcha", this.contactForm.get('recaptcha')?.value);
-		formData.append("token", this.token || "");
-		this.contactService.sendContactData(formData).subscribe({
-			next: value => console.log(value),
-			error: err => console.log(err)
-		});
+	isFieldInValid(field: string){
+		if (this.contactForm.get(field)?.untouched){
+			return undefined;
+		} else if(!this.contactForm.get(field)?.valid && this.contactForm.get(field)?.touched){
+			return true;
+		} else {
+			return false
+		}
+	}
+
+	displayFieldClass(field: string){
+		if(this.isFieldInValid(field) == undefined){
+			return "";
+		} else if(this.isFieldInValid(field)){
+			return "is-invalid";
+		} else {
+			return "valid";
+		}
 	}
 
 }

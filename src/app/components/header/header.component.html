@@ -1,5 +1,7 @@
 <header >
-	<nav class="navbar navbar-light navbar-expand-md position-fixed p-0 w-100">
+	<nav
+		[ngClass] = "changeNavbarColor ? 'dark': 'transparent'"
+		class="navbar navbar-light navbar-expand-md position-fixed p-0 w-100">
 		<div class="navbar-container container-fluid justify-content-between">
 			<div class="col-sm-3 p-2">
 				<app-nav-brand></app-nav-brand>

@@ -172,7 +172,7 @@ export class WorkFormComponent implements OnInit {
 		} else if(this.isFieldInValid(field)){
 			return "is-invalid";
 		} else {
-			return "is-valid";
+			return "valid";
 		}
 	}
 
