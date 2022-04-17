@@ -32,8 +32,6 @@ export class SkillsComponent implements OnInit {
 
 	currentSkill!: Skill;
 
-
-
 	constructor(
 		private skillService: SkillsService,
 		private projectsService: ProjectsService,
@@ -47,6 +45,7 @@ export class SkillsComponent implements OnInit {
 		
 		this.getSkillsSubscription = this.skillService.getSkills().subscribe({	
 			next: skills => {
+				console.log(skills)
 				this.projectsService.sendSkillsToProjectForm(skills);
 				this.skills = skills;
 			}

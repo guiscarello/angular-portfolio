@@ -5,11 +5,17 @@
 		class="edit-project"
 	>
 	</app-edit>
+	<div class="project-title d-flex align-items-center justify-content-start">
+		<h5 class="card-title">{{project.title}}</h5>
+	</div>
 	<div class="main-image-container d-flex	">
-		<img class="card-img-top" [attr.src]="project.photos[0].projectPhotoPath" />
+		<img 
+			(click) = "openImageDisplay()"
+			class = "card-img-top" 
+			[attr.src]="project.photos[0].projectPhotoPath" 
+		/>
 	</div>
 	<div class="card-body">
-		<h5 class="card-title">{{project.title}}</h5>
 		<p class="card-title"><small>{{project.startDate | date :'dd/MM/YYYY'}} - {{project.endDate | date :'dd/MM/YYYY'}}</small></p>
 		<p class="card-text">
 			{{project.description}}
@@ -21,4 +27,5 @@
 			<div class="skill-name d-inline-block"><small><span>{{skill.name}}</span></small></div>
 		</div>
 	</div>
+	
 </div>

@@ -42,6 +42,7 @@ import { ProjectItemComponent } from './components/projects/project-item/project
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { ImageDisplayComponent } from './components/projects/image-display/image-display.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { environment } from 'src/environments/environment';
     SkillFormComponent,
     ProjectFormComponent,
     ProjectItemComponent,
+    ImageDisplayComponent,
   ],
   imports: [
     BrowserModule,

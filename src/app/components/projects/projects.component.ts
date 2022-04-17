@@ -14,8 +14,9 @@ import { DialogService } from 'src/app/services/shared/dialog.service';
 })
 export class ProjectsComponent implements OnInit {
 
-  private addProjectDialogVisible: boolean = false;
+  	private addProjectDialogVisible: boolean = false;
 	private editProjectDialogVisible: boolean = false;
+	private imageDisplayDialogVisible: boolean = false;
 	projects: any[] = [];
 	@Output() addProjectDialogId: string = "addProjectDialog";
 	@Output() editProjectDialogId: string = "editProjectDialog";
@@ -27,6 +28,7 @@ export class ProjectsComponent implements OnInit {
 
 	addProjectDialog: Modal | undefined;
 	editProjectDialog: Modal | undefined;
+	imageDisplayDialog: Modal | undefined;
 
 	currentProject!: Project;
 
@@ -60,6 +62,10 @@ export class ProjectsComponent implements OnInit {
 			this.addProjectDialog?.hide();
 			this.editProjectDialog?.hide();
 		});
+		
+		this.dialogService.closeDialog.subscribe(() => {
+			this.imageDisplayDialog?.hide();
+		})
 	}
 
 	ngOnDestroy(){
@@ -133,6 +139,19 @@ export class ProjectsComponent implements OnInit {
 			this.editProjectDialog.show();
 		}
 		this.editProjectDialogVisible = !this.editProjectDialogVisible;
+	}
+
+	showImageDisplay($event:any){
+		this.imageDisplayDialogVisible = !this.imageDisplayDialogVisible;
+		this.currentProject = $event.project;
+		if(this.imageDisplayDialogVisible){
+			this.imageDisplayDialog = new bootstrap.Modal(document.getElementById("image-display")!, {
+				backdrop: 'static',
+				keyboard: false
+			});
+			this.imageDisplayDialog.show();
+		}
+		this.imageDisplayDialogVisible = !this.imageDisplayDialogVisible;
 	}
 
 }

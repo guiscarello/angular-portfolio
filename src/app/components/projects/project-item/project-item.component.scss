@@ -1,5 +1,20 @@
 .card{
 	margin-bottom: 20px;
+	.project-title{
+		border-bottom: 1px solid lightgray;
+		padding: 20px;
+		background-color: white;
+		color: var(--color-primary);
+		border-radius: 10px 10px 0 0;
+		h5{
+			margin: 0 !important;
+		}
+	}
+	.main-image-container{
+		border-bottom: 1px solid lightgray;
+		padding: 10px 5px;
+		max-height: 250px;
+	}
 }
 .card-footer{
 	.skills-container{

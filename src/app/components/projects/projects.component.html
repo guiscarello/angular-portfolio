@@ -6,6 +6,10 @@
 		side = "right"
 	>
 	</app-section-title>
+	<app-image-display
+		[project] = "currentProject"
+	>
+	</app-image-display>
 	<app-dialog [id] = "addProjectDialogId">
 		<div title>Añadir nuevo projecto</div>
 		<div body>
@@ -30,6 +34,7 @@
 		<app-project-item
 			*ngFor="let project of projects"
 			[project] = "project"
+			(openImageDisplayEmitter) = "showImageDisplay($event)"
 			(openEditDialogEmitter) = "showEditDialog($event)"
 		>
 		</app-project-item>
