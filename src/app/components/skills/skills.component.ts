@@ -1,7 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import * as bootstrap from 'bootstrap';
 import { Modal } from 'bootstrap';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UpdateSkillDTO } from 'src/app/interfaces/dto/UpdateSkillDTO';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { DialogService } from 'src/app/services/shared/dialog.service';
@@ -31,11 +32,16 @@ export class SkillsComponent implements OnInit {
 
 	currentSkill!: Skill;
 
+
+
 	constructor(
 		private skillService: SkillsService,
 		private projectsService: ProjectsService,
 		private dialogService: DialogService,
-	) {}
+
+	) {
+
+	}
 
 	ngOnInit(): void {
 		

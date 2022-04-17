@@ -2,6 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild }
 import { Skill } from '../../../interfaces/Skill';
 import { EChartsOption, graphic } from 'echarts';
 import { SkillsService } from 'src/app/services/skills.service';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
 	selector: 'app-skill-item',
@@ -15,9 +17,14 @@ export class SkillItemComponent implements OnInit {
 	gaugeData!: Array<any>;
 	chartOptions!: EChartsOption;
 
+	skillImageUrl: Observable<string | null>;
+	
 	constructor(
-		private skillsService: SkillsService
+		private skillsService: SkillsService,
+		private storage: AngularFireStorage
 	) { 
+		const ref = this.storage.ref(this.skill.skillLogoPath);
+		this.skillImageUrl = ref.getDownloadURL();
 	}
 
 	ngOnInit(): void {

@@ -5,7 +5,7 @@
 		>
 		</app-edit>
 		<div class="work-experience-logo-container d-flex justify-content-center">
-			<img id="work-experience-logo" [attr.src]="work.companyLogoPath">
+			<img id="work-experience-logo" [attr.src]="workImageUrl | async">
 		</div>
 		<div class="info d-flex flex-column justify-content-center p-0">
 			<p class="d-flex justify-content-center work-experience-title">{{work.companyName}}</p>

@@ -9,7 +9,8 @@
 		<div class="skill-name">{{skill.name}}</div>
 		<div class="skill-level">{{skill.level}}</div>
 		<div echarts [options]="chartOptions" class="graph"></div>
-		<img class="logo" [attr.src]="skill.skillLogoPath">
+		<img class="logo" [attr.src]="skillImageUrl | async">
+		<!--<img class="logo" [attr.src]="skill.skillLogoPath">-->
 	</div>
 	
 

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Observable } from 'rxjs';
 import { EducationService } from 'src/app/services/education.service';
 import { Education } from '../../../interfaces/Education';
 
@@ -11,10 +13,15 @@ export class EducationItemComponent implements OnInit {
 
   @Input() education!: Education;
   @Output() openEditDialogEmitter = new EventEmitter();
-
+	educationImageUrl: Observable<string | null>;
+  
   constructor(
-    private educationService: EducationService
-  ) { }
+    private educationService: EducationService,
+    private storage: AngularFireStorage
+  ) { 
+    const ref = this.storage.ref(this.education.institutionLogoPath);
+		this.educationImageUrl = ref.getDownloadURL();
+  }
 
   ngOnInit(): void {
   }

@@ -39,6 +39,9 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
 import { SkillFormComponent } from './components/skills/skill-form/skill-form.component';
 import { ProjectFormComponent } from './components/projects/project-form/project-form.component';
 import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,8 @@ import { ProjectItemComponent } from './components/projects/project-item/project
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
