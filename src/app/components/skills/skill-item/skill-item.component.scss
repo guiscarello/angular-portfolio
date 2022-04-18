@@ -1,4 +1,4 @@
-$skill-name: #b8b8b8;
+$skill-text-color: var(--color-primary);
 
 .skill-item{
 	display: flex;
@@ -14,14 +14,14 @@ $skill-name: #b8b8b8;
 		z-index: -1;
 		.skill-name{
 			font-size: 0.75em;
-			color: #b8b8b8;
+			color: $skill-text-color;
 			position: absolute;
 		}
 		.skill-level{
 			right: 0;
 			bottom: 0;
 			font-size: 0.75em;
-			color: $skill-name;
+			color: $skill-text-color;
 			position: absolute;
 		}
 		.graph{

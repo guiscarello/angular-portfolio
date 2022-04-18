@@ -8,13 +8,14 @@
 		<div class="modal-body">
 			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 				<div *ngIf="project != undefined" class="carousel-inner">
-					<ng-container *ngFor="let photos of project.photos; let i = index">
+					<ng-container *ngFor="let image of images; let i = index">
 						<div 
 							[ngClass] = "i === 0 ? 'active' : '' "
 							class="carousel-item"
 						>
+
 							<img 
-								[attr.src]="project.photos[i].projectPhotoPath" 
+								[attr.src]="images[i]" 
 								class="d-block w-100" 
 								alt="...">
 						</div>

@@ -13,17 +13,17 @@ export class EducationItemComponent implements OnInit {
 
   @Input() education!: Education;
   @Output() openEditDialogEmitter = new EventEmitter();
-	educationImageUrl: Observable<string | null>;
+	educationImageUrl!: Observable<string | null>;
   
   constructor(
     private educationService: EducationService,
     private storage: AngularFireStorage
   ) { 
-    const ref = this.storage.ref(this.education.institutionLogoPath);
-		this.educationImageUrl = ref.getDownloadURL();
   }
 
   ngOnInit(): void {
+    const ref = this.storage.ref(this.education?.institutionLogoPath);
+		this.educationImageUrl = ref.getDownloadURL();
   }
 
   //Comunication using services with observables

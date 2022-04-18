@@ -10,10 +10,13 @@
 	</div>
 	<div class="main-image-container d-flex	">
 		<img 
-			(click) = "openImageDisplay()"
+			
 			class = "card-img-top" 
-			[attr.src]="project.photos[0].projectPhotoPath" 
+			[attr.src]="mainImageUrl | async" 
 		/>
+		<div class="hoverEffect" (click) = "openImageDisplay()">
+
+		</div>
 	</div>
 	<div class="card-body">
 		<p class="card-title"><small>{{project.startDate | date :'dd/MM/YYYY'}} - {{project.endDate | date :'dd/MM/YYYY'}}</small></p>

@@ -14,6 +14,19 @@
 		border-bottom: 1px solid lightgray;
 		padding: 10px 5px;
 		max-height: 250px;
+		position: relative;
+		.hoverEffect{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			&:hover{
+				background-color: rgba(17, 17, 17, 0.459);
+				transition: all 0.5s;
+				cursor: pointer;
+			}
+		}		
 	}
 }
 .card-footer{

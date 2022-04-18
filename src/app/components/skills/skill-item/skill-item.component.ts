@@ -17,17 +17,20 @@ export class SkillItemComponent implements OnInit {
 	gaugeData!: Array<any>;
 	chartOptions!: EChartsOption;
 
-	//skillImageUrl: Observable<string | null>;
+	skillImageUrl!: Observable<string | null>;
 	
 	constructor(
 		private skillsService: SkillsService,
 		private storage: AngularFireStorage
 	) { 
-		//const ref = this.storage.ref(this.skill.skillLogoPath);
-		//this.skillImageUrl = ref.getDownloadURL();
+
 	}
 
 	ngOnInit(): void {
+		
+		const ref = this.storage.ref(this.skill?.skillLogoPath);
+		this.skillImageUrl = ref?.getDownloadURL();
+		
 		this.gaugeData = [{
 			value: this.skill.levelPercentage,
 		}];

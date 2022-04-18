@@ -14,17 +14,18 @@ export class WorkExperienceComponent implements OnInit {
   @Input() work!: WorkExperience;
   @Output() openEditDialogEmitter = new EventEmitter();
   
-	workImageUrl: Observable<string | null>;
+	workImageUrl!: Observable<string | null>;
 
   constructor(
     private workExperiencesService: WorkExperiencesService,
     private storage: AngularFireStorage
   ) { 
-    const ref = this.storage.ref(this.work.companyLogoPath);
-		this.workImageUrl = ref.getDownloadURL();
+
   }
 
   ngOnInit(): void {
+    const ref = this.storage.ref(this.work?.companyLogoPath);
+		this.workImageUrl = ref.getDownloadURL();
   }
 
   //Comunication using services with observables

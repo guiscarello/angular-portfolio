@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Observable } from 'rxjs';
 import { Project } from 'src/app/interfaces/Project';
 import { ProjectsService } from 'src/app/services/projects.service';
 
@@ -13,12 +15,17 @@ export class ProjectItemComponent implements OnInit {
 	@Output() openEditDialogEmitter = new EventEmitter();
 	@Output() openImageDisplayEmitter = new EventEmitter();
 
+	mainImageUrl!: Observable<string | null>;
+
 	constructor(
-		private projectService: ProjectsService
+		private projectService: ProjectsService,
+		private storage: AngularFireStorage
+
 	) { }
 
 	ngOnInit(): void {
-		console.log(this.project)
+		const ref = this.storage.ref(this.project?.photos[0].projectPhotoPath);
+		this.mainImageUrl = ref.getDownloadURL();
 	}
 
 	openImageDisplay(){
