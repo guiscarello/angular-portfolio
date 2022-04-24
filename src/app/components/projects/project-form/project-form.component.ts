@@ -47,14 +47,17 @@ export class ProjectFormComponent implements OnInit {
 		
 	}
 
-	ngOnInit(): void {
+	ngOnInit(): void{
 		this.projectsService.getSkillsForProjectForm().subscribe({
-			next: skills => this.skills = skills
+			next: skills => {
+				for(let skill of skills){
+					this.skills.push(skill);
+				}
+			}
 		});
 	}
 
 	ngOnChanges(){
-
 		if(this.purpose === 'New'){
 			this.dialogService.closeDialog.subscribe(() => {
 				this.projectForm.reset({
@@ -62,13 +65,18 @@ export class ProjectFormComponent implements OnInit {
 				});
 			});
 		}else if(this.purpose === 'Edit'){
-			if(this.project?.skills !== undefined){
-				this.skillsToSave = this.project?.skills ;
+			let skills = this.project?.skills;
+			if(skills){	
+				for (const skill of skills) {
+					this.skillsToSave.push(skill);
+				}
 			}
-			this.projectForm.get('mainImage')?.clearValidators();
-			this.projectForm.get('additionalImages')?.clearValidators();
-			this.projectForm.updateValueAndValidity();
-
+			//console.log("Edit 1",this.skills )
+			//console.log("Edit 1",this.skillsToSave )
+			for(let skillToDelete of this.skillsToSave){
+				this.skills = this.skills.filter(skill => skill.id !== skillToDelete.id);
+			}
+			//console.log("Edit 2",this.skills )
 			this.projectForm.patchValue({
 				photos: [''],
 				title: this.project?.title,
@@ -225,7 +233,7 @@ export class ProjectFormComponent implements OnInit {
 		} else if(this.isFieldInValid(field)){
 			return "is-invalid";
 		} else {
-			return "is-valid";
+			return "valid";
 		}
 	}
 

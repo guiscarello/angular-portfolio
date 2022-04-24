@@ -1,36 +1,51 @@
 .alert-message{
-	position: fixed;
-    display: flex;
-    z-index: 2;
-    padding: 10px;
-	margin-top: 90px;
-	width: 100%;
-	white-space: pre-wrap;
+    position: fixed;
+    z-index: 1;
+    right: 0;
+	bottom: 0;
+    height: 150px;
+
+    white-space: pre-wrap;
 }
 
 .visible-alert{
 	display: flex;
+	align-items: center;
     min-width: 400px;
+	margin-right: 1rem;
     justify-content: center;
-    margin: 0;
     border-radius: 0px;
-    width: 100%;
 	border-radius: 10px;
+	animation: showAlert 0.4s linear;
 }
 
 .hidden-alert{
-	position: absolute;
+	display: flex;
+	align-items: center;
+    min-width: 400px;
+    justify-content: center;
+	margin-right: 1rem;
+    border-radius: 0px;
+	border-radius: 10px;
+	animation: hideAlert 0.4s forwards 0s linear;
 }
 
 @keyframes hideAlert {
-	0% {
-		opacity: 1;
+	0%{
+		transform: translateX(0);
 	}
-	50% {
-		opacity: 0.5;
+	100%{
+		transform: translateX(120%);
+		display: none;
 	}
-	100% {
-		opacity: 0.5;
+}
+
+@keyframes showAlert {
+	0%{
+		transform: translateX(100%);
+	}
+	100%{
+		transform: translateX(0);
 	}
 }
 
@@ -43,4 +58,11 @@
 	button:focus{
 		box-shadow: none;
 	}
+}
+@media (max-width: 768px) {
+	.visible-alert, .hidden-alert{
+		min-width: auto;
+		width: 80%;
+	}
+
 }

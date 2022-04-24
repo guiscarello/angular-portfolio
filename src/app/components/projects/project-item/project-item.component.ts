@@ -36,7 +36,9 @@ export class ProjectItemComponent implements OnInit {
 	//Comunication using services with observables
 	deleteProject(){
 		//On delete event (delete button pressed) send id of work selected to delete.
-		this.projectService.sendProjectToDelete(this.project);
+		if(confirm("Esta seguro que desea eliminar el registro?")){
+			this.projectService.sendProjectToDelete(this.project);
+		}
 	}
 
 	//Comunication using child and parent method

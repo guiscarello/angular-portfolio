@@ -3,9 +3,12 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import * as bootstrap from 'bootstrap';
 import { Modal } from 'bootstrap';
 import { Observable, Subscription } from 'rxjs';
+import { messageType } from 'src/app/enums/messageType';
 import { UpdateSkillDTO } from 'src/app/interfaces/dto/UpdateSkillDTO';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { DialogService } from 'src/app/services/shared/dialog.service';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
+import { MessagesService } from 'src/app/services/shared/messages.service';
 import { Skill } from '../../interfaces/Skill';
 import { SkillsService } from '../../services/skills.service';
 
@@ -36,7 +39,8 @@ export class SkillsComponent implements OnInit {
 		private skillService: SkillsService,
 		private projectsService: ProjectsService,
 		private dialogService: DialogService,
-
+		private errorHandlerService: ErrorHandlerService,
+		private messageService: MessagesService
 	) {
 
 	}
@@ -56,15 +60,11 @@ export class SkillsComponent implements OnInit {
 		});
 
 		this.skillService.getSkillToUpdate().subscribe({
-			next: skillToUpdate => this.updateSkill(skillToUpdate),
-			complete: () => console.log("work updated")
+			next: skillToUpdate => this.updateSkill(skillToUpdate)
 		});
 
 		this.deleteSkillSubsciption = this.skillService.getSkillToDelete().subscribe({
-			next: skillToDelete => this.deleteSkill(skillToDelete),
-			complete: () => {
-				console.log("Experiencia de trabajo eliminada con exito");
-			}
+			next: skillToDelete => this.deleteSkill(skillToDelete)
 		});
 		
 		this.updateSkillSubsciption = this.dialogService.closeDialog.subscribe(() => {
@@ -87,7 +87,21 @@ export class SkillsComponent implements OnInit {
 				this.addSkillDialog?.hide();
 				this.dialogService.emitEvent();
 			},
-			error: err => console.log(err)
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addSkillDialog?.hide();
+				this.dialogService.emitEvent();
+			},
+			complete: () => {
+				//console.log("Habilidad agregada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Habilidad agregada con exito",
+						type: messageType.success
+					}
+				)
+			}
 		})
 	}
 
@@ -98,10 +112,20 @@ export class SkillsComponent implements OnInit {
 				this.skills[updatedSkillIndex] = updatedSkill;
 				this.editSkillDialog?.hide();
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.editSkillDialog?.hide();
+				this.dialogService.emitEvent();
+			},
 			complete: () => {
-				this.projectsService.sendSkillsToProjectForm(this.skills);
-				//alert(`Registro con id: "${updatedWork.id}" editado con exito.`);
+				//console.log("Habilidad editada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Habilidad editada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 	}
@@ -112,9 +136,18 @@ export class SkillsComponent implements OnInit {
 				let deletedSkillId = this.skills.findIndex(skill => skill.id === id);
 				this.skills.splice(deletedSkillId, 1)	
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log("Delete skill", err);
+				this.errorHandlerService.httpErrorHandler(err, "Primero debe eliminar los proyectos asociados a la habilidad");
+			},
 			complete: () => {
-				alert("Habilidad eliminada con exito");
+				//console.log("Habilidad borrada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Habilidad con id " + skillToDelete.id + " borrada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 		

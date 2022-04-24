@@ -31,7 +31,10 @@ export class WorkExperienceComponent implements OnInit {
   //Comunication using services with observables
   deleteWork(){
     //On delete event (delete button pressed) send id of work selected to delete.
-    this.workExperiencesService.sendWorkToDelete(this.work);
+    if(confirm('Esta seguro que desea eliminar el registro?')){
+      this.workExperiencesService.sendWorkToDelete(this.work);
+    }
+  
   }
 
   //Comunication using child and parent method

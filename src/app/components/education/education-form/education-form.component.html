@@ -1,7 +1,7 @@
 <form [formGroup]="educationForm" (ngSubmit)="onSubmit()">
 	<div class="row">
 		<div class="col mb-3">
-			<label for="institutionName" class="form-label">Nombre Institución: </label>
+			<label for="institutionName" class="form-label">Nombre Institución: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('institutionName')"
 				class="form-control form-control-sm" 
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="col mb-3">
-			<label for="logo" class="form-label">Logo Institución: </label>
+			<label for="logo" class="form-label">Logo Institución: </label><span *ngIf="purpose == 'New'" class="field-required">*</span>
 			<input 
 				(change) ="onFileSelect($event)" 
 				[ngClass] = "displayFieldClass('logo')"
@@ -32,7 +32,7 @@
 	</div>
 	<div class="row">
 		<div class="col mb-3">
-			<label for="name" class="form-label">Nombre de la carrera o curso: </label>
+			<label for="name" class="form-label">Nombre de la carrera o curso: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('name')"
 				class="form-control form-control-sm" 
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="col">
-		<label for="type" class="form-label">Tipo: </label>
+		<label for="type" class="form-label">Tipo: </label><span class="field-required">*</span>
 		<select 
 			[ngClass] = "displayFieldClass('type')"
 			class="form-select mb-3" name="type" aria-label="" formControlName="type">
@@ -73,7 +73,7 @@
 			/>
 		</div>
 		<div class="col-8 mb-3">
-			<label for="titleName" class="form-label">Titulo: </label>
+			<label for="titleName" class="form-label">Titulo: </label><span *ngIf="hasTitle" class="field-required">*</span>
 			<input 
 				[ngClass] = "hasTitle && (!this.educationForm.get('titleName')?.valid 
 					&& this.educationForm.get('titleName')?.touched) ? 'is-invalid' : ''"
@@ -90,7 +90,7 @@
 	</div>
 	<div class="row">
 		<div class="col mb-3">
-			<label for="year" class="form-label">Año: </label>
+			<label for="year" class="form-label">Año: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('year')"
 				class="form-control form-control-sm" 
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 		<div class="col mb-3">
-			<label for="duration" class="form-label">Duración: </label>
+			<label for="duration" class="form-label">Duración: </label><span  class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('duration')"
 				class="form-control form-control-sm" 
@@ -123,7 +123,7 @@
 	<div class="row">
 		<div class="d-flex col mb-3 align-items-center justify-content-evenly">
 			<div class="col mb-3">
-				<label for="description" class="form-label">Descripción: </label>
+				<label for="description" class="form-label">Descripción: </label><span class="field-required">*</span>
 				<textarea 
 					[ngClass] = "displayFieldClass('description')"
 					class="form-control" rows="4" name="description" id="description" formControlName = "description"></textarea>

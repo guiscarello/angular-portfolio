@@ -29,7 +29,10 @@ export class EducationItemComponent implements OnInit {
   //Comunication using services with observables
   deleteEducation(){
     //On delete event (delete button pressed) send id of work selected to delete.
-    this.educationService.sendEducationToDelete(this.education);
+    if(confirm("Esta seguro que desea eliminar el registro?")){
+      this.educationService.sendEducationToDelete(this.education);
+    }
+
   }
 
   //Comunication using child and parent method

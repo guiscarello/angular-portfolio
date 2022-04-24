@@ -4,13 +4,21 @@
     height: 100vh;
     align-items: center;
 	padding: 20px;
-	background-color: var(--color-tertiary);
+	font-family: var(--font-family-primary);
 }
 .form-group-container{
-	border-radius: 20px;
+	border-radius: 10px;
+	border: 1px solid lightgrey;
 	padding: 30px;
-	background-color: white;
+	box-shadow: 3px 2px 23px 0px rgba(8,8,8,0.4);
+	-webkit-box-shadow: 3px 2px 23px 0px rgba(8,8,8,0.4);
+	-moz-box-shadow: 3px 2px 23px 0px rgba(8,8,8,0.4);
 }
+
+.text-danger{
+	font-size: small !important;
+}
+
 .save-btn{
 	margin-top: 10px;
 }

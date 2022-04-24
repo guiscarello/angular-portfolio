@@ -1,9 +1,20 @@
-<div class="alert-message">
-	<div *ngIf="showAlert"
-		[ngClass] = "showAlert ? type + ' visible-alert' : 'hidden-alert'" class="alert" role="alert">
-			{{message}}
-		<div class="alert-close">
-			<button type="button" class="btn-close" aria-label="Close"></button>
-		</div>
+<div [ngClass] = "showAlert ? type + ' visible-alert' : type + ' hidden-alert'" 
+	class="alert alert-message" role="alert">
+	<div *ngIf="type == 'alert-danger'" class="d-flex align-items-center">
+		<i class="fs-1 bi bi-x-circle-fill danger d-inline-block"></i> 
+		<div class="mr-2 d-inline-block"  style="padding-left: 10px;"> {{message}}</div>
+	</div>
+	<div *ngIf="type == 'alert-success'" class="d-flex align-items-center justify-content-evenly">
+		<i class="fs-1 bi bi-check-circle-fill success d-inline-block"></i>
+		<div class="d-inline-block" style="padding-left: 10px;">{{message}}</div>
+	</div>
+	<div class="alert-close">
+		<button 
+			type="button" 
+			class="btn-close btn-sm" 
+			aria-label="Close"
+			(click) = "closeAlert()"	
+		></button>
 	</div>
 </div>
+

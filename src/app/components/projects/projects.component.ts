@@ -2,10 +2,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as bootstrap from 'bootstrap';
 import { Modal } from 'bootstrap';
 import { Subject, Subscription } from 'rxjs';
+import { messageType } from 'src/app/enums/messageType';
 import { UpdateProjectDTO } from 'src/app/interfaces/dto/UpdateProjectDTO';
 import { Project } from 'src/app/interfaces/Project';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { DialogService } from 'src/app/services/shared/dialog.service';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
+import { MessagesService } from 'src/app/services/shared/messages.service';
 
 @Component({
   selector: 'app-projects',
@@ -35,6 +38,8 @@ export class ProjectsComponent implements OnInit {
 	constructor(
 		private projectsService: ProjectsService,
 		private dialogService: DialogService,
+		private errorHandlerService: ErrorHandlerService,
+		private messageService: MessagesService
 	) {}
 
 	ngOnInit(): void {
@@ -84,7 +89,21 @@ export class ProjectsComponent implements OnInit {
 				this.dialogService.emitEvent();
 				console.log(newProject)
 			},
-			error: err => console.log(err)
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addProjectDialog?.hide();
+				this.dialogService.emitEvent();
+			},
+			complete: () => {
+				//console.log("Proyecto agregado con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Proyecto agregado con exito",
+						type: messageType.success
+					}
+				)
+			}
 		})
 	}
 
@@ -95,9 +114,20 @@ export class ProjectsComponent implements OnInit {
 				this.projects[updatedProjectIndex] = updatedProject;
 				this.editProjectDialog?.hide();
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.editProjectDialog?.hide();
+				this.dialogService.emitEvent();
+			},
 			complete: () => {
-				
+				//console.log("Proyecto editado con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Proyecto editado con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 	}
@@ -108,9 +138,18 @@ export class ProjectsComponent implements OnInit {
 				let deletedProjectId = this.projects.findIndex(p => p.id === id);
 				this.projects.splice(deletedProjectId, 1)	
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+			},
 			complete: () => {
-				alert("Proyecto eliminado con exito");
+				//console.log("Proyecto borrado con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Proyecto con id " + projectToDelete.id + " borrado con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 		

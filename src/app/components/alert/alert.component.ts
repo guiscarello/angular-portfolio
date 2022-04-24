@@ -14,26 +14,34 @@ export class AlertComponent implements OnInit {
 	showAlert: boolean = false;
 	private alertMessageSubscription!: Subscription;
 
+	timeOutId!: any;
+
 	constructor(
 		private messageService: MessagesService 
 	) { }
+	
 
 	ngOnInit(): void {
 		this.alertMessageSubscription = this.messageService.getAlertMessage().subscribe({
 			next: message => {
+				clearTimeout(this.timeOutId);
 				this.message = message.message,
 				this.type = message.type
 				this.showAlert = true		
-				setInterval(()=>{
+				this.timeOutId = setTimeout(() => {
 					this.showAlert = false;
-					this.message = '';
-				}, 3000)
+				}, 5000);
 			}
 		});
 	}
 
+	closeAlert(){
+		this.showAlert = false;
+		clearTimeout(this.timeOutId);
+	}
+
 	ngOnDestroy(){
-		//this.alertMessageSubscription.unsubscribe();
+		this.alertMessageSubscription.unsubscribe();
 	}
 
 }	

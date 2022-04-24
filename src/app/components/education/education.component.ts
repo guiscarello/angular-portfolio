@@ -7,6 +7,9 @@ import { DialogService } from 'src/app/services/shared/dialog.service';
 import * as bootstrap from 'bootstrap';
 import { UpdateWorkExperienceDTO } from 'src/app/interfaces/dto/UpdateWorkExperienceDTO';
 import { UpdatedEducationDTO } from 'src/app/interfaces/dto/UpdateEducationDTO';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
+import { MessagesService } from 'src/app/services/shared/messages.service';
+import { messageType } from 'src/app/enums/messageType';
 
 @Component({
   selector: 'app-education',
@@ -14,6 +17,8 @@ import { UpdatedEducationDTO } from 'src/app/interfaces/dto/UpdateEducationDTO';
   styleUrls: ['./education.component.scss']
 })
 export class EducationComponent implements OnInit {
+
+	//TODO: Refactor code to simplify and pass everething it could be passed to the service
 
   	private addEducationDialogVisible: boolean = false;
 	private editEducationDialogVisible: boolean = false;
@@ -34,6 +39,8 @@ export class EducationComponent implements OnInit {
 	constructor(
 		private educationService: EducationService,
 		private dialogService: DialogService,
+		private errorHandlerService: ErrorHandlerService,
+		private messageService: MessagesService
 	) {}
 
 	ngOnInit(): void {
@@ -47,15 +54,11 @@ export class EducationComponent implements OnInit {
 		});
 
 		this.educationService.getUpdatedEducation().subscribe({
-			next: updatedEducationDTO => this.updateEducation(updatedEducationDTO),
-			complete: () => console.log("Education updated")
+			next: updatedEducationDTO => this.updateEducation(updatedEducationDTO)
 		});
 
 		this.deleteEducationSubsciption = this.educationService.getEducationToDelete().subscribe({
-			next: educationToDelete => this.deleteWork(educationToDelete),
-			complete: () => {
-				console.log("education deleted with success");
-			}
+			next: educationToDelete => this.deleteWork(educationToDelete)
 		});
 		
 		this.updateEducationSubsciption = this.dialogService.closeDialog.subscribe(() => {
@@ -78,7 +81,21 @@ export class EducationComponent implements OnInit {
 				this.addEducationDialog?.hide();
 				this.dialogService.emitEvent();
 			},
-			error: err => console.log(err)
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.addEducationDialog?.hide();
+				this.dialogService.emitEvent();
+			},
+			complete: () => {
+				//console.log("Nueva educación agregada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Nueva educación agregada con exito",
+						type: messageType.success
+					}
+				)
+			}
 		})
 	}
 
@@ -89,9 +106,20 @@ export class EducationComponent implements OnInit {
 				this.educations[updatedEducationIndex] = updatedEducation;
 				this.editEducationDialog?.hide();
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+				this.editEducationDialog?.hide();
+				this.dialogService.emitEvent();
+			},
 			complete: () => {
-				
+				//console.log("Educación editada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Educación editada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 	}
@@ -100,11 +128,20 @@ export class EducationComponent implements OnInit {
 		this.educationService.deleteEducation(educationToDelete).subscribe({
 			next: (id) => {
 				let deletedEducationId = this.educations.findIndex(e => e.id === id);
-				this.educations.splice(deletedEducationId, 1)	
+				this.educations.splice(deletedEducationId, 1);
 			},
-			error: err => console.log(err),
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+			},
 			complete: () => {
-				alert("educacion eliminada con exito");
+				//console.log("Educación con id " + educationToDelete.id + " borrada con exito");
+				this.messageService.sendAlertMessage(
+					{
+						message: "Educación con id " + educationToDelete.id + " borrada con exito",
+						type: messageType.success
+					}
+				)
 			}
 		})
 		

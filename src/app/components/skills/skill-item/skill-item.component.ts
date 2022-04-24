@@ -95,7 +95,9 @@ export class SkillItemComponent implements OnInit {
 	//Comunication using services with observables
 	deleteWork(){
 	  //On delete event (delete button pressed) send id of work selected to delete.
-	  this.skillsService.sendSkillToDelete(this.skill);
+		if(confirm("Esta seguro que desea eliminar el registro?")){
+			this.skillsService.sendSkillToDelete(this.skill);
+		}
 	}
   
 	//Comunication using child and parent method

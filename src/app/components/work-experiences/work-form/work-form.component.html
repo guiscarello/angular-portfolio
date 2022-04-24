@@ -1,7 +1,7 @@
 <form [formGroup]="workForm" (ngSubmit)="onSubmit($event)">
 	<div class="row">
 		<div class="col mb-3">
-			<label for="companyName" class="form-label">Nombre Compania: </label>
+			<label for="companyName" class="form-label">Nombre Compania: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('companyName')"
 				class="form-control form-control-sm" 
@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="col mb-3">
-			<label for="companyLogo" class="form-label">Logo Compania: </label>
+			<label for="companyLogo" class="form-label">Logo Compania: </label><span *ngIf="purpose == 'New'" class="field-required">*</span>
 			<input 
 				(change) ="onFileSelect($event)" 
 				class="form-control form-control-sm" 
@@ -31,7 +31,7 @@
 	</div>
 	<div class="row">
 		<div class="col mb-3">
-			<label for="tel" class="form-label">Telefono: </label>
+			<label for="tel" class="form-label">Telefono: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('tel')"
 				class="form-control form-control-sm" 
@@ -57,7 +57,7 @@
 	</div>
 	<div class="row">
 		<div class="col mb-3">
-			<label for="startDate" class="form-label">Fecha de entrada: </label>
+			<label for="startDate" class="form-label">Fecha de entrada: </label><span  class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('startDate')"	
 				class="form-control form-control-sm" 
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 		<div *ngIf="!currentWork" class="col mb-3">
-			<label for="endDate" class="form-label">Fecha de salida: </label>
+			<label for="endDate" class="form-label">Fecha de salida: </label><span class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('endDate')"
 				class="form-control form-control-sm" 
@@ -87,7 +87,7 @@
 	</div>
 	<div class="row">
 		<div class="mb-3">
-			<label for="position" class="form-label">Posición: </label>
+			<label for="position" class="form-label">Posición: </label><span  class="field-required">*</span>
 			<input 
 				[ngClass] = "displayFieldClass('position')"
 				class="form-control form-control-sm" 
@@ -101,7 +101,7 @@
 			</div>
 		</div>
 		<div class="mb-3">
-			<label for="description" class="form-label">Descripción tareas: </label>
+			<label for="description" class="form-label">Descripción tareas: </label><span class="field-required">*</span>
 			<textarea 
 				[ngClass] = "displayFieldClass('description')"
 				class="form-control" 

@@ -47,7 +47,15 @@ export class WorkExperiencesComponent implements OnInit {
 			next: works => {
 				console.log(works);
 				this.workExperiences = works;
+			},	
+			error: err => {
+				console.log(err);
+				this.errorHandlerService.httpErrorHandler(err);
+			},
+			complete: () => {
+				console.log("Experiencia de trabajo agregada con exito");
 			}
+
 		});
 	
 		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({
@@ -89,7 +97,7 @@ export class WorkExperiencesComponent implements OnInit {
 				this.dialogService.emitEvent();
 			},
 			complete: () => {
-				console.log("Experiencia de trabajo agregada con exito");
+				//console.log("Experiencia de trabajo agregada con exito");
 				this.messageService.sendAlertMessage(
 					{
 						message: "La experiencia de trabajo fue agregada con exito",
@@ -110,11 +118,11 @@ export class WorkExperiencesComponent implements OnInit {
 			error: err => {
 				console.log(err);
 				this.errorHandlerService.httpErrorHandler(err);
-				this.addWorkDialog?.hide();
+				this.editWorkDialog?.hide();
 				this.dialogService.emitEvent();
 			},
 			complete: () => {
-				console.log("Experiencia de trabajo editada con exito");
+				//console.log("Experiencia de trabajo editada con exito");
 				this.messageService.sendAlertMessage(
 					{
 						message: "La experiencia de trabajo fue editada con exito",
@@ -129,16 +137,14 @@ export class WorkExperiencesComponent implements OnInit {
 		this.workExperiencesService.deleteWorkExperience(workToDelete).subscribe({
 			next: () => {
 				let deletedWorkId = this.workExperiences.findIndex(work => work.id === workToDelete.id);
-				this.workExperiences.splice(deletedWorkId, 1)	
+				this.workExperiences.splice(deletedWorkId, 1);	
 			},
 			error: err => {
 				console.log(err);
 				this.errorHandlerService.httpErrorHandler(err);
-				this.addWorkDialog?.hide();
-				this.dialogService.emitEvent();
 			},
 			complete: () => {
-				console.log("Experiencia de trabajo eliminada con exito");
+				//console.log("Experiencia de trabajo eliminada con exito");
 				this.messageService.sendAlertMessage(
 					{
 						message: "La experiencia de trabajo con id " + workToDelete.id + " fue eliminada con exito",

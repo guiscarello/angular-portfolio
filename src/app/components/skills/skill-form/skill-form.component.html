@@ -2,7 +2,7 @@
 	<div>
 		<div class="row">
 			<div class="col-12 mb-3">
-				<label for="name" class="form-label">Nombre: </label>
+				<label for="name" class="form-label">Nombre: </label><span  class="field-required">*</span>
 				<input 
 					[ngClass] = "displayFieldClass('name')"
 					class="form-control form-control-sm" 
@@ -18,7 +18,7 @@
 		</div>
 		<div class="row">
 			<div class="col-12 mb-3">
-				<label for="logo" class="form-label">Logo: </label>
+				<label for="logo" class="form-label">Logo: </label><span *ngIf="purpose === 'New'" class="field-required">*</span>
 				<input 
 					(change) ="onFileSelect($event)" 
 					[ngClass] = "displayFieldClass('logo')"
@@ -35,7 +35,7 @@
 		</div>
 		<div class="row">
 			<div class="col-12 mb-3">
-				<label for="color" class="form-label">Color: </label>
+				<label for="color" class="form-label">Color: </label><span  class="field-required">*</span>
 				<input 
 					[ngClass] = "displayFieldClass('color')"
 					class="form-control form-control-sm" 
@@ -51,7 +51,7 @@
 		</div>
 		<div class="row mb-3">
 			<div class="col-12 mb-3">
-				<label for="level" class="form-label">Nivel: </label>
+				<label for="level" class="form-label">Nivel: </label><span  class="field-required">*</span>
 				<select 
 					[ngClass] = "displayFieldClass('level')"
 					class="form-select" name="level" aria-label="" formControlName="level">

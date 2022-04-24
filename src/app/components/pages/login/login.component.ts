@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
       },
       error: err => {
-        this.errorHandlerService.httpErrorHandler(err);
+        //this.errorHandlerService.httpErrorHandler(err);
         if(err.status === 401){
           this.badCredentials = true;
         } else {

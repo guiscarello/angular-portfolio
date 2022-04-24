@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   viewBox="0 0 291.03165 133.24475"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0, 2021-09-20)"
+   sodipodi:docname="first-background.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#3b3a36"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:snap-bbox="false"
+     inkscape:bbox-nodes="false"
+     inkscape:snap-bbox-edge-midpoints="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="3.3194192"
+     inkscape:cx="216.45353"
+     inkscape:cy="64.017223"
+     inkscape:window-width="1294"
+     inkscape:window-height="704"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:snap-global="false" />
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient15943">
+      <stop
+         style="stop-color:#0991bb;stop-opacity:0.43025199"
+         offset="0"
+         id="stop15939" />
+      <stop
+         style="stop-color:#067ea1;stop-opacity:0.46878663"
+         offset="1"
+         id="stop15941" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2645">
+      <stop
+         style="stop-color:#061f27;stop-opacity:1"
+         offset="0"
+         id="stop2641" />
+      <stop
+         style="stop-color:#06a7d7;stop-opacity:1"
+         offset="1"
+         id="stop2643" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2645"
+       id="linearGradient2647"
+       x1="293.78348"
+       y1="6.51089"
+       x2="2.8418314"
+       y2="120.22136"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter100744"
+       x="-0.092821954"
+       y="-0.10195509"
+       width="1.1856439"
+       height="1.2039102">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.4478593606387862"
+         id="feGaussianBlur100746" />
+      <feSpecularLighting
+         id="feSpecularLighting22186"
+         surfaceScale="-3.709856853392965" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient15943"
+       id="linearGradient15945"
+       x1="16.309006"
+       y1="122.65965"
+       x2="68.061707"
+       y2="75.157906"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-9.1662321,-64.451159)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient15943"
+       id="linearGradient20867"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(2.2643089,-27.90381)"
+       x1="16.309006"
+       y1="122.65965"
+       x2="68.061707"
+       y2="75.157906" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2.7968378,-6.4658964)">
+    <path
+       id="rect846"
+       style="fill:url(#linearGradient2647);fill-opacity:1;stroke:#2bbed5;stroke-width:0.0899872;stroke-opacity:1"
+       d="m 2.8418314,6.51089 v 113.71047 l 145.4705586,19.4439 145.47109,-19.4439 V 6.51089 Z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:21.3333px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
+       x="167.7988"
+       y="93.242149"
+       id="text1775-1-3"><tspan
+         sodipodi:role="line"
+         id="tspan1773-0-6"
+         x="167.7988"
+         y="93.242149"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:Dyuthi;-inkscape-font-specification:'Dyuthi, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:#008671;stroke-width:0.245669;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="164.44373"
+       y="44.98019"
+       id="text1775-1"><tspan
+         sodipodi:role="line"
+         id="tspan1773-0"
+         x="164.44373"
+         y="44.98019"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke:#008671;stroke-width:0.245669;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">HOLA, SOY</tspan></text>
+    <path
+       id="path8486"
+       style="fill:#eeeeee;fill-opacity:0.17776401;stroke:none;stroke-width:0.999999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 549.98047,469.59582 -76.92383,-4.63879 0,5.37237 76.92383,20.30537 76.92187,-20.70562 0,-4.97212 z"
+       transform="matrix(0.26458333,0,0,0.26458333,2.7968378,6.4658964)"
+       sodipodi:nodetypes="ccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
+       x="166.13249"
+       y="26.303968"
+       id="text21251"><tspan
+         sodipodi:role="line"
+         id="tspan21249"
+         x="166.13249"
+         y="26.303968" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:0.65;font-family:sans-serif;letter-spacing:-0.03px;fill:#000000;fill-opacity:1;stroke:#008671;stroke-width:0.245669;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="164.24841"
+       y="85.690575"
+       id="text1775-1-2"><tspan
+         sodipodi:role="line"
+         x="164.24841"
+         y="85.690575"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3334px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke:#008671;stroke-width:0.245669;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="tspan27564">PROGRAMADOR WEB</tspan><tspan
+         sodipodi:role="line"
+         x="164.24841"
+         y="94.357216"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.3334px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke:#008671;stroke-width:0.245669;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="tspan54092">FULL STACK JR.</tspan></text>
+    <ellipse
+       style="mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:#712c2c;stroke-width:0.222992;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.79371011;filter:url(#filter100744)"
+       id="path98876"
+       cx="25.499092"
+       cy="23.281149"
+       rx="33.623924"
+       ry="29.357819" />
+    <ellipse
+       style="fill:url(#linearGradient15945);fill-opacity:1;stroke:none;stroke-width:0.377953;stroke-opacity:0.915779;filter:url(#filter100744)"
+       id="path15831"
+       cx="32.692417"
+       cy="34.250961"
+       rx="31.645866"
+       ry="33.726009" />
+    <ellipse
+       style="fill:url(#linearGradient20867);fill-opacity:1;stroke:none;stroke-width:0.377953;stroke-opacity:0.915779"
+       id="path15831-1"
+       cx="44.122959"
+       cy="70.798309"
+       rx="31.645866"
+       ry="33.726009" />
+  </g>
+</svg>

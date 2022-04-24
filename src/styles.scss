@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-app-banner p{
-	margin-top: 100px;
-}
 
 :root{
 	--font-family-primary: Optima;
@@ -11,12 +8,18 @@ app-banner p{
 	--color-primary-75: #2a4d69bf;
 	--color-secondary: #abc4d9;
 	--color-secondary-75: #abc4d9bf;
-	//##003f52
 	--color-tertiary: #003342;
+
 	--color-hover-primary: #08745d;
+	--color-hover-secondary: #006db6;
+
 	--color-background-primary: #036a8a;
 	--color-background-secondary: #086070;
+
 	--shadow-color: #d8d8d8;
+
+	--color-btn-primary : #1d9bf0;
+
 
 	--nav-height: 70px;
 

@@ -72,7 +72,8 @@ export class EducationFormComponent implements OnInit {
 			logo?.updateValueAndValidity();
 			this.dialogService.closeDialog.subscribe(() => {
 				this.educationForm.reset({
-					type: ''
+					type: '',
+					hasTitle: true
 				});
 			});
 		}else if(this.purpose === 'Edit'){

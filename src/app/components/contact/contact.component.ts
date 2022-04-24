@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import { messageType } from 'src/app/enums/messageType';
 import { ContactService } from 'src/app/services/contact.service';
+import { ErrorHandlerService } from 'src/app/services/shared/error/error-handler.service';
 import { MessagesService } from 'src/app/services/shared/messages.service';
 import { environment } from 'src/environments/environment';
 
@@ -22,7 +23,8 @@ export class ContactComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private contactService: ContactService,
-		private messageService: MessagesService
+		private messageService: MessagesService,
+		private errorHandlerService: ErrorHandlerService
 	) { }
 
 	ngOnInit(): void {
@@ -66,13 +68,11 @@ export class ContactComponent implements OnInit {
 					)
 				},
 				error: err => {
-					console.log(err)
-					this.messageService.sendAlertMessage(
-						{
-							message: err,
-							type: messageType.danger
-						}
+					console.log(err);
+					this.errorHandlerService.httpErrorHandler(
+						err, "Algo ha salido mal en el envio, verifique si el email que ha escrito es válido y existente."
 					)
+					
 				}
 			});
 		} else {
