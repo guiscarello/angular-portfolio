@@ -14,7 +14,9 @@ export const environment = {
     //messagingSenderId: '480362569154',
    // appId: '1:480362569154:web:2fe6f75104cdfb82f50a5b',
    // measurementId: 'G-CBRYER9PJR'
-  }
+  },
+ // apiUrl: "https://gs-spring-portfolio.herokuapp.com/api/"
+
 };
 
 

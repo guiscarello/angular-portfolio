@@ -43,6 +43,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { ImageDisplayComponent } from './components/projects/image-display/image-display.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ImageDisplayComponent } from './components/projects/image-display/image
     ProjectFormComponent,
     ProjectItemComponent,
     ImageDisplayComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

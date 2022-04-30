@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:8080/api/",
+  //apiUrl: "http://localhost:8080/api/",
   reCaptchaSiteKey: "6LeAWxQfAAAAABZiDXnTGbgkpYJ-biaBHIVyLr6s",
   firebase: {
     apiKey: 'AIzaSyBoSKUBMlzT1c5X2lUWACjXTOZvFzQjlyw',
@@ -11,5 +11,5 @@ export const environment = {
     //appId: '1:480362569154:web:2fe6f75104cdfb82f50a5b',
     //measurementId: 'G-CBRYER9PJR'
   },
-  //apiUrl: "https://morning-savannah-86472.herokuapp.com/api/"
+  apiUrl: "https://gs-spring-portfolio.herokuapp.com/api/"
 };
