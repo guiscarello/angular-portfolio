@@ -2,11 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   viewBox="0 0 103.84285 56.023449"
+   viewBox="0 0 110.84285 60.023449"
    version="1.1"
    id="svg52036"
    inkscape:version="1.1.1 (3bf5ae0, 2021-09-20)"
    sodipodi:docname="title-background.svg"
+   width="110.84285"
+   height="60.023449"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +27,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.9386369"
-     inkscape:cx="104.38103"
-     inkscape:cy="28.651631"
+     inkscape:zoom="3.4921436"
+     inkscape:cx="49.396594"
+     inkscape:cy="28.206171"
      inkscape:window-width="1294"
      inkscape:window-height="704"
      inkscape:window-x="72"
@@ -44,43 +46,43 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:7.52689px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:#008671;stroke-width:0.23114;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="139.81158"
-       y="62.055599"
+       x="143.27289"
+       y="67.028458"
        id="text1775-1"
        transform="scale(1.0111787,0.98894488)"><tspan
          sodipodi:role="line"
          id="tspan1773-0"
-         x="139.81158"
-         y="62.055599"
+         x="143.27289"
+         y="67.028458"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.52689px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;stroke:#008671;stroke-width:0.23114;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">MI NOMBRE ES</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.5448px;line-height:0.65;font-family:sans-serif;letter-spacing:-0.0282258px;fill:#000000;fill-opacity:1;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="165.18878"
+       style="font-style:normal;font-weight:normal;font-size:12.5448px;line-height:0.85;font-family:sans-serif;letter-spacing:-0.0282258px;fill:#000000;fill-opacity:1;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="168.65009"
        y="103.52502"
        id="text1775-1-2"
        transform="scale(1.0111787,0.98894488)"><tspan
          sodipodi:role="line"
-         x="165.18878"
+         x="168.65009"
          y="103.52502"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6631px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="tspan54092">PROGRAMADOR WEB</tspan><tspan
          sodipodi:role="line"
-         x="165.17467"
-         y="111.67914"
+         x="168.63597"
+         y="114.1881"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.6631px;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="tspan10991">JR.</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5628px;line-height:1.25;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:0.95320821;stroke:#008671;stroke-width:0.23055118;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="117.27731"
-       y="86.494492"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5628px;line-height:1.25;font-family:'Vera Humana 95';-inkscape-font-specification:'Vera Humana 95, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff;fill-opacity:0.953208;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="120.73862"
+       y="88.038101"
        id="text24274"
        transform="scale(1.0111787,0.98894488)"><tspan
          sodipodi:role="line"
          id="tspan24272"
-         x="117.27731"
-         y="86.494492"
-         style="font-size:17.5628px;fill:#ffffff;fill-opacity:0.95320821;stroke:#008671;stroke-width:0.23055118;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">GUILLERMO</tspan></text>
+         x="120.73862"
+         y="88.038101"
+         style="font-size:17.5628px;fill:#ffffff;fill-opacity:0.953208;stroke:#008671;stroke-width:0.230551;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">GUILLERMO</tspan></text>
   </g>
 </svg>

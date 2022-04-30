@@ -64,7 +64,7 @@ export class ProjectsService {
 	getProjects(): Observable<any>{
 		return this.http.get(this.apiUrl).pipe(
 			tap(result => {    
-				console.log(result)          
+				//console.log(result)          
                 return result;
             })
 		);

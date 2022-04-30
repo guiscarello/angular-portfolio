@@ -29,13 +29,13 @@ export class ImageDisplayComponent implements OnInit {
 	ngOnChanges(){
 		this.images = [];
 		this.projectImagesUrl = []
-		console.log("this project", this.project)
+		//console.log("this project", this.project)
 		for(let i = 0; i < this.project?.photos.length; i++){
 			let ref = this.storage.ref(this.project?.photos[i].projectPhotoPath);
 			this.projectImagesUrl?.push(ref?.getDownloadURL());
 			
 		}
-		console.log("project images url", this.projectImagesUrl);
+		//console.log("project images url", this.projectImagesUrl);
 		if(this.projectImagesUrl !== undefined){
 			forkJoin(this.projectImagesUrl).subscribe(
 				imagesUrl => {
