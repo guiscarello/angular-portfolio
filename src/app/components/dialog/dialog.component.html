@@ -5,8 +5,13 @@
 			<h5 class="modal-title">
 				<ng-content select="[title]"></ng-content>
 			</h5>
-			<button type="button" class="btn-close" (click)="closeDialog()" aria-label="Close">
-			
+			<button 
+				type="button" 
+				class="btn-close" 
+				(click)="closeDialog()" 
+				[disabled] = "isLoading"
+				aria-label="Close"
+			>
 			</button>
 		</div>
 		<div class="modal-body">

@@ -66,6 +66,11 @@
 			</div>
 		</div>
 
-		<button type="submit" class="btn btn-primary w-100 p-3">Guardar</button>
+		<button type="submit" [disabled]="isLoading" class="btn btn-primary w-100 p-3 position-relative">
+			<span *ngIf="!isLoading">Guardar</span>
+			<span *ngIf="isLoading">
+				<app-loading></app-loading>
+			</span>
+		</button>
 	</div>
 </form>

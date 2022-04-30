@@ -118,11 +118,11 @@
 					name="allSkills" 
 					id="allSkills" 
 					formControlName="allSkills"
-					style="overflow: hidden; outline: none;"
+					style="outline: none;"
 					multiple
 				>
 					<option
-						*ngFor="let skill of skills"
+						*ngFor="let skill of allSkills"
 						value="{{skill.id}}"
 						style="font-size: small; padding: 5px;"
 					>{{skill.name}}</option>
@@ -148,7 +148,7 @@
 					name="skillsToSave" 
 					id="skillsToSave" 
 					formControlName="skillsToSave"
-					style="overflow: hidden; outline: none;"
+					style="outline: none;"
 					multiple
 				>
 					<option
@@ -192,7 +192,12 @@
 		</div>
 		<div class="row">
 			<div class="col mb-3">
-				<button type="submit" class="btn btn-primary w-100 p-3">Guardar</button>
+				<button type="submit" [disabled]="isLoading" class="btn btn-primary w-100 p-3">
+					<span *ngIf="!isLoading">Guardar</span>
+					<span *ngIf="isLoading">
+						<app-loading></app-loading>
+					</span>
+				</button>
 			</div>
 		</div>
 	</div>

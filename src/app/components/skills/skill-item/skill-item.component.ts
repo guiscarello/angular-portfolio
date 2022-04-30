@@ -13,7 +13,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 export class SkillItemComponent implements OnInit {
 
 	@Input() skill!: Skill;
-	@Output() openEditDialogEmitter = new EventEmitter();
+	@Output() openSkillEditDialogEmitter = new EventEmitter();
 	gaugeData!: Array<any>;
 	chartOptions!: EChartsOption;
 
@@ -103,7 +103,7 @@ export class SkillItemComponent implements OnInit {
 	//Comunication using child and parent method
 	editWork(){
 		//Send work to update to parent (work experiences component)
-		this.openEditDialogEmitter.emit({skill: this.skill});
+		this.openSkillEditDialogEmitter.emit({skill: this.skill});
 	}
 
 }

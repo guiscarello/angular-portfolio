@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { stat } from 'fs';
 import { UpdateSkillDTO } from 'src/app/interfaces/dto/UpdateSkillDTO';
 import { Skill } from 'src/app/interfaces/Skill';
 import { DialogService } from 'src/app/services/shared/dialog.service';
+import { LoadingService } from 'src/app/services/shared/loading.service';
 import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
@@ -26,10 +28,13 @@ export class SkillFormComponent implements OnInit {
 		"Experto"
 	];
 
+	isLoading!: boolean;
+
 	constructor(
 		private skillsService: SkillsService,
 		private fb: FormBuilder,
 		private dialogService: DialogService,
+		private loadingService: LoadingService
 	) {
 		//Define the structure of the form
 		this.skillForm = this.fb.group({
@@ -37,7 +42,13 @@ export class SkillFormComponent implements OnInit {
 			level: ['', [Validators.required]],
 			logo: [null, [Validators.required]],
 			color: ['', Validators.required]
-	});
+		});
+		this.loadingService.getLoadingStatus().subscribe({
+			next: status => {
+				//console.log("loading status: ", status)
+				this.isLoading = status;
+			}
+		});
 	}
 
 	ngOnInit(): void {
@@ -67,7 +78,7 @@ export class SkillFormComponent implements OnInit {
 					default:
 						break;
 				}
-				console.log(this.levelPercentage);
+				//console.log(this.levelPercentage);
 			}
 		);
 
@@ -132,9 +143,11 @@ export class SkillFormComponent implements OnInit {
 				};
 				//Pass the updated work to the work experiences service...
 				this.skillsService.sendSkillToUpdate(updateSkillDTO);
+				this.loadingService.setLoadingStatus(true);
 			} else if(this.purpose === "New"){
 				//Pass new work to the work experiences service...
 				this.skillsService.sendNewSkill(formData);
+				this.loadingService.setLoadingStatus(true);
 			}
 		} else{
 			Object.keys(this.skillForm.controls).forEach(

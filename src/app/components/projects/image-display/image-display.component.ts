@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Type } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, Subscription } from 'rxjs';
 import { Project } from 'src/app/interfaces/Project';
 import { DialogService } from 'src/app/services/shared/dialog.service';
 
@@ -23,31 +23,26 @@ export class ImageDisplayComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		
+
 	}
 
 	ngOnChanges(){
+		this.images = [];
+		this.projectImagesUrl = []
+		console.log("this project", this.project)
 		for(let i = 0; i < this.project?.photos.length; i++){
-			console.log("entro")
 			let ref = this.storage.ref(this.project?.photos[i].projectPhotoPath);
 			this.projectImagesUrl?.push(ref?.getDownloadURL());
 			
 		}
-		console.log(this.projectImagesUrl);
+		console.log("project images url", this.projectImagesUrl);
 		if(this.projectImagesUrl !== undefined){
-			console.log(this.project?.photos.length)
-			console.log(this.projectImagesUrl)
 			forkJoin(this.projectImagesUrl).subscribe(
 				imagesUrl => {
 					this.images = imagesUrl;
-					console.log(imagesUrl)
 				}
 			);
 		}
-	}
-
-	showImageDisplay($event: any){
-		console.log($event)
 	}
 
 	closeImageDisplay(){

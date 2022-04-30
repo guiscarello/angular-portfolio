@@ -49,14 +49,15 @@ export class SkillsComponent implements OnInit {
 		
 		this.getSkillsSubscription = this.skillService.getSkills().subscribe({	
 			next: skills => {
-				console.log(skills)
-				this.projectsService.sendSkillsToProjectForm(skills);
 				this.skills = skills;
+				this.projectsService.sendSkillsToProjectForm(this.skills);
 			}
 		});
 	
 		this.addNewSkillSubscription = this.skillService.getNewSkill().subscribe({
-			next: newSkillData => this.addSkill(newSkillData)
+			next: newSkillData => {
+				this.addSkill(newSkillData);
+			}
 		});
 
 		this.skillService.getSkillToUpdate().subscribe({
@@ -86,6 +87,7 @@ export class SkillsComponent implements OnInit {
 				this.skills.push(newSkill);	
 				this.addSkillDialog?.hide();
 				this.dialogService.emitEvent();
+				this.projectsService.sendSkillsToProjectForm(this.skills);
 			},
 			error: err => {
 				console.log(err);
@@ -111,6 +113,7 @@ export class SkillsComponent implements OnInit {
 				let updatedSkillIndex: number = this.skills.findIndex(skill => skill.id == updatedSkill.id);
 				this.skills[updatedSkillIndex] = updatedSkill;
 				this.editSkillDialog?.hide();
+				this.projectsService.sendSkillsToProjectForm(this.skills);
 			},
 			error: err => {
 				console.log(err);
@@ -134,7 +137,8 @@ export class SkillsComponent implements OnInit {
 		this.skillService.deleteSkill(skillToDelete).subscribe({
 			next: (id) => {
 				let deletedSkillId = this.skills.findIndex(skill => skill.id === id);
-				this.skills.splice(deletedSkillId, 1)	
+				this.skills.splice(deletedSkillId, 1);
+				this.projectsService.sendSkillsToProjectForm(this.skills);
 			},
 			error: err => {
 				console.log("Delete skill", err);

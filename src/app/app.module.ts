@@ -35,7 +35,9 @@ import { ContactComponent } from './components/contact/contact.component';
 
 import * as echarts from 'echarts';
 
-import { InterceptorService } from './services/interceptor/interceptor.service';
+import { RequestInterceptorService } from './services/interceptor/request.interceptor.service';
+import { ResponseInterceptorService } from './services/interceptor/response.interceptor.service';
+
 import { SkillFormComponent } from './components/skills/skill-form/skill-form.component';
 import { ProjectFormComponent } from './components/projects/project-form/project-form.component';
 import { ProjectItemComponent } from './components/projects/project-item/project-item.component';
@@ -91,9 +93,9 @@ import { LoadingComponent } from './components/loading/loading.component';
       echarts
     }),
   ],
-  providers: [{
-      provide: HTTP_INTERCEPTORS, useClass:InterceptorService, multi: true
-    }
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:RequestInterceptorService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass:ResponseInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

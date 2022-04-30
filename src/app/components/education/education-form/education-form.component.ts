@@ -4,6 +4,7 @@ import { UpdatedEducationDTO } from 'src/app/interfaces/dto/UpdateEducationDTO';
 import { Education } from 'src/app/interfaces/Education';
 import { EducationService } from 'src/app/services/education.service';
 import { DialogService } from 'src/app/services/shared/dialog.service';
+import { LoadingService } from 'src/app/services/shared/loading.service';
 
 @Component({
 	selector: 'app-education-form',
@@ -24,12 +25,14 @@ export class EducationFormComponent implements OnInit {
 		"Carrera online",
 		"Carrera presencial"
 	];
+	isLoading!: boolean;
 
 	constructor(
 		//inject the educaiton service to gain access to methods
 		private educationService: EducationService,
 		private fb: FormBuilder,
-		private dialogService: DialogService
+		private dialogService: DialogService,
+		private loadingService: LoadingService
 	) {
 		//Define the structure of the edit form
 		this.educationForm = this.fb.group({
@@ -42,6 +45,12 @@ export class EducationFormComponent implements OnInit {
 			year: ['', [Validators.required]],
 			duration: ['', [Validators.required]],
 			description: ['', [Validators.required, Validators.minLength(this.descriptionMinLength)]]
+		});
+		this.loadingService.getLoadingStatus().subscribe({
+			next: status => {
+				//console.log("loading status: ", status)
+				this.isLoading = status;
+			}
 		});
 	}
 
@@ -141,9 +150,11 @@ export class EducationFormComponent implements OnInit {
 				}
 				//Pass the updated work to the work experiences service...
 				this.educationService.sendUpdatedEducation(updatedEducationDTO);
+				this.loadingService.setLoadingStatus(true);
 			} else if(this.purpose === "New"){
 				//Pass new work to the work experiences service...
 				this.educationService.sendNewEducation(formData);
+				this.loadingService.setLoadingStatus(true);
 			}
 		} else {
 			//console.log("hastitle: " + this.educationForm.get("hasTitle")?.value);

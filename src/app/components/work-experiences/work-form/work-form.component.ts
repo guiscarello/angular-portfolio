@@ -2,6 +2,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UpdateWorkExperienceDTO } from 'src/app/interfaces/dto/UpdateWorkExperienceDTO';
 import { WorkExperience } from 'src/app/interfaces/WorkExperience';
+import { LoadingService } from 'src/app/services/shared/loading.service';
 import { WorkExperiencesService } from 'src/app/services/work-experiences.service';
 import { DialogService } from '../../../services/shared/dialog.service';
 
@@ -31,12 +32,14 @@ export class WorkFormComponent implements OnInit {
 		currentWork: [true]
 	});
 
+	isLoading!: boolean;
+
 	constructor(
 		//inject the work experince service to gain access to methods
 		private workExperiencesService: WorkExperiencesService,
 		private fb: FormBuilder,
 		private dialogService: DialogService,
-
+		private loadingService: LoadingService
 	) {
 	}
 
@@ -63,6 +66,12 @@ export class WorkFormComponent implements OnInit {
 				}
 			}
 		)
+		this.loadingService.getLoadingStatus().subscribe({
+			next: status => {
+				//console.log("loading status: ", status)
+				this.isLoading = status;
+			}
+		});
 
 	}
 
@@ -141,9 +150,11 @@ export class WorkFormComponent implements OnInit {
 				};
 				//Pass the updated work to the work experiences service...
 				this.workExperiencesService.sendUpdatedWork(updateWorkExperienceDTO);
+				this.loadingService.setLoadingStatus(true);
 			} else if(this.purpose === "New"){
 				//Pass new work to the work experiences service...
 				this.workExperiencesService.sendNewWork(formData);
+				this.loadingService.setLoadingStatus(true);
 			}
 		} else {
 			Object.keys(this.workForm.controls).forEach(

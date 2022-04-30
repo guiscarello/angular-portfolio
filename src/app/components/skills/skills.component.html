@@ -31,7 +31,7 @@
 			*ngFor = "let skill of skills"
 			[skill] = "skill"
 			class="d-flex skill align-items-center justify-content-center col-12 col-sm-6 col-md-4 col-lg-3"
-			(openEditDialogEmitter) = "showEditDialog($event)"
+			(openSkillEditDialogEmitter) = "showEditDialog($event)"
 			>
 		</app-skill-item>
 	</div>
