@@ -10,7 +10,8 @@ import { SocialData } from '../interfaces/HeaderInterfaces';
 
 export class HeaderService {
 
-  private apiUrl = environment.apiUrl + 'social';
+
+  private apiUrl = environment.apiUrl + 'socials';
 
   constructor(
     private http: HttpClient
@@ -18,6 +19,14 @@ export class HeaderService {
 
   getSocialData(): Observable<SocialData[]>{
     return this.http.get<SocialData[]>(this.apiUrl);
+  }
+
+  createNewSocial(formData: FormData): Observable<SocialData>{
+    return this.http.post<SocialData>(this.apiUrl, formData);
+  }
+
+  deleteSocial(social: SocialData): Observable<number> {
+    return this.http.delete<number>(`${this.apiUrl}/${social.id}`)
   }
 
 }

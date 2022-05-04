@@ -1,0 +1,121 @@
+<div class="users-config">
+	<div class="d-flex flex-row btn-conatiner">
+		<button class="btn btn-secondary btn-sm new-user-btn" (click)="toogleUserForm()">
+			<i class="bi bi-file-earmark-plus-fill"></i><span> Nuevo usuario</span>
+		</button>
+	</div>
+	<div 
+		[ngClass] = "showForm ? 'visible' : 'hidden'"
+		class="users-form">
+		<form [formGroup] = "userForm" (ngSubmit) = "onSubmit()">
+			<div class="d-flex flex-column">
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="username" class="form-label">
+							Username <span class="field-required">*</span>
+						</label>
+					</small>
+					<input
+						[ngClass] = "displayFieldClass('username')"
+						class="form-control form-control-sm" 
+						type="email" 
+						name="username" 
+						id="username" 
+						formControlName = "username"
+					>
+					<div class="invalid-feedback">
+						El nombre de usuarion es requerido (formato email)
+					</div>
+				</div>
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="password" class="form-label">
+							Password <span class="field-required">*</span>
+						</label>
+					</small>
+					<input
+						[ngClass] = "displayFieldClass('password')"
+						class="form-control form-control-sm" 
+						type="password" 
+						name="password" 
+						id="password" 
+						formControlName = "password"
+						autocomplete="new-password" 
+					>
+					<div class="invalid-feedback">
+						La contraseña es requerida. Entre 8 y 32 caracteres.
+					</div>
+				</div>
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="roles" class="form-label">
+							Roles <span class="field-required">*</span>
+						</label>
+					</small>
+					<select 
+						[ngClass] = "displayFieldClass('roles')"
+						class="custom-select"	
+						name="roles" 
+						id="roles" 
+						formControlName="roles"
+						style="outline: none;"
+						multiple
+					>
+						<option value="ADMIN"> ADMIN</option>
+						<option value="USER">USER</option>
+					</select>	
+					<div class="invalid-feedback">
+						Debe seleccionar al menos un rol
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<button type="submit" [disabled]="isLoading" class="btn btn-primary w-100 p-2">
+						<span *ngIf="!isLoading">Guardar</span>
+						<span *ngIf="isLoading">
+							<app-loading></app-loading>
+						</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="users-table">
+		<table class="table table-sm table-striped table-responsive table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Username</th>
+					<th>Roles</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let user of users">
+					<td>{{user.id}}</td>
+					<td>{{user.username}}</td>
+					<td>
+						<span *ngFor="let role of user.roles">
+							{{role.name}}
+						</span>
+					</td>
+					<td>
+						<!--<button 
+							class="btn btn-warning btn-sm table-buttons"
+							(click) = "editUser(user)"
+						>
+							<i class="bi bi-pen-fill"></i>
+						</button>-->
+						<button 
+							class="btn btn-danger btn-sm table-buttons"
+							(click) = "deleteUser(user)"	
+						>
+							<i class="bi bi-trash-fill"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+.config-header-container{
+	background-color: var(--color-tertiary);
+}
+.config-items{
+	ul {
+		padding: 0;
+		li{
+			cursor: pointer;
+			list-style-type: none;
+			a{
+				text-decoration: none;
+				color: white;
+				display: block;
+				padding: 10px;
+			}
+			&:hover{
+				background-color: var(--color-hover-secondary);
+			}
+		}
+	}
+}
+.config-content{
+	width: 100%;
+	padding-left: 300px;
+}

@@ -1,0 +1,39 @@
+<div class="d-flex flex-row">
+	<app-side-menu>
+		<div title>
+			Configuración
+		</div>
+		<div buttons>
+			<div class="d-flex align-items-center justify-content-center">
+				<a routerLink="/main">
+					<span role="button"><i class="bi bi-house-fill fs-5  text-light"></i></span>
+				</a>
+			</div>
+		</div>
+		<div items>
+			<div class="d-flex flex-column config-items">
+				<ul>
+					<li>
+						<a routerLink="/configuration/:users">
+							<span role="button">
+								<i class="bi bi-person-fill  text-light"></i>
+								<span style="margin-left: 10px;">Usuarios</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a routerLink="/configuration/:socials">
+							<span role="button">
+								<i class="bi bi-share-fill text-light"></i>
+								<span style="margin-left: 10px;">Sociales</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</app-side-menu>
+	<div class="config-content">
+		<ng-template configContent></ng-template>
+	</div>
+</div >
