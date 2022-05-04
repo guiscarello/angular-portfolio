@@ -41,7 +41,6 @@ export class ProjectFormComponent implements OnInit {
 		private loadingService: LoadingService
 	) {
 		this.projectForm = this.fb.group({
-			photos: [''],
 			title: ['', [Validators.required]],
 			startDate: [null, Validators.required],
 			endDate: [null, Validators.required],
@@ -53,6 +52,7 @@ export class ProjectFormComponent implements OnInit {
 		});
 	}
 
+	//TODO: REDO EVERYTHING TO REUSE CODE BETTER AND NOT REPEAT.
 	ngOnInit(): void{
 		this.projectsService.getSkillsForProjectForm().subscribe({
 			next: (skills:Skill[]) => {		
@@ -60,15 +60,15 @@ export class ProjectFormComponent implements OnInit {
 				this.allSkills = Array.from(this.skills);
 				this.skillsToSave = this.project?.skills ?? [];
 				//console.log("skills to save", this.skillsToSave)
-				if(this.skillsToSave.length > 0){
-					this.allSkills = Array.from(this.skills);
-					for(let _skill of this.skillsToSave){
-						let index: number = this.allSkills.findIndex(skill => skill.id === _skill.id)
-						if(index >= 0){
-							this.allSkills.splice(index,1);
-						}
-					}
-				}
+				this.refreshSelectData(this.skillsToSave);
+			}
+		});
+		this.dialogService.closeDialog.subscribe(() => {
+			if(this.purpose === "New"){
+				this.projectForm.reset("");
+				this.allSkills = Array.from(this.skills);
+				this.skillsToSave = this.project?.skills ?? [];
+				this.refreshSelectData(this.skillsToSave);
 			}
 		});
 		this.loadingService.getLoadingStatus().subscribe({
@@ -80,27 +80,17 @@ export class ProjectFormComponent implements OnInit {
 	}
 
 	ngOnChanges(changes: SimpleChanges){
-
 		//console.log("project change: ", changes['project'].currentValue);
 		//console.log("project skills", this.project?.skills);
-
 		this.skillsToSave = this.project?.skills ?? [];
 		//console.log("skills to save", this.skillsToSave)
-		if(this.skillsToSave.length > 0){
-			this.allSkills = Array.from(this.skills);
-			for(let _skill of this.skillsToSave){
-				let index: number = this.allSkills.findIndex(skill => skill.id === _skill.id)
-				if(index >= 0){
-					this.allSkills.splice(index,1);
-				}
-			}
-		}
+		this.refreshSelectData(this.skillsToSave);
+
 		this.projectForm.get("mainImage")?.clearValidators();
 		this.projectForm.get("additionalImages")?.clearValidators();
 		this.projectForm.updateValueAndValidity();
 
 		this.projectForm.patchValue({
-			photos: [''],
 			title: this.project?.title,
 			startDate: this.project?.startDate,
 			endDate: this.project?.endDate,
@@ -158,9 +148,12 @@ export class ProjectFormComponent implements OnInit {
 				}
 				this.projectsService.sendProjectToUpdate(updateProjectDTO);
 				this.loadingService.setLoadingStatus(true);
+				this.projectForm.reset();
 			} else if(this.purpose === "New"){
 				this.projectsService.sendNewProject(formData);
 				this.loadingService.setLoadingStatus(true);
+				this.projectForm.reset();
+				this.refreshSelectData(this.skillsToSave);
 			}
 		} else {
 			console.log("skillsToSave",this.skillsToSave.length > 0)
@@ -172,6 +165,19 @@ export class ProjectFormComponent implements OnInit {
 			);
 		}
 	}
+
+	refreshSelectData(skills: Skill[]): void{
+		if(skills.length > 0){
+			this.allSkills = Array.from(this.skills);
+			for(let _skill of skills){
+				let index: number = this.allSkills.findIndex(skill => skill.id === _skill.id)
+				if(index >= 0){
+					this.allSkills.splice(index,1);
+				}
+			}
+		}
+	}
+
 
 	getSkillsIds(skills: Skill[]): number[] {
 		let ids = [];
