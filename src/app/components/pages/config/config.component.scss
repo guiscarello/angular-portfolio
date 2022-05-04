@@ -1,25 +1,67 @@
 .config-header-container{
 	background-color: var(--color-tertiary);
 }
-.config-items{
-	ul {
-		padding: 0;
-		li{
-			cursor: pointer;
-			list-style-type: none;
-			a{
-				text-decoration: none;
-				color: white;
-				display: block;
-				padding: 10px;
-			}
-			&:hover{
-				background-color: var(--color-hover-secondary);
+
+.config-side-menu-container.visible{
+	width: 400px;
+	position: relative;
+	transition: all 0.4s linear;
+	.config-title{
+		margin-top: 40px;
+		padding: 20px;
+		width: 100%;
+		color: white;
+		background-color: var(--color-hover-secondary);
+	}
+	.btn-toggle-side-menu{
+		background: white;
+	}
+	.config-items{
+		ul {
+			padding: 0;
+			li{
+				cursor: pointer;
+				list-style-type: none;
+				a{
+					text-decoration: none;
+					color: white;
+					display: block;
+					padding: 10px;
+				}
+				&:hover{
+					background-color: var(--color-hover-secondary);
+				}
 			}
 		}
 	}
 }
+
+.config-side-menu-container.hidden{
+	width: 40px;
+	transition: width 0.4s linear;
+	.config-title{
+		opacity: 0;
+		visibility: hidden;
+		background-color: inherit;
+	}
+	.config-buttons{
+		opacity: 0;
+		visibility: hidden;
+	}
+	.config-items{
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
 .config-content{
 	width: 100%;
-	padding-left: 300px;
+}
+
+@media (max-width: 768px) {
+	.config-side-menu-container.visible{
+		width: 100%;
+		position: absolute;
+		z-index: 1;
+	}
 }

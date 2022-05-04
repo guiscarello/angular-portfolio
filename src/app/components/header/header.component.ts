@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
 	socialData?: SocialData[];
 	changeNavbarColor: boolean = false;
+	windowWidth!: number;
 
 	constructor(
 		private headerService: HeaderService,
@@ -26,7 +27,12 @@ export class HeaderComponent implements OnInit {
 			data => this.socialData = data
 		);
 		this.isAuthenticated();
+		this.windowWidth = window.innerWidth;
 	}	
+
+	ngOnChanges(){
+		this.windowWidth = window.innerWidth;
+	}
 
 	isAuthenticated(): boolean {
 		return this.authService.authenticated();

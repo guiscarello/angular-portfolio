@@ -1,16 +1,11 @@
 .side-menu-container{
 	height: 100vh;
 	background-color: var(--color-tertiary);
-	width: 300px;
-	position: fixed;
-	.config-title{
-		margin-top: 40px;
-		padding: 20px;
-		width: 100%;
-		background-color: var(--color-hover-secondary);
-		color: white;
+	width: 100%;
+	.side-menu-title{
+		text-align: center;
 	}
-	.config-buttons{
+	.side-menu-buttons{
 		padding:10px;
 	}
 	

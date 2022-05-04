@@ -51,7 +51,7 @@ export class SocialsComponent implements OnInit {
 			formData.append("name", this.socialForm.get('name')?.value);
 			formData.append("class", this.socialForm.get('class')?.value);
 			formData.append("link", this.socialForm.get('link')?.value);
-      this.loadingService.setLoadingStatus(true);
+     		this.loadingService.setLoadingStatus(true);
 			this.headerService.createNewSocial(formData).subscribe({
 				next: social =>{ 
 					this.socials.push(social);

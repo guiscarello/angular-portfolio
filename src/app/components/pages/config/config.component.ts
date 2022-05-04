@@ -13,7 +13,8 @@ import { UsersComponent } from '../../config-items/users/users.component';
 export class ConfigComponent implements OnInit {
 
 	@ViewChild(ConfigDirective, {static:true}) configContent! :ConfigDirective;
-
+	sideMenuClosed: boolean = false;
+  
 	constructor(
 		private router: ActivatedRoute
 	) { }
@@ -52,6 +53,8 @@ export class ConfigComponent implements OnInit {
 		}
 	}
 
-	
+	closeSideMenu(){
+		this.sideMenuClosed = !this.sideMenuClosed;
+	}
 
 }

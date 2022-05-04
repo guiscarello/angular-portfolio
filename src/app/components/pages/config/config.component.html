@@ -1,9 +1,31 @@
 <div class="d-flex flex-row">
+	<div 
+		[ngClass] = "sideMenuClosed ? 'hidden' : 'visible' "
+		class="config-side-menu-container"
+	>
+	<div class="d-flex align-items-center justify-content-end btn-toggle-side-menu">
+		<button 
+			*ngIf="!sideMenuClosed"
+			class="btn"
+			type="button" 
+			(click)="closeSideMenu()" 
+		>
+			<i class="bi bi-x"></i>
+		</button>	
+		<button 
+			*ngIf="sideMenuClosed"
+			type="button" 
+			class="btn"
+			(click)="closeSideMenu()" 
+		>
+			<i class="bi bi-grid-3x3-gap-fill"></i>
+		</button>	
+	</div>
 	<app-side-menu>
-		<div title>
+		<div class="config-title" title>
 			Configuración
 		</div>
-		<div buttons>
+		<div class="config-buttons" buttons>
 			<div class="d-flex align-items-center justify-content-center">
 				<a routerLink="/main">
 					<span role="button"><i class="bi bi-house-fill fs-5  text-light"></i></span>
@@ -33,6 +55,7 @@
 			</div>
 		</div>
 	</app-side-menu>
+	</div>
 	<div class="config-content">
 		<ng-template configContent></ng-template>
 	</div>
