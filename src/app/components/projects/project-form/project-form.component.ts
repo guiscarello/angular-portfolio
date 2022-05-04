@@ -58,6 +58,17 @@ export class ProjectFormComponent implements OnInit {
 			next: (skills:Skill[]) => {		
 				this.skills = Array.from(skills);
 				this.allSkills = Array.from(this.skills);
+				this.skillsToSave = this.project?.skills ?? [];
+				//console.log("skills to save", this.skillsToSave)
+				if(this.skillsToSave.length > 0){
+					this.allSkills = Array.from(this.skills);
+					for(let _skill of this.skillsToSave){
+						let index: number = this.allSkills.findIndex(skill => skill.id === _skill.id)
+						if(index >= 0){
+							this.allSkills.splice(index,1);
+						}
+					}
+				}
 			}
 		});
 		this.loadingService.getLoadingStatus().subscribe({

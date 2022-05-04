@@ -1,0 +1,48 @@
+.social-table{
+	width: 100%;
+	padding: 20px;
+	table{
+		font-size: 12px !important;
+	}
+}
+.social-form{
+	padding: 20px;
+	form{
+		width: 100%;
+	}
+}
+.social-form.visible{
+	display: flex;
+	height: auto;
+	width: 100%;
+}
+.social-form.hidden{
+	display: none;
+}
+
+.table th, .table td{
+	text-align: center;
+}
+option{
+	font-size: small; 
+	padding: 5px;
+}
+.field-required{
+	color: red;
+}
+.btn-conatiner{
+	background-color: lightgray;
+	.new-social-btn{
+		width: auto;
+		margin: 5px;
+	}
+}
+
+.btn:focus{
+	box-shadow: none !important;
+}
+
+.table-buttons{
+	font-size: .5rem;
+	margin: 0 2px;
+}

@@ -1,0 +1,115 @@
+<div class="social-config">
+	<div class="d-flex flex-row btn-conatiner">
+		<button class="btn btn-secondary btn-sm new-social-btn" (click)="toggleSocialForm()">
+			<i class="bi bi-file-earmark-plus-fill"></i><span> Nueva red social</span>
+		</button>
+	</div>
+	<div 
+		[ngClass] = "showForm ? 'visible' : 'hidden'"
+		class="social-form">
+		<form [formGroup] = "socialForm" (ngSubmit) = "onSubmit()">
+			<div class="d-flex flex-column">
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="name" class="form-label">
+							Nombre red social <span class="field-required">*</span>
+						</label>
+					</small>
+					<input
+						[ngClass] = "displayFieldClass('name')"
+						class="form-control form-control-sm" 
+						type="text" 
+						name="name" 
+						id="name" 
+						formControlName = "name"
+					>
+					<div class="invalid-feedback">
+						El nombre de la red es requerido
+					</div>
+				</div>
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="class" class="form-label">
+							Clase icono de boostrap <span class="field-required">*</span>
+						</label>
+					</small>
+					<input
+						[ngClass] = "displayFieldClass('class')"
+						class="form-control form-control-sm" 
+						type="text" 
+						name="class" 
+						id="class" 
+						formControlName = "class"
+						placeholder="Ej.: bi bi-facebook"
+					>
+					<div class="invalid-feedback">
+						La clase es requerida para que el icono sea renderizado
+					</div>
+				</div>
+				<div class="d-flex flex-column mb-3">
+					<small>
+						<label for="link" class="form-label">
+							Link <span class="field-required">*</span>
+						</label>
+					</small>
+					<input
+						[ngClass] = "displayFieldClass('link')"
+						class="form-control form-control-sm" 
+						type="text" 
+						name="link" 
+						id="link" 
+						formControlName = "link"
+					>
+					<div class="invalid-feedback">
+						Insertar link a la red social
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<button type="submit" [disabled]="isLoading" class="btn btn-primary w-100 p-2">
+						<span *ngIf="!isLoading">Guardar</span>
+						<span *ngIf="isLoading">
+							<app-loading></app-loading>
+						</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="social-table">
+		<table class="table table-sm table-striped table-responsive table-hover">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Red Social</th>
+					<th>Clase</th>
+					<th>Link</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let social of socials">
+					<td>{{social.id}}</td>
+					<td>{{social.name}}</td>
+					<td>{{social.bsClassIcon}}</td>
+					<td>{{social.link}}</td>
+					<td>
+						<!--<button 
+							class="btn btn-warning btn-sm table-buttons"
+							(click) = "editSocial(social)"
+						>
+							<i class="bi bi-pen-fill"></i>
+						</button>-->
+						<button 
+							class="btn btn-danger btn-sm table-buttons"
+							(click) = "deleteSocial(social)"	
+						>
+							<i class="bi bi-trash-fill"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

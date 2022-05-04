@@ -46,6 +46,12 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { ImageDisplayComponent } from './components/projects/image-display/image-display.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ConfigComponent } from './components/pages/config/config.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { ConfigDirective} from './directives/config.directive';
+import { UsersComponent } from './components/config-items/users/users.component';
+import { SocialsComponent } from './components/config-items/socials/socials.component';
+import { StartPageComponent } from './components/config-items/start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +85,12 @@ import { LoadingComponent } from './components/loading/loading.component';
     ProjectItemComponent,
     ImageDisplayComponent,
     LoadingComponent,
+    ConfigComponent,
+    SideMenuComponent,
+    ConfigDirective,
+    UsersComponent,
+    SocialsComponent,
+    StartPageComponent,
   ],
   imports: [
     BrowserModule,

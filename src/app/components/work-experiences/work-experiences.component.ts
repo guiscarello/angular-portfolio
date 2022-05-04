@@ -45,17 +45,13 @@ export class WorkExperiencesComponent implements OnInit {
 		
 		this.getWorksSubscription = this.workExperiencesService.getWorkExperiences().subscribe({	
 			next: works => {
-				console.log(works);
+				//console.log(works);
 				this.workExperiences = works;
 			},	
 			error: err => {
 				console.log(err);
 				this.errorHandlerService.httpErrorHandler(err);
-			},
-			complete: () => {
-				console.log("Experiencia de trabajo agregada con exito");
 			}
-
 		});
 	
 		this.addNewWorkSubscription = this.workExperiencesService.getNewWork().subscribe({

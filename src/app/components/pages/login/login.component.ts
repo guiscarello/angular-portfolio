@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.badCredentials = false;
         }
+        this.errorHandlerService.httpErrorHandler(err);
       }
     }
 

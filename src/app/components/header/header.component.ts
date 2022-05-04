@@ -1,4 +1,5 @@
 import { Component,  HostListener, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { fromEvent } from 'rxjs';
 import { SocialData } from 'src/app/interfaces/HeaderInterfaces';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
 
 	constructor(
 		private headerService: HeaderService,
-		private authService: AuthenticationService
+		private authService: AuthenticationService,
 	) { }
 
 	ngOnInit(): void {
@@ -25,7 +26,6 @@ export class HeaderComponent implements OnInit {
 			data => this.socialData = data
 		);
 		this.isAuthenticated();
-
 	}	
 
 	isAuthenticated(): boolean {
