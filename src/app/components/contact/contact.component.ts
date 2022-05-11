@@ -30,7 +30,7 @@ export class ContactComponent implements OnInit {
 	ngOnInit(): void {
 		this.contactForm = this.fb.group({
 			name: ['', Validators.required],
-			email: ['', Validators.required],
+			email: ['', [Validators.required, Validators.email]],
 			subject: ['', Validators.required],
 			recaptcha:[''],
 			message: ['', Validators.required]
@@ -42,7 +42,7 @@ export class ContactComponent implements OnInit {
 	}
 
 	submitDisabled(): boolean{
-		return this.token == null;
+		return this.token === null;
 	}
 
 	onSubmit(){
