@@ -4,7 +4,7 @@ Project created for the argentinian program named "Argentina Programa: Yo progra
 
 The project consist on building a full stack web portfolio using modern web technologies, the last has to have CRUD habilities for editing the distincts parts of the app.
 
-This repository is the front-end part of the project and is build upon the Angular Js framework. Some of other tecnologies used are listed below:
+This repository is the front-end part of the project and is build upon the Angular Js framework. Some of the other tecnologies used are listed below:
 
 - Boostrap as the primary CSS framework, and SCSS as the stylesheet language.
 - Echarts, used for displaying graph in the web app.
